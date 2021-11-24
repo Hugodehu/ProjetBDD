@@ -1,0 +1,11 @@
+﻿  pch.cpp
+  AssemblyInfo.cpp
+  BDDload.cpp
+  BDDservice.cpp
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\BDDservice.cpp(29,31): warning C4101: 'chaine' : variable locale non référencée
+  Choix.cpp
+  MyForm.cpp
+  client.cpp
+  Génération de code en cours...
+  AssemblyInfo.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
+  Projet.vcxproj -> C:\Users\kylia\Desktop\Bloc POO\Projet\x64\Debug\Projet.exe

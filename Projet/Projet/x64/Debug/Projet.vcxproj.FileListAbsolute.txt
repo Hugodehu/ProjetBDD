@@ -1,0 +1,4 @@
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\x64\Debug\Projet.vcxproj.AssemblyReference.cache
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\x64\Debug\Projet.MyForm.resources
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\x64\Debug\Projet.vcxproj.GenerateResource.cache
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\x64\Debug\Projet.Choix.resources
