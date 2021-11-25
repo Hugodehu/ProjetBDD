@@ -139,6 +139,7 @@ namespace Projet {
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {}
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		oSvc = gcnew NS_BDDservice::BDDservice;
 		this->oSvc->CheckAuthentification(this->Email->Text, this->mdp->Text);
 		this->Hide();
 		Projet::Choix form;
