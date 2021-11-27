@@ -10,6 +10,7 @@
 #include "MyForm.h"
 #include "Choix.h"
 #include "BDDload.h"
-#include "client.h"
+#include "Auth.h"
+#include "Personnel.h"
 
 #endif //PCH_H

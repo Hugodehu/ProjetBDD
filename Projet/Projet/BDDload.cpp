@@ -3,10 +3,10 @@
 
 NS_load::CLload::CLload(void)
 {
-    this->sCnx = "Data Source = KYLIAN\\MSSQL_G; Initial Catalog = BDDP6; Integrated Security = True";
+    //this->sCnx = "Data Source=KYLIAN;Initial Catalog=projet;Integrated Security=True";
+    this->sCnx = "Server=tcp:serveur-projet-poo.database.windows.net,1433;Initial Catalog=BDD_Projet_POO;Persist Security Info=False;User ID=Application;Password=3zj4z6JWM;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
     this->sSql = "Rien";
-
-
+ 
     this->oCnx = gcnew System::Data::SqlClient::SqlConnection(this->sCnx);
     this->oCmd = gcnew System::Data::SqlClient::SqlCommand(this->sSql, this->oCnx);
     this->oDA = gcnew System::Data::SqlClient::SqlDataAdapter();
@@ -14,13 +14,13 @@ NS_load::CLload::CLload(void)
 
     this->oCmd->CommandType = System::Data::CommandType::Text;
 }
-System::Data::DataSet^ NS_load::CLload::getRows(System::String^ sSql, System::String^ sDataTableName)
+System::Data::DataSet^ NS_load::CLload::getRows(System::String^ sSql)
 {
     this->oDs->Clear();
     this->sSql = sSql;
     this->oCmd->CommandText = this->sSql;
     this->oDA->SelectCommand = this->oCmd;
-    this->oDA->Fill(this->oDs, sDataTableName);
+    this->oDA->Fill(this->oDs);
 
     return this->oDs;
 }

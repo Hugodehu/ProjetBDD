@@ -1,11 +1,40 @@
 ﻿  pch.cpp
+  Adresse.cpp
+  Article.cpp
   AssemblyInfo.cpp
+  Auth.cpp
   BDDload.cpp
   BDDservice.cpp
-C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\BDDservice.cpp(29,31): warning C4101: 'chaine' : variable locale non référencée
   Choix.cpp
+  Client.cpp
+  Commande.cpp
   MyForm.cpp
-  client.cpp
+  Paiement.cpp
+  Personnel.cpp
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(5,47): error C2556: 'System::String ^NS_BDD::Personnel::Afficher(void)' : la fonction surchargée ne diffère que par le type de retour de 'void NS_BDD::Personnel::Afficher(void)'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(22): message : voir la déclaration de 'NS_BDD::Personnel::Afficher'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(5,36): error C2373: 'NS_BDD::Personnel::Afficher' : redéfinition ; modificateurs de type différents
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(22): message : voir la déclaration de 'NS_BDD::Personnel::Afficher'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(6,123): error C2039: 'getNom' n'est pas membre de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(6): message : voir la déclaration de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(6,161): error C2039: 'getPrenom' n'est pas membre de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(6): message : voir la déclaration de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(9,47): error C2556: 'System::String ^NS_BDD::Personnel::Modifier(void)' : la fonction surchargée ne diffère que par le type de retour de 'void NS_BDD::Personnel::Modifier(void)'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(23): message : voir la déclaration de 'NS_BDD::Personnel::Modifier'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(9,36): error C2373: 'NS_BDD::Personnel::Modifier' : redéfinition ; modificateurs de type différents
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(23): message : voir la déclaration de 'NS_BDD::Personnel::Modifier'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(10,145): error C2039: 'getIdpersonnel' n'est pas membre de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(6): message : voir la déclaration de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(13,46): error C2556: 'System::String ^NS_BDD::Personnel::Ajouter(void)' : la fonction surchargée ne diffère que par le type de retour de 'void NS_BDD::Personnel::Ajouter(void)'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(21): message : voir la déclaration de 'NS_BDD::Personnel::Ajouter'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(13,36): error C2373: 'NS_BDD::Personnel::Ajouter' : redéfinition ; modificateurs de type différents
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(21): message : voir la déclaration de 'NS_BDD::Personnel::Ajouter'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(14,146): error C2039: 'getNom' n'est pas membre de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(6): message : voir la déclaration de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(14,172): error C2039: 'getPrenom' n'est pas membre de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(6): message : voir la déclaration de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(14,199): error C2039: 'getDate' n'est pas membre de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(6): message : voir la déclaration de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.cpp(14,224): error C2039: 'getSuperieur' n'est pas membre de 'NS_BDD::Personnel'
+C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\Personnel.h(6): message : voir la déclaration de 'NS_BDD::Personnel'
   Génération de code en cours...
-  AssemblyInfo.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
-  Projet.vcxproj -> C:\Users\kylia\Desktop\Bloc POO\Projet\x64\Debug\Projet.exe
