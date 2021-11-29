@@ -4,7 +4,7 @@
 
 System::String^ NS_BDD::Paiement::Afficher(void)
 {
-    return "USE BDD_Projet_POO; SELECT id_paiement, solde, date_emission, date_paiement, moyen FROM Paiement WHERE id_paiement = " + this->get_id_paiement + ";";
+    return "USE BDD_Projet_POO; SELECT id_paiement, solde, date_emission, date_paiement, moyen FROM Paiement WHERE id_paiement = '" + this->get_id_paiement() + "';";
 }
 
 System::String^ NS_BDD::Paiement::Ajouter(void)
@@ -19,13 +19,13 @@ System::String^ NS_BDD::Paiement::Modifier(void)
 
 System::String^ NS_BDD::Paiement::Supprimer(void)
 {
-    return "USE BDD_Projet_POO; DELETE FROM Paiement WHERE i"
+    return "USE BDD_Projet_POO; DELETE FROM Paiement WHERE i";
 }
 
 
 void NS_BDD::Paiement::set_id_paiement(System::String^ id_paiement) { this->id_paiement = id_paiement; }
 void NS_BDD::Paiement::set_solde(System::String^ solde) { this->solde = solde; }
-void NS_BDD::Paiement::set_date_emission(System::String^ date_emission) { this->date_emission = date_embauche; }
+void NS_BDD::Paiement::set_date_emission(System::String^ date_emission) { this->date_emission = date_emission; }
 void NS_BDD::Paiement::set_date_paiement(System::String^ date_paiement) { this->date_paiement = date_paiement ; }
 void NS_BDD::Paiement::set_moyen(System::String^ moyen) { this->moyen = moyen; }
 

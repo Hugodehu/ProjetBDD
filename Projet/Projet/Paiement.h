@@ -9,7 +9,8 @@ namespace NS_BDD
         System::String^ solde;
         System::String^ date_emission;
         System::String^ date_paiement;
-        System::String^ moyen
+        System::String^ moyen;
+        System::String^ date_embauche;
 
     public:
         void set_id_paiement(System::String^);
@@ -27,6 +28,7 @@ namespace NS_BDD
         System::String^ get_solde(void);
         System::String^ get_date_emission(void);
         System::String^ get_date_paiement(void);
+        System::String^ get_date_embauche(void);
         System::String^ get_moyen(void);
 
     };

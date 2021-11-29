@@ -144,7 +144,6 @@ namespace Projet {
 		if (this->result->Tables[0]->Select()[0][0]->ToString() == "True") //Merci Tristan <3
 		{ 
 			this->Hide();
-			//Inserer requete pour savoir si l'id = id de superieur
 			Projet::Choix form;
 			form.ShowDialog();
 			this->Show();
