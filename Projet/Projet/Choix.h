@@ -75,6 +75,7 @@ namespace Projet {
 
 	private: System::Windows::Forms::Button^ A_Propos;
 	private: System::Data::DataSet^ result;
+	
 
 	private: short valider;
 
@@ -489,6 +490,11 @@ namespace Projet {
 		   //code a optimisiser ->
 #pragma endregion
 	private: System::Void Choix_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->Article = gcnew NS_BDDservice::service_Article();
+		this->authentification = gcnew NS_BDDservice::Service_Authentification();
+		this->Client = gcnew NS_BDDservice::service_Client();
+		this->Commande = gcnew NS_BDDservice::service_Commande();
+		this->Personnel = gcnew NS_BDDservice::service_Personnel();
 	}
 	private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		e->Cancel = MessageBox::Show("Vous, êtes sûr le point de quitter la page, êtes-vous sûr de ce choix ?", "Warning", MessageBoxButtons::YesNo, MessageBoxIcon::Question) != System::Windows::Forms::DialogResult::Yes;

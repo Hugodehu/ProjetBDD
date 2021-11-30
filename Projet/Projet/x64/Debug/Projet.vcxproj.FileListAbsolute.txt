@@ -2,3 +2,7 @@ C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\x64\Debug\Projet.vcxproj.AssemblyR
 C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\x64\Debug\Projet.MyForm.resources
 C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\x64\Debug\Projet.vcxproj.GenerateResource.cache
 C:\Users\kylia\Desktop\Bloc POO\Projet\Projet\x64\Debug\Projet.Choix.resources
+C:\Users\hugod\OneDrive\Documents\GitHub\ProjetPOO\Projet\Projet\x64\Debug\Projet.vcxproj.AssemblyReference.cache
+C:\Users\hugod\OneDrive\Documents\GitHub\ProjetPOO\Projet\Projet\x64\Debug\Projet.Choix.resources
+C:\Users\hugod\OneDrive\Documents\GitHub\ProjetPOO\Projet\Projet\x64\Debug\Projet.MyForm.resources
+C:\Users\hugod\OneDrive\Documents\GitHub\ProjetPOO\Projet\Projet\x64\Debug\Projet.vcxproj.GenerateResource.cache
