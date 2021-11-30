@@ -1,6 +1,6 @@
 #pragma once
+#include "Header.h"
 #include "pch.h"
-
 namespace NS_BDD
 {
     ref class Ville
@@ -9,6 +9,7 @@ namespace NS_BDD
         System::String^ id_ville;
         System::String^ nom;
         System::String^ code_postal;
+
     public:
         void set_id_ville(System::String^);
         void set_nom(System::String^);

@@ -1,8 +1,5 @@
 #pragma once
-#include "Choix.h"
-#include "BDDload.h"
-#include "Auth.h"
-#include "BDDservice.h"
+#include "Header.h"
 #include <string>
 #include <iostream>
 namespace Projet {
@@ -38,7 +35,7 @@ namespace Projet {
 	private: System::Windows::Forms::PictureBox^ img_lock;
 	private: System::Windows::Forms::Label^ label_email;
 	private: System::Windows::Forms::Label^ label_mdp;
-	private: NS_BDDservice::BDDservice^ authentification;
+	private: NS_BDDservice::Service_Authentification^ authentification;
 	private: System::Data::DataSet^ result;
 
 	private: System::ComponentModel::Container ^components;
@@ -138,10 +135,10 @@ namespace Projet {
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {}
 
 	private: System::Void button_auth_Click(System::Object^ sender, System::EventArgs^ e) {
-		authentification = gcnew NS_BDDservice::BDDservice;
+		authentification = gcnew NS_BDDservice::Service_Authentification;
 		result = gcnew Data::DataSet;
 		this->result = this->authentification->CheckAuthentification(this->txt_email->Text, this->txt_mdp->Text);
-		if (this->result->Tables[0]->Select()[0][0]->ToString() == "True") //Merci Tristan <3
+		if (this->result->Tables[0]->Select()[0][0]) //Merci Tristan <3 //->to_String() == "true"
 		{ 
 			this->Hide();
 			Projet::Choix form;

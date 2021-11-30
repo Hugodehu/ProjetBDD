@@ -1,4 +1,5 @@
 #pragma once
+#include "Header.h"
 #include "pch.h"
 namespace NS_BDD
 {
@@ -9,31 +10,35 @@ namespace NS_BDD
         System::String^ reference;
         System::String^ date_livraison;
         System::String^ date_emission;
-        float^ prix_HT;
-        float^ prix_TTC;
-        float^ TVA;
-        float^ remise;
-        float^ prix_final;
+        System::String^ prix_HT;
+        System::String^ prix_TTC;
+        System::String^ TVA;
+        System::String^ remise;
+        System::String^ prix_final;
+        System::String^ quantite;
+
     public:
         void set_id_commande(System::String^);
         void set_reference(System::String^);
         void set_date_livraison(System::String^);
         void set_date_emission(System::String^);
-        void set_prix_HT(float^);
-        void set_prix_TTC(float^);
-        void set_TVA(float^);
-        void set_remise(float^);
-        void set_prix_final(float^);
+        void set_prix_HT(System::String^);
+        void set_prix_TTC(System::String^);
+        void set_TVA(System::String^);
+        void set_remise(System::String^);
+        void set_prix_final(System::String^);
+        void set_quantité(System::String^);
 
         System::String^ get_id_commande(void);
         System::String^ get_reference(void);
         System::String^ get_date_livraison(void);
         System::String^ set_date_emission(void);
-        float^ get_prix_HT(void);
-        float^ get_prix_TTC(void);
-        float^ get_TVA(void);
-        float^ get_remise(void);
-        float^ get_prix_final(void);
+        System::String^ get_prix_HT(void);
+        System::String^ get_prix_TTC(void);
+        System::String^ get_TVA(void);
+        System::String^ get_remise(void);
+        System::String^ get_prix_final(void);
+        System::String^ get_quantite(void);
 
         System::String^ Ajouter(void);
         System::String^ Afficher(void);

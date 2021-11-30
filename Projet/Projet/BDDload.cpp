@@ -1,6 +1,5 @@
-#include "BDDload.h"
+#include "Header.h"
 #include "pch.h"
-
 NS_load::CLload::CLload(void)
 {
     //this->sCnx = "Data Source=KYLIAN;Initial Catalog=projet;Integrated Security=True";

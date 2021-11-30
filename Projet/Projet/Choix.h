@@ -1,6 +1,6 @@
 #pragma once
+#include "Header.h"
 #include "pch.h"
-
 namespace Projet {
 
 	using namespace System;
@@ -29,39 +29,50 @@ namespace Projet {
 
 	private: System::ComponentModel::Container^ components;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
-	private: System::Windows::Forms::Button^ Ajouter;
-	private: System::Windows::Forms::Button^ Modifier;
-	private: System::Windows::Forms::Button^ Supprimer;
-	private: System::Windows::Forms::Button^ Afficher;
+	
+	private: System::Windows::Forms::Button^ buttonAjouter;
+	private: System::Windows::Forms::Button^ buttonModifier;
+	private: System::Windows::Forms::Button^ buttonSupprimer;
+	private: System::Windows::Forms::Button^ buttonAfficher;
+	private: System::Windows::Forms::Button^ buttonValider;
+	
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: NS_BDDservice::BDDservice^ authentification;
-	private: System::Windows::Forms::Button^ butValider;
+	private: NS_BDDservice::Service_Authentification^ authentification;
+	private: NS_BDDservice::service_Client^ Client;
+	private: NS_BDDservice::service_Article^ Article;
+	private: NS_BDDservice::service_Commande^ Commande;
+	private: NS_BDDservice::service_Personnel^ Personnel;
+
+
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label8;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ Box9;
-	private: System::Windows::Forms::TextBox^ Box1;
-	private: System::Windows::Forms::TextBox^ Box11;
-	private: System::Windows::Forms::TextBox^ Box3;
-	private: System::Windows::Forms::TextBox^ Box10;
-	private: System::Windows::Forms::TextBox^ Box4;
-	private: System::Windows::Forms::TextBox^ Box12;
-	private: System::Windows::Forms::TextBox^ Box5;
 	private: System::Windows::Forms::Label^ label9;
-	private: System::Windows::Forms::TextBox^ Box7;
 	private: System::Windows::Forms::Label^ label10;
-	private: System::Windows::Forms::TextBox^ Box6;
 	private: System::Windows::Forms::Label^ label11;
-	private: System::Windows::Forms::TextBox^ Box8;
 	private: System::Windows::Forms::Label^ label12;
+	
+	private: System::Windows::Forms::TextBox^ Box1;
 	private: System::Windows::Forms::TextBox^ Box2;
+	private: System::Windows::Forms::TextBox^ Box3;
+	private: System::Windows::Forms::TextBox^ Box4;
+	private: System::Windows::Forms::TextBox^ Box5;
+	private: System::Windows::Forms::TextBox^ Box6;
+	private: System::Windows::Forms::TextBox^ Box7;
+	private: System::Windows::Forms::TextBox^ Box8;
+	private: System::Windows::Forms::TextBox^ Box9;
+	private: System::Windows::Forms::TextBox^ Box10;
+	private: System::Windows::Forms::TextBox^ Box11;
+	private: System::Windows::Forms::TextBox^ Box12;
+
 	private: System::Windows::Forms::Button^ A_Propos;
 	private: System::Data::DataSet^ result;
+
 	private: short valider;
 	private: bool superieur;
 
@@ -70,37 +81,43 @@ namespace Projet {
 		   void InitializeComponent(void)
 		   {
 			   this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			   this->Ajouter = (gcnew System::Windows::Forms::Button());
-			   this->Modifier = (gcnew System::Windows::Forms::Button());
-			   this->Supprimer = (gcnew System::Windows::Forms::Button());
-			   this->Afficher = (gcnew System::Windows::Forms::Button());
 			   this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			   this->butValider = (gcnew System::Windows::Forms::Button());
+
+			   this->buttonAjouter = (gcnew System::Windows::Forms::Button());
+			   this->buttonModifier = (gcnew System::Windows::Forms::Button());
+			   this->buttonSupprimer = (gcnew System::Windows::Forms::Button());
+			   this->buttonAfficher = (gcnew System::Windows::Forms::Button());
+			   this->buttonValider = (gcnew System::Windows::Forms::Button());
+			   this->A_Propos = (gcnew System::Windows::Forms::Button());
+
+
+			   this->label1 = (gcnew System::Windows::Forms::Label());
+			   this->label2 = (gcnew System::Windows::Forms::Label());
+			   this->label3 = (gcnew System::Windows::Forms::Label());
+			   this->label4 = (gcnew System::Windows::Forms::Label());
 			   this->label5 = (gcnew System::Windows::Forms::Label());
 			   this->label6 = (gcnew System::Windows::Forms::Label());
-			   this->label4 = (gcnew System::Windows::Forms::Label());
 			   this->label7 = (gcnew System::Windows::Forms::Label());
-			   this->label3 = (gcnew System::Windows::Forms::Label());
 			   this->label8 = (gcnew System::Windows::Forms::Label());
-			   this->label2 = (gcnew System::Windows::Forms::Label());
-			   this->label1 = (gcnew System::Windows::Forms::Label());
-			   this->Box9 = (gcnew System::Windows::Forms::TextBox());
-			   this->Box1 = (gcnew System::Windows::Forms::TextBox());
-			   this->Box11 = (gcnew System::Windows::Forms::TextBox());
-			   this->Box3 = (gcnew System::Windows::Forms::TextBox());
-			   this->Box10 = (gcnew System::Windows::Forms::TextBox());
-			   this->Box4 = (gcnew System::Windows::Forms::TextBox());
-			   this->Box12 = (gcnew System::Windows::Forms::TextBox());
-			   this->Box5 = (gcnew System::Windows::Forms::TextBox());
 			   this->label9 = (gcnew System::Windows::Forms::Label());
-			   this->Box7 = (gcnew System::Windows::Forms::TextBox());
 			   this->label10 = (gcnew System::Windows::Forms::Label());
-			   this->Box6 = (gcnew System::Windows::Forms::TextBox());
 			   this->label11 = (gcnew System::Windows::Forms::Label());
-			   this->Box8 = (gcnew System::Windows::Forms::TextBox());
 			   this->label12 = (gcnew System::Windows::Forms::Label());
+
+			   this->Box1 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box2 = (gcnew System::Windows::Forms::TextBox());
-			   this->A_Propos = (gcnew System::Windows::Forms::Button());
+			   this->Box3 = (gcnew System::Windows::Forms::TextBox());
+			   this->Box4 = (gcnew System::Windows::Forms::TextBox());
+			   this->Box5 = (gcnew System::Windows::Forms::TextBox());
+			   this->Box6 = (gcnew System::Windows::Forms::TextBox());
+			   this->Box7 = (gcnew System::Windows::Forms::TextBox());
+			   this->Box8 = (gcnew System::Windows::Forms::TextBox());
+			   this->Box9 = (gcnew System::Windows::Forms::TextBox());
+			   this->Box10 = (gcnew System::Windows::Forms::TextBox());
+			   this->Box11 = (gcnew System::Windows::Forms::TextBox());
+			   this->Box12 = (gcnew System::Windows::Forms::TextBox());
+			   
+			   
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -110,60 +127,13 @@ namespace Projet {
 			   this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			   this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			   this->comboBox1->FormattingEnabled = true;
-			   this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
-				   L"Personnel", L"Clients", L"Commandes", L"Stock",
-					   L"Statistiques"
-			   });
+			   this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"Personnel", L"Clients", L"Commandes", L"Stock", L"Statistiques" });
 			   this->comboBox1->Location = System::Drawing::Point(12, 230);
 			   this->comboBox1->Name = L"comboBox1";
 			   this->comboBox1->Size = System::Drawing::Size(203, 27);
 			   this->comboBox1->TabIndex = 0;
 			   this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Choix::comboBox1_SelectedIndexChanged);
 			   this->comboBox1->Click += gcnew System::EventHandler(this, &Choix::comboBox1_Click);
-			   // 
-			   // Ajouter
-			   // 
-			   this->Ajouter->Location = System::Drawing::Point(117, 365);
-			   this->Ajouter->Name = L"Ajouter";
-			   this->Ajouter->Size = System::Drawing::Size(98, 66);
-			   this->Ajouter->TabIndex = 1;
-			   this->Ajouter->Text = L"Ajouter";
-			   this->Ajouter->UseVisualStyleBackColor = true;
-			   this->Ajouter->Visible = false;
-			   this->Ajouter->Click += gcnew System::EventHandler(this, &Choix::Ajouter_Click);
-			   // 
-			   // Modifier
-			   // 
-			   this->Modifier->Location = System::Drawing::Point(12, 434);
-			   this->Modifier->Name = L"Modifier";
-			   this->Modifier->Size = System::Drawing::Size(99, 66);
-			   this->Modifier->TabIndex = 2;
-			   this->Modifier->Text = L"Modifier";
-			   this->Modifier->UseVisualStyleBackColor = true;
-			   this->Modifier->Visible = false;
-			   this->Modifier->Click += gcnew System::EventHandler(this, &Choix::Modifier_Click);
-			   // 
-			   // Supprimer
-			   // 
-			   this->Supprimer->Location = System::Drawing::Point(117, 434);
-			   this->Supprimer->Name = L"Supprimer";
-			   this->Supprimer->Size = System::Drawing::Size(98, 66);
-			   this->Supprimer->TabIndex = 3;
-			   this->Supprimer->Text = L"Supprimer";
-			   this->Supprimer->UseVisualStyleBackColor = true;
-			   this->Supprimer->Visible = false;
-			   this->Supprimer->Click += gcnew System::EventHandler(this, &Choix::Supprimer_Click);
-			   // 
-			   // Afficher
-			   // 
-			   this->Afficher->Location = System::Drawing::Point(12, 365);
-			   this->Afficher->Name = L"Afficher";
-			   this->Afficher->Size = System::Drawing::Size(99, 66);
-			   this->Afficher->TabIndex = 4;
-			   this->Afficher->Text = L"Afficher";
-			   this->Afficher->UseVisualStyleBackColor = true;
-			   this->Afficher->Visible = false;
-			   this->Afficher->Click += gcnew System::EventHandler(this, &Choix::Afficher_Click);
 			   // 
 			   // dataGridView1
 			   // 
@@ -174,16 +144,110 @@ namespace Projet {
 			   this->dataGridView1->Size = System::Drawing::Size(655, 191);
 			   this->dataGridView1->TabIndex = 5;
 			   // 
-			   // butValider
+			   // buttonAjouter
 			   // 
-			   this->butValider->Location = System::Drawing::Point(245, 517);
-			   this->butValider->Name = L"butValider";
-			   this->butValider->Size = System::Drawing::Size(376, 42);
-			   this->butValider->TabIndex = 23;
-			   this->butValider->Text = L"Valider";
-			   this->butValider->UseVisualStyleBackColor = true;
-			   this->butValider->Visible = false;
-			   this->butValider->Click += gcnew System::EventHandler(this, &Choix::butValider_Click);
+			   this->buttonAjouter->Location = System::Drawing::Point(117, 365);
+			   this->buttonAjouter->Name = L"buttonAjouter";
+			   this->buttonAjouter->Size = System::Drawing::Size(98, 66);
+			   this->buttonAjouter->TabIndex = 1;
+			   this->buttonAjouter->Text = L"Ajouter";
+			   this->buttonAjouter->UseVisualStyleBackColor = true;
+			   this->buttonAjouter->Visible = false;
+			   this->buttonAjouter->Click += gcnew System::EventHandler(this, &Choix::buttonAjouter_Click);
+			   // 
+			   // buttonModifier
+			   // 
+			   this->buttonModifier->Location = System::Drawing::Point(12, 434);
+			   this->buttonModifier->Name = L"buttonModifier";
+			   this->buttonModifier->Size = System::Drawing::Size(99, 66);
+			   this->buttonModifier->TabIndex = 2;
+			   this->buttonModifier->Text = L"Modifier";
+			   this->buttonModifier->UseVisualStyleBackColor = true;
+			   this->buttonModifier->Visible = false;
+			   this->buttonModifier->Click += gcnew System::EventHandler(this, &Choix::buttonModifier_Click);
+			   // 
+			   // buttonSupprimer
+			   // 
+			   this->buttonSupprimer->Location = System::Drawing::Point(117, 434);
+			   this->buttonSupprimer->Name = L"buttonSupprimer";
+			   this->buttonSupprimer->Size = System::Drawing::Size(98, 66);
+			   this->buttonSupprimer->TabIndex = 3;
+			   this->buttonSupprimer->Text = L"Supprimer";
+			   this->buttonSupprimer->UseVisualStyleBackColor = true;
+			   this->buttonSupprimer->Visible = false;
+			   this->buttonSupprimer->Click += gcnew System::EventHandler(this, &Choix::buttonSupprimer_Click);
+			   // 
+			   // buttonAfficher
+			   // 
+			   this->buttonAfficher->Location = System::Drawing::Point(12, 365);
+			   this->buttonAfficher->Name = L"buttonAfficher";
+			   this->buttonAfficher->Size = System::Drawing::Size(99, 66);
+			   this->buttonAfficher->TabIndex = 4;
+			   this->buttonAfficher->Text = L"Afficher";
+			   this->buttonAfficher->UseVisualStyleBackColor = true;
+			   this->buttonAfficher->Visible = false;
+			   this->buttonAfficher->Click += gcnew System::EventHandler(this, &Choix::buttonAfficher_Click);
+			   // 
+			   // buttonValider
+			   // 
+			   this->buttonValider->Location = System::Drawing::Point(245, 517);
+			   this->buttonValider->Name = L"buttonValider";
+			   this->buttonValider->Size = System::Drawing::Size(376, 42);
+			   this->buttonValider->TabIndex = 23;
+			   this->buttonValider->Text = L"Valider";
+			   this->buttonValider->UseVisualStyleBackColor = true;
+			   this->buttonValider->Visible = false;
+			   this->buttonValider->Click += gcnew System::EventHandler(this, &Choix::buttonValider_Click);
+			   // 
+			   // A_Propos
+			   // 
+			   this->A_Propos->Location = System::Drawing::Point(12, 506);
+			   this->A_Propos->Name = L"A_Propos";
+			   this->A_Propos->Size = System::Drawing::Size(203, 53);
+			   this->A_Propos->TabIndex = 32;
+			   this->A_Propos->Text = L"À Propos";
+			   this->A_Propos->UseVisualStyleBackColor = true;
+			   this->A_Propos->Click += gcnew System::EventHandler(this, &Choix::button1_Click);
+			   // 
+			   // label1
+			   // 
+			   this->label1->AutoSize = true;
+			   this->label1->Location = System::Drawing::Point(241, 206);
+			   this->label1->Name = L"label1";
+			   this->label1->Size = System::Drawing::Size(63, 19);
+			   this->label1->TabIndex = 15;
+			   this->label1->Text = L"label1";
+			   this->label1->Visible = false;
+			   // 
+			   // label2
+			   // 
+			   this->label2->AutoSize = true;
+			   this->label2->Location = System::Drawing::Point(456, 206);
+			   this->label2->Name = L"label2";
+			   this->label2->Size = System::Drawing::Size(63, 19);
+			   this->label2->TabIndex = 16;
+			   this->label2->Text = L"label2";
+			   this->label2->Visible = false;
+			   // 
+			   // label3
+			   // 
+			   this->label3->AutoSize = true;
+			   this->label3->Location = System::Drawing::Point(241, 260);
+			   this->label3->Name = L"label3";
+			   this->label3->Size = System::Drawing::Size(63, 19);
+			   this->label3->TabIndex = 17;
+			   this->label3->Text = L"label3";
+			   this->label3->Visible = false;
+			   // 
+			   // label4
+			   // 
+			   this->label4->AutoSize = true;
+			   this->label4->Location = System::Drawing::Point(456, 259);
+			   this->label4->Name = L"label4";
+			   this->label4->Size = System::Drawing::Size(63, 19);
+			   this->label4->TabIndex = 18;
+			   this->label4->Text = L"label4";
+			   this->label4->Visible = false;
 			   // 
 			   // label5
 			   // 
@@ -205,16 +269,6 @@ namespace Projet {
 			   this->label6->Text = L"label6";
 			   this->label6->Visible = false;
 			   // 
-			   // label4
-			   // 
-			   this->label4->AutoSize = true;
-			   this->label4->Location = System::Drawing::Point(456, 259);
-			   this->label4->Name = L"label4";
-			   this->label4->Size = System::Drawing::Size(63, 19);
-			   this->label4->TabIndex = 18;
-			   this->label4->Text = L"label4";
-			   this->label4->Visible = false;
-			   // 
 			   // label7
 			   // 
 			   this->label7->AutoSize = true;
@@ -224,16 +278,6 @@ namespace Projet {
 			   this->label7->TabIndex = 21;
 			   this->label7->Text = L"label7";
 			   this->label7->Visible = false;
-			   // 
-			   // label3
-			   // 
-			   this->label3->AutoSize = true;
-			   this->label3->Location = System::Drawing::Point(241, 260);
-			   this->label3->Name = L"label3";
-			   this->label3->Size = System::Drawing::Size(63, 19);
-			   this->label3->TabIndex = 17;
-			   this->label3->Text = L"label3";
-			   this->label3->Visible = false;
 			   // 
 			   // label8
 			   // 
@@ -245,90 +289,6 @@ namespace Projet {
 			   this->label8->Text = L"label8";
 			   this->label8->Visible = false;
 			   // 
-			   // label2
-			   // 
-			   this->label2->AutoSize = true;
-			   this->label2->Location = System::Drawing::Point(456, 206);
-			   this->label2->Name = L"label2";
-			   this->label2->Size = System::Drawing::Size(63, 19);
-			   this->label2->TabIndex = 16;
-			   this->label2->Text = L"label2";
-			   this->label2->Visible = false;
-			   // 
-			   // label1
-			   // 
-			   this->label1->AutoSize = true;
-			   this->label1->Location = System::Drawing::Point(241, 206);
-			   this->label1->Name = L"label1";
-			   this->label1->Size = System::Drawing::Size(63, 19);
-			   this->label1->TabIndex = 15;
-			   this->label1->Text = L"label1";
-			   this->label1->Visible = false;
-			   // 
-			   // Box9
-			   // 
-			   this->Box9->Location = System::Drawing::Point(245, 434);
-			   this->Box9->Name = L"Box9";
-			   this->Box9->Size = System::Drawing::Size(148, 26);
-			   this->Box9->TabIndex = 24;
-			   this->Box9->Visible = false;
-			   // 
-			   // Box1
-			   // 
-			   this->Box1->Location = System::Drawing::Point(245, 231);
-			   this->Box1->Name = L"Box1";
-			   this->Box1->Size = System::Drawing::Size(148, 26);
-			   this->Box1->TabIndex = 14;
-			   this->Box1->Visible = false;
-			   // 
-			   // Box11
-			   // 
-			   this->Box11->Location = System::Drawing::Point(245, 485);
-			   this->Box11->Name = L"Box11";
-			   this->Box11->Size = System::Drawing::Size(148, 26);
-			   this->Box11->TabIndex = 25;
-			   this->Box11->Visible = false;
-			   // 
-			   // Box3
-			   // 
-			   this->Box3->Location = System::Drawing::Point(245, 282);
-			   this->Box3->Name = L"Box3";
-			   this->Box3->Size = System::Drawing::Size(148, 26);
-			   this->Box3->TabIndex = 12;
-			   this->Box3->Visible = false;
-			   // 
-			   // Box10
-			   // 
-			   this->Box10->Location = System::Drawing::Point(460, 434);
-			   this->Box10->Name = L"Box10";
-			   this->Box10->Size = System::Drawing::Size(161, 26);
-			   this->Box10->TabIndex = 26;
-			   this->Box10->Visible = false;
-			   // 
-			   // Box4
-			   // 
-			   this->Box4->Location = System::Drawing::Point(460, 281);
-			   this->Box4->Name = L"Box4";
-			   this->Box4->Size = System::Drawing::Size(161, 26);
-			   this->Box4->TabIndex = 11;
-			   this->Box4->Visible = false;
-			   // 
-			   // Box12
-			   // 
-			   this->Box12->Location = System::Drawing::Point(460, 485);
-			   this->Box12->Name = L"Box12";
-			   this->Box12->Size = System::Drawing::Size(161, 26);
-			   this->Box12->TabIndex = 27;
-			   this->Box12->Visible = false;
-			   // 
-			   // Box5
-			   // 
-			   this->Box5->Location = System::Drawing::Point(245, 333);
-			   this->Box5->Name = L"Box5";
-			   this->Box5->Size = System::Drawing::Size(148, 26);
-			   this->Box5->TabIndex = 10;
-			   this->Box5->Visible = false;
-			   // 
 			   // label9
 			   // 
 			   this->label9->AutoSize = true;
@@ -338,14 +298,6 @@ namespace Projet {
 			   this->label9->TabIndex = 28;
 			   this->label9->Text = L"label9";
 			   this->label9->Visible = false;
-			   // 
-			   // Box7
-			   // 
-			   this->Box7->Location = System::Drawing::Point(245, 384);
-			   this->Box7->Name = L"Box7";
-			   this->Box7->Size = System::Drawing::Size(148, 26);
-			   this->Box7->TabIndex = 9;
-			   this->Box7->Visible = false;
 			   // 
 			   // label10
 			   // 
@@ -357,14 +309,6 @@ namespace Projet {
 			   this->label10->Text = L"label10";
 			   this->label10->Visible = false;
 			   // 
-			   // Box6
-			   // 
-			   this->Box6->Location = System::Drawing::Point(460, 332);
-			   this->Box6->Name = L"Box6";
-			   this->Box6->Size = System::Drawing::Size(161, 26);
-			   this->Box6->TabIndex = 8;
-			   this->Box6->Visible = false;
-			   // 
 			   // label11
 			   // 
 			   this->label11->AutoSize = true;
@@ -374,14 +318,6 @@ namespace Projet {
 			   this->label11->TabIndex = 30;
 			   this->label11->Text = L"label11";
 			   this->label11->Visible = false;
-			   // 
-			   // Box8
-			   // 
-			   this->Box8->Location = System::Drawing::Point(460, 383);
-			   this->Box8->Name = L"Box8";
-			   this->Box8->Size = System::Drawing::Size(161, 26);
-			   this->Box8->TabIndex = 7;
-			   this->Box8->Visible = false;
 			   // 
 			   // label12
 			   // 
@@ -393,6 +329,14 @@ namespace Projet {
 			   this->label12->Text = L"label12";
 			   this->label12->Visible = false;
 			   // 
+			   // Box1
+			   // 
+			   this->Box1->Location = System::Drawing::Point(245, 231);
+			   this->Box1->Name = L"Box1";
+			   this->Box1->Size = System::Drawing::Size(148, 26);
+			   this->Box1->TabIndex = 14;
+			   this->Box1->Visible = false;
+			   // 
 			   // Box2
 			   // 
 			   this->Box2->Location = System::Drawing::Point(460, 231);
@@ -401,55 +345,131 @@ namespace Projet {
 			   this->Box2->TabIndex = 13;
 			   this->Box2->Visible = false;
 			   // 
-			   // A_Propos
+			   // Box3
 			   // 
-			   this->A_Propos->Location = System::Drawing::Point(12, 506);
-			   this->A_Propos->Name = L"A_Propos";
-			   this->A_Propos->Size = System::Drawing::Size(203, 53);
-			   this->A_Propos->TabIndex = 32;
-			   this->A_Propos->Text = L"À Propos";
-			   this->A_Propos->UseVisualStyleBackColor = true;
-			   this->A_Propos->Click += gcnew System::EventHandler(this, &Choix::button1_Click);
+			   this->Box3->Location = System::Drawing::Point(245, 282);
+			   this->Box3->Name = L"Box3";
+			   this->Box3->Size = System::Drawing::Size(148, 26);
+			   this->Box3->TabIndex = 12;
+			   this->Box3->Visible = false;
+			   // 
+			   // Box4
+			   // 
+			   this->Box4->Location = System::Drawing::Point(460, 281);
+			   this->Box4->Name = L"Box4";
+			   this->Box4->Size = System::Drawing::Size(161, 26);
+			   this->Box4->TabIndex = 11;
+			   this->Box4->Visible = false;
+			   // 
+			   // Box5
+			   // 
+			   this->Box5->Location = System::Drawing::Point(245, 333);
+			   this->Box5->Name = L"Box5";
+			   this->Box5->Size = System::Drawing::Size(148, 26);
+			   this->Box5->TabIndex = 10;
+			   this->Box5->Visible = false;
+			   // 
+			   // Box6
+			   // 
+			   this->Box6->Location = System::Drawing::Point(460, 332);
+			   this->Box6->Name = L"Box6";
+			   this->Box6->Size = System::Drawing::Size(161, 26);
+			   this->Box6->TabIndex = 8;
+			   this->Box6->Visible = false;
+			   // 
+			   // Box7
+			   // 
+			   this->Box7->Location = System::Drawing::Point(245, 384);
+			   this->Box7->Name = L"Box7";
+			   this->Box7->Size = System::Drawing::Size(148, 26);
+			   this->Box7->TabIndex = 9;
+			   this->Box7->Visible = false;
+			   // 
+			   // Box8
+			   // 
+			   this->Box8->Location = System::Drawing::Point(460, 383);
+			   this->Box8->Name = L"Box8";
+			   this->Box8->Size = System::Drawing::Size(161, 26);
+			   this->Box8->TabIndex = 7;
+			   this->Box8->Visible = false;
+			   // 
+			   // Box9
+			   // 
+			   this->Box9->Location = System::Drawing::Point(245, 434);
+			   this->Box9->Name = L"Box9";
+			   this->Box9->Size = System::Drawing::Size(148, 26);
+			   this->Box9->TabIndex = 24;
+			   this->Box9->Visible = false;
+			   // 
+			   // Box10
+			   // 
+			   this->Box10->Location = System::Drawing::Point(460, 434);
+			   this->Box10->Name = L"Box10";
+			   this->Box10->Size = System::Drawing::Size(161, 26);
+			   this->Box10->TabIndex = 26;
+			   this->Box10->Visible = false;
+			   // 
+			   // Box11
+			   // 
+			   this->Box11->Location = System::Drawing::Point(245, 485);
+			   this->Box11->Name = L"Box11";
+			   this->Box11->Size = System::Drawing::Size(148, 26);
+			   this->Box11->TabIndex = 25;
+			   this->Box11->Visible = false;
+			   // 
+			   // Box12
+			   // 
+			   this->Box12->Location = System::Drawing::Point(460, 485);
+			   this->Box12->Name = L"Box12";
+			   this->Box12->Size = System::Drawing::Size(161, 26);
+			   this->Box12->TabIndex = 27;
+			   this->Box12->Visible = false;
 			   // 
 			   // Choix
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 19);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(675, 565);
-			   this->Controls->Add(this->A_Propos);
-			   this->Controls->Add(this->label12);
-			   this->Controls->Add(this->Box2);
-			   this->Controls->Add(this->Box12);
-			   this->Controls->Add(this->label10);
-			   this->Controls->Add(this->Box8);
-			   this->Controls->Add(this->Box10);
-			   this->Controls->Add(this->Box6);
-			   this->Controls->Add(this->label8);
-			   this->Controls->Add(this->label11);
-			   this->Controls->Add(this->butValider);
-			   this->Controls->Add(this->dataGridView1);
-			   this->Controls->Add(this->label6);
-			   this->Controls->Add(this->Box4);
-			   this->Controls->Add(this->Afficher);
-			   this->Controls->Add(this->label4);
-			   this->Controls->Add(this->Supprimer);
-			   this->Controls->Add(this->Modifier);
-			   this->Controls->Add(this->Box5);
-			   this->Controls->Add(this->Box11);
-			   this->Controls->Add(this->Box7);
-			   this->Controls->Add(this->label2);
-			   this->Controls->Add(this->Ajouter);
-			   this->Controls->Add(this->Box3);
-			   this->Controls->Add(this->label1);
-			   this->Controls->Add(this->Box1);
-			   this->Controls->Add(this->label9);
+
 			   this->Controls->Add(this->comboBox1);
-			   this->Controls->Add(this->Box9);
-			   this->Controls->Add(this->label7);
+			   this->Controls->Add(this->dataGridView1);
+
+			   this->Controls->Add(this->buttonAjouter);
+			   this->Controls->Add(this->buttonModifier);
+			   this->Controls->Add(this->buttonSupprimer);
+			   this->Controls->Add(this->buttonAfficher);
+			   this->Controls->Add(this->buttonValider);
+			   this->Controls->Add(this->A_Propos);
+
+			   this->Controls->Add(this->label1);
+			   this->Controls->Add(this->label2);
 			   this->Controls->Add(this->label3);
+			   this->Controls->Add(this->label4);
 			   this->Controls->Add(this->label5);
+			   this->Controls->Add(this->label6);
+			   this->Controls->Add(this->label7);
+			   this->Controls->Add(this->label8);
+			   this->Controls->Add(this->label9);
+			   this->Controls->Add(this->label10);
+			   this->Controls->Add(this->label11);
+			   this->Controls->Add(this->label12);
+
+			   this->Controls->Add(this->Box1);
+			   this->Controls->Add(this->Box2);
+			   this->Controls->Add(this->Box3);
+			   this->Controls->Add(this->Box4);
+			   this->Controls->Add(this->Box5);
+			   this->Controls->Add(this->Box6);
+			   this->Controls->Add(this->Box7);
+			   this->Controls->Add(this->Box8);
+			   this->Controls->Add(this->Box9);
+			   this->Controls->Add(this->Box10);
+			   this->Controls->Add(this->Box11);
+			   this->Controls->Add(this->Box12);	   
+
 			   this->Font = (gcnew System::Drawing::Font(L"Consolas", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
+				   
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
 			   this->Margin = System::Windows::Forms::Padding(4);
 			   this->MaximizeBox = false;
@@ -464,17 +484,14 @@ namespace Projet {
 			   this->PerformLayout();
 
 		   }
+		   //code a optimisiser ->
 #pragma endregion
 	private: System::Void Choix_Load(System::Object^ sender, System::EventArgs^ e) {
-		authentification = gcnew NS_BDDservice::BDDservice;
+		authentification = gcnew NS_BDDservice::Service_Authentification;
 		result = gcnew Data::DataSet;
 		this->result = this->authentification->CheckSup();
-		if (this->result->Tables[0]->Select()[0][0]->ToString() == "1") {
-			superieur = 1;
-		}
-		else {
-			superieur = 0;
-		}
+		if (this->result->Tables[0]->Select()[0][0]->ToString() == "1") { superieur = 1; }
+		else { superieur = 0; }
 	}
 	private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		e->Cancel = MessageBox::Show("Vous, êtes sûr le point de quitter la page, êtes-vous sûr de ce choix ?", "Warning", MessageBoxButtons::YesNo, MessageBoxIcon::Question) != System::Windows::Forms::DialogResult::Yes;
@@ -483,109 +500,34 @@ namespace Projet {
 	};
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		if (comboBox1->SelectedIndex == 0) { //personnel
-			if (superieur == 1) {
-				this->Ajouter->Visible = true;
-				this->Supprimer->Visible = true;
-				this->Modifier->Visible = true;
-				this->Afficher->Visible = true;
+			if (superieur) {
+				this->buttonAjouter->Visible = true;
+				this->buttonSupprimer->Visible = true;
+				this->buttonModifier->Visible = true;
+				this->buttonAfficher->Visible = true;
 			}
 			else {
 				MessageBox::Show("Vous n'avez pas les droits pour effectuer des modifications sur le personnel", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Stop);
 			}
 		}
-		else if (comboBox1->SelectedIndex == 1) { //client
-			this->Ajouter->Visible = true;
-			this->Supprimer->Visible = true;
-			this->Modifier->Visible = true;
-			this->Afficher->Visible = true;
+		else if (comboBox1->SelectedIndex == 1 || comboBox1->SelectedIndex == 2 || comboBox1->SelectedIndex == 3)  { //client
+			this->buttonAjouter->Visible = true;
+			this->buttonSupprimer->Visible = true;
+			this->buttonModifier->Visible = true;
+			this->buttonAfficher->Visible = true;
 		}
-		else if (comboBox1->SelectedIndex == 2) { //commande
-			this->Ajouter->Visible = true;
-			this->Supprimer->Visible = true;
-			this->Modifier->Visible = true;
-			this->Afficher->Visible = true;
-		}
-		else if (comboBox1->SelectedIndex == 3) { //article
-			this->Ajouter->Visible = true;
-			this->Supprimer->Visible = true;
-			this->Modifier->Visible = true;
-			this->Afficher->Visible = true;
-		}
-		else if (comboBox1->SelectedIndex == 4) { //statistique
-			this->Ajouter->Visible = false;
-			this->Supprimer->Visible = false;
-			this->Modifier->Visible = false;
-			this->Afficher->Visible = false;
-			//Ajouter une forme
-		}
-	}
-	private: System::Void Afficher_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->butValider->Visible = true;
-		this->label1->Visible = false;
-		this->label2->Visible = false;
-		this->label3->Visible = false;
-		this->label4->Visible = false;
-		this->label5->Visible = false;
-		this->label6->Visible = false;
-		this->label7->Visible = false;
-		this->label8->Visible = false;
-		this->label9->Visible = false;
-		this->label10->Visible = false;
-		this->label11->Visible = false;
-		this->label12->Visible = false;
-		this->Box1->Visible = false;
-		this->Box2->Visible = false;
-		this->Box3->Visible = false;
-		this->Box4->Visible = false;
-		this->Box5->Visible = false;
-		this->Box6->Visible = false;
-		this->Box7->Visible = false;
-		this->Box8->Visible = false;
-		this->Box9->Visible = false;
-		this->Box10->Visible = false;
-		this->Box11->Visible = false;
-		this->Box12->Visible = false;
-		if (comboBox1->SelectedIndex == 0) {
-			this->label11->Visible = true;
-			this->label11->Text = "Nom";
-			this->label12->Visible = true;
-			this->label12->Text = "Prenom";
-			this->Box11->Visible = true;
-			this->Box12->Visible = true;
-			valider = 1;
-		}
-		else if (comboBox1->SelectedIndex == 1) {
-			this->label11->Visible = true;
-			this->label11->Text = "Nom";
-			this->label12->Visible = true;
-			this->label12->Text = "Prenom";
-			this->Box11->Visible = true;
-			this->Box12->Visible = true;
-			valider = 2;
-		}
-		else if (comboBox1->SelectedIndex == 2) {
-			this->label9->Visible = true;
-			this->label9->Text = "Reference";
-			this->label11->Visible = true;
-			this->label11->Text = "Date Livraison";
-			this->label12->Visible = true;
-			this->label12->Text = "Date Emission";
-			this->Box9->Visible = true;
-			this->Box11->Visible = true;
-			this->Box12->Visible = true;
-			valider = 3;
-		}
-		else if (comboBox1->SelectedIndex == 3) {
-			this->label11->Visible = true;
-			this->label11->Text = "Nom";
-			this->label12->Visible = true;
-			this->label12->Text = "Couleur";
-			this->Box11->Visible = true;
-			this->Box12->Visible = true;
-			valider = 4;
+		else if (comboBox1->SelectedIndex == 4) { //Statistique
+			this->buttonAfficher->Visible = false;
+			this->buttonSupprimer->Visible = false;
+			this->buttonModifier->Visible = false;
+			this->buttonAjouter->Visible = false;
+
 		}
 	}
 	private: System::Void comboBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+		//hide();
+		//this->buttonValider->Visible = false;
+		this->buttonValider->Visible = true;
 		this->label1->Visible = false;
 		this->label2->Visible = false;
 		this->label3->Visible = false;
@@ -611,8 +553,71 @@ namespace Projet {
 		this->Box11->Visible = false;
 		this->Box12->Visible = false;
 	}
-	private: System::Void Ajouter_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->butValider->Visible = true;
+		   private: System::Void buttonAfficher_Click(System::Object^ sender, System::EventArgs^ e) {
+			   //hide();
+			   this->buttonValider->Visible = true;
+			   this->label1->Visible = false;
+			   this->label2->Visible = false;
+			   this->label3->Visible = false;
+			   this->label4->Visible = false;
+			   this->label5->Visible = false;
+			   this->label6->Visible = false;
+			   this->label7->Visible = false;
+			   this->label8->Visible = false;
+			   this->label9->Visible = false;
+			   this->label10->Visible = false;
+			   this->label11->Visible = false;
+			   this->label12->Visible = false;
+			   this->Box1->Visible = false;
+			   this->Box2->Visible = false;
+			   this->Box3->Visible = false;
+			   this->Box4->Visible = false;
+			   this->Box5->Visible = false;
+			   this->Box6->Visible = false;
+			   this->Box7->Visible = false;
+			   this->Box8->Visible = false;
+			   this->Box9->Visible = false;
+			   this->Box10->Visible = false;
+			   this->Box11->Visible = false;
+			   this->Box12->Visible = false;
+
+			   if (comboBox1->SelectedIndex == 0) {
+				   this->label11->Visible = true;
+				   this->label11->Text = "Nom";
+				   this->label12->Visible = true;
+				   this->label12->Text = "Prenom";
+				   this->Box11->Visible = true;
+				   this->Box12->Visible = true;
+				   valider = 1;
+			   }
+			   else if (comboBox1->SelectedIndex == 1) {
+				   this->label11->Visible = true;
+				   this->label11->Text = "Nom";
+				   this->label12->Visible = true;
+				   this->label12->Text = "Prenom";
+				   this->Box11->Visible = true;
+				   this->Box12->Visible = true;
+				   valider = 2;
+			   }
+			   else if (comboBox1->SelectedIndex == 2) {
+				   this->label11->Visible = true;
+				   this->label11->Text = "Reference";
+				   this->Box11->Visible = true;
+				   valider = 3;
+			   }
+			   else if (comboBox1->SelectedIndex == 3) {
+				   this->label11->Visible = true;
+				   this->label11->Text = "Nom";
+				   this->label12->Visible = true;
+				   this->label12->Text = "Couleur";
+				   this->Box11->Visible = true;
+				   this->Box12->Visible = true;
+				   valider = 4;
+			   }
+		   }
+	private: System::Void buttonAjouter_Click(System::Object^ sender, System::EventArgs^ e) {
+		//hide();
+		this->buttonValider->Visible = true;
 		this->label1->Visible = false;
 		this->label2->Visible = false;
 		this->label3->Visible = false;
@@ -637,18 +642,19 @@ namespace Projet {
 		this->Box10->Visible = false;
 		this->Box11->Visible = false;
 		this->Box12->Visible = false;
+		
 		if (comboBox1->SelectedIndex == 0) { // personnel
 			this->label2->Text = "Nom";
 			this->label3->Text = "Prenom";
 			this->label4->Text = "Date d'embauche";
 			this->label5->Text = "Superieur";
 			this->label6->Text = "Id superieur";
-			this->label7->Text = "email";
-			this->label8->Text = "mdp";
-			this->label9->Text = "numéro rue";
-			this->label10->Text = "rue";
-			this->label11->Text = "ville";
-			this->label12->Text = "code postal";
+			this->label7->Text = "Email";
+			this->label8->Text = "Mot de passe";
+			//this->label9->Text = "Numéro de rue";
+			this->label10->Text = "Rue";
+			this->label11->Text = "Ville";
+			this->label12->Text = "Code Postal";
 			this->label2->Visible = true;
 			this->label3->Visible = true;
 			this->label4->Visible = true;
@@ -656,7 +662,7 @@ namespace Projet {
 			this->label6->Visible = true;
 			this->label7->Visible = true;
 			this->label8->Visible = true;
-			this->label9->Visible = true;
+			//this->label9->Visible = true;
 			this->label10->Visible = true;
 			this->label11->Visible = true;
 			this->label12->Visible = true;
@@ -668,7 +674,7 @@ namespace Projet {
 			this->Box6->Visible = true;
 			this->Box7->Visible = true;
 			this->Box8->Visible = true;
-			this->Box9->Visible = true;
+			//this->Box9->Visible = true;
 			this->Box10->Visible = true;
 			this->Box11->Visible = true;
 			this->Box12->Visible = true;
@@ -677,15 +683,15 @@ namespace Projet {
 		else if (comboBox1->SelectedIndex == 1) {	//client
 			this->label2->Text = "Nom";
 			this->label3->Text = "Prenom";
-			this->label4->Text = "date naissance";
-			this->label5->Text = "nrue livraison";
-			this->label6->Text = "rue livraison";
-			this->label7->Text = "ville livraison";
-			this->label8->Text = "code postal livraison";
+			this->label4->Text = "Date de Naissance";
+			this->label5->Text = "Date première commande";
+			this->label6->Text = "Rue livraison";
+			this->label7->Text = "Ville livraison";
+			this->label8->Text = "Code Postal Livraison";
 			this->label9->Text = "nrue facturation";
-			this->label10->Text = "rue facturation";
-			this->label11->Text = "ville facturation";
-			this->label12->Text = "code postal facturation";
+			this->label10->Text = "Rue Facturation";
+			this->label11->Text = "Ville Facturation";
+			this->label12->Text = "Code Postal Facturation";
 			this->label2->Visible = true;
 			this->label3->Visible = true;
 			this->label4->Visible = true;
@@ -712,12 +718,15 @@ namespace Projet {
 			valider = 6;
 		}
 		else if (comboBox1->SelectedIndex == 2) { //commande
-			this->label6->Text = "Nom Article";
-			this->label7->Text = "quantité";
-			this->label8->Text = "Couleur";
-			this->label9->Text = "Tva commande";
-			this->label10->Text = "Remise";
-			this->label11->Text = "Moyen paiement";
+
+			this->label4->Text = "Nom Article";
+			this->label5->Text = "Quantité";
+			this->label6->Text = "Couleur";
+			this->label7->Text = "Tva commande";
+			this->label8->Text = "Remise";
+			this->label9->Text = "Moyen paiement";
+			this->label10->Text = "Nombres paiements";
+			this->label11->Text = "Date emission";
 			this->label12->Text = "Date paiement";
 			this->label6->Visible = true;
 			this->label7->Visible = true;
@@ -743,7 +752,7 @@ namespace Projet {
 			this->label9->Text = "TVA";
 			this->label10->Text = "Quantité stock";
 			this->label11->Text = "Couleur";
-			this->label12->Text = "seuil réaprovisionnement";
+			this->label12->Text = "Seuil réaprovisionnement";
 			this->label6->Visible = true;
 			this->label7->Visible = true;
 			this->label8->Visible = true;
@@ -761,8 +770,9 @@ namespace Projet {
 			valider = 8;
 		}
 	}
-	private: System::Void Modifier_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->butValider->Visible = true;
+	private: System::Void buttonModifier_Click(System::Object^ sender, System::EventArgs^ e) {
+		//hide();
+		this->buttonValider->Visible = true;
 		this->label1->Visible = false;
 		this->label2->Visible = false;
 		this->label3->Visible = false;
@@ -787,6 +797,7 @@ namespace Projet {
 		this->Box10->Visible = false;
 		this->Box11->Visible = false;
 		this->Box12->Visible = false;
+
 		if (comboBox1->SelectedIndex == 0) { // personnel
 			this->label1->Text = "Id";
 			this->label2->Text = "Nom";
@@ -794,12 +805,12 @@ namespace Projet {
 			this->label4->Text = "Date d'embauche";
 			this->label5->Text = "Superieur";
 			this->label6->Text = "Id superieur";
-			this->label7->Text = "email";
-			this->label8->Text = "mdp";
+			this->label7->Text = "Email";
+			this->label8->Text = "Mot de passe";
 			//this->label9->Text = "numéro rue";
-			this->label10->Text = "rue";
-			this->label11->Text = "ville";
-			this->label12->Text = "code postal";
+			this->label10->Text = "Rue";
+			this->label11->Text = "Ville";
+			this->label12->Text = "Code Postal";
 			this->label1->Visible = true;
 			this->label2->Visible = true;
 			this->label3->Visible = true;
@@ -831,15 +842,14 @@ namespace Projet {
 			this->label1->Text = "Id";
 			this->label2->Text = "Nom";
 			this->label3->Text = "Prenom";
-			this->label4->Text = "date naissance";
-			this->label5->Text = "nrue livraison";
-			this->label6->Text = "rue livraison";
-			this->label7->Text = "ville livraison";
-			this->label8->Text = "code postal livraison";
-			this->label9->Text = "nrue facturation";
-			this->label10->Text = "rue facturation";
-			this->label11->Text = "ville facturation";
-			this->label12->Text = "code postal facturation";
+			this->label4->Text = "Date Naissance";
+			this->label5->Text = "Date premiere commande";
+			this->label6->Text = "Rue Livraison";
+			this->label7->Text = "Ville Livraison";
+			this->label8->Text = "Code Postal Livraison";
+			this->label10->Text = "Rue Facturation";
+			this->label11->Text = "Ville Facturation";
+			this->label12->Text = "Code Postal Facturation";
 			this->label1->Visible = true;
 			this->label2->Visible = true;
 			this->label3->Visible = true;
@@ -848,7 +858,6 @@ namespace Projet {
 			this->label6->Visible = true;
 			this->label7->Visible = true;
 			this->label8->Visible = true;
-			this->label9->Visible = true;
 			this->label10->Visible = true;
 			this->label11->Visible = true;
 			this->label12->Visible = true;
@@ -860,21 +869,24 @@ namespace Projet {
 			this->Box6->Visible = true;
 			this->Box7->Visible = true;
 			this->Box8->Visible = true;
-			this->Box9->Visible = true;
 			this->Box10->Visible = true;
 			this->Box11->Visible = true;
 			this->Box12->Visible = true;
 			valider = 10;
 		}
 		else if (comboBox1->SelectedIndex == 2) { //commande
-			this->label5->Text = "Id";
-			this->label6->Text = "Nom Article";
-			this->label7->Text = "quantité";
-			this->label8->Text = "Couleur";
-			this->label9->Text = "Tva commande";
-			this->label10->Text = "Remise";
-			this->label11->Text = "Moyen paiement";
+			this->label3->Text = "Reference";
+			this->label4->Text = "Nom Article";
+			this->label5->Text = "Quantité";
+			this->label6->Text = "Couleur";
+			this->label7->Text = "Tva commande";
+			this->label8->Text = "Remise";
+			this->label9->Text = "Moyen paiement";
+			this->label10->Text = "Nombres paiements";
+			this->label11->Text = "Date emission";
 			this->label12->Text = "Date paiement";
+			this->label3->Visible = true;
+			this->label4->Visible = true;
 			this->label5->Visible = true;
 			this->label6->Visible = true;
 			this->label7->Visible = true;
@@ -883,6 +895,8 @@ namespace Projet {
 			this->label10->Visible = true;
 			this->label11->Visible = true;
 			this->label12->Visible = true;
+			this->Box3->Visible = true;
+			this->Box4->Visible = true;
 			this->Box5->Visible = true;
 			this->Box6->Visible = true;
 			this->Box7->Visible = true;
@@ -891,7 +905,6 @@ namespace Projet {
 			this->Box10->Visible = true;
 			this->Box11->Visible = true;
 			this->Box12->Visible = true;
-
 			valider = 11;
 		}
 		else if (comboBox1->SelectedIndex == 3) { //article
@@ -902,7 +915,7 @@ namespace Projet {
 			this->label9->Text = "TVA";
 			this->label10->Text = "Quantité stock";
 			this->label11->Text = "Couleur";
-			this->label12->Text = "seuil réaprovisionnement";
+			this->label12->Text = "Seuil réaprovisionnement";
 			this->label5->Visible = true;
 			this->label6->Visible = true;
 			this->label7->Visible = true;
@@ -922,8 +935,9 @@ namespace Projet {
 			valider = 12;
 		}
 	}
-	private: System::Void Supprimer_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->butValider->Visible = true;
+	private: System::Void buttonSupprimer_Click(System::Object^ sender, System::EventArgs^ e) {
+		//hide();
+		this->buttonValider->Visible = true;
 		this->label1->Visible = false;
 		this->label2->Visible = false;
 		this->label3->Visible = false;
@@ -949,7 +963,7 @@ namespace Projet {
 		this->Box11->Visible = false;
 		this->Box12->Visible = false;
 		if (comboBox1->SelectedIndex == 0) {
-			this->label9->Text = "Id client";
+			this->label9->Text = "Id Personnel";
 			this->label9->Visible = true;
 			this->Box9->Visible = true;
 			this->label11->Visible = true;
@@ -988,58 +1002,117 @@ namespace Projet {
 			valider = 16;
 		}
 	}
-	private: System::Void butValider_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void buttonValider_Click(System::Object^ sender, System::EventArgs^ e) {
+		result = gcnew Data::DataSet;
 		if (valider == 1) {
 			//fonction qui affiche le personnel
+			this->dataGridView1->Refresh();
+			this->result = this->Personnel->Afficher_personnel(this->Box11->Text, this->Box12->Text);
+			this->dataGridView1->DataSource = this->result;
+			this->dataGridView1->DataMember = "Personnel";
 		}
 		else if (valider == 2) {
 			//fonction qui affiche le client
+			this->dataGridView1->Refresh();
+			this->result = this->Client->Afficher_client(this->Box11->Text,this->Box12->Text);
+			this->dataGridView1->DataSource = this->result;
+			this->dataGridView1->DataMember = "Client";
 		}
 		else if (valider == 3) {
 			//fonction qui affiche la commande
+			this->dataGridView1->Refresh();
+			this->result = this->Commande->Afficher_commande(this->Box11->Text);
+			this->dataGridView1->DataSource = this->result;
+			this->dataGridView1->DataMember = "Commande";
 		}
 		else if (valider == 4) {
 			//fonction qui affiche le stock
+			this->dataGridView1->Refresh();
+			this->result = this->Article->Afficher_article(this->Box11->Text, this->Box12->Text);
+			this->dataGridView1->DataSource = this->result;
+			this->dataGridView1->DataMember = "Stock";
 		}
 		else if (valider == 5) {
 			//fonction qui ajoute le personnel
+			this->Personnel->Ajouter_personnel(this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box10->Text,this->Box11->Text,this->Box12->Text);
 		}
 		else if (valider == 6) {
 			//fonction qui ajoute le client
+			this->Client->Ajouter_client(this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
 		}
 		else if (valider == 7) {
 			//fonction qui ajoute la commande
+			this->Commande->Ajouter_commande(this->Box4->Text,this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text,this->Box12->Text);
 		}
 		else if (valider == 8) {
 			//fonction qui ajoute le stock
+			this->Article->Ajouter_article(this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
 		}
 		else if (valider == 9) {
 			//fonction qui modifie le personnel
+			this->Personnel->Modifier_personnel(this->Box1->Text,this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+
 		}
 		else if (valider == 10) {
 			//fonction qui modifie le client
+			this->Client->Modifier_client(this->Box1->Text, this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
 		}
 		else if (valider == 11) {
 			//fonction qui modifie la commande
+			this->Commande->Modifier_commande(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+
 		}
 		else if (valider == 12) {
 			//fonction qui modifie le stock
+			this->Article->Modifier_article(this->Box5->Text,this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
 		}
 		else if (valider == 13) {
 			//fonction qui supprime un personnel
+			this->Personnel->effacer_personnel(this->Box9->Text, this->Box11->Text,this->Box12->Text);
 		}
 		else if (valider == 14) {
 			//fonction qui supprime un client
+			this->Client->effacer_client(this->Box9->Text, this->Box11->Text, this->Box12->Text);
 		}
 		else if (valider == 15) {
 			//fonction qui supprime la commande
+			this->Commande->effacer_commande(this->Box11->Text);
 		}
 		else if (valider == 16) {
 			//fonction qui supprime un article
+			this->Article->effacer_article(this->Box11->Text, this->Box12->Text);
 		}
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		MessageBox::Show("BDD réalisées par RENAULT Kylian, GOSSET Olivier, LEFRANC Charles et DEHURTEVENT Hugo", "propos", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("BDD réalisées par RENAULT Kylian, GOSSET Olivier, LEFRANC Charles et DEHURTEVENT Hugo", "Propos", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 	};
 }
+
+/*int hide() {
+	this->buttonValider->Visible = true;
+	this->label1->Visible = false;
+	this->label2->Visible = false;
+	this->label3->Visible = false;
+	this->label4->Visible = false;
+	this->label5->Visible = false;
+	this->label6->Visible = false;
+	this->label7->Visible = false;
+	this->label8->Visible = false;
+	this->label9->Visible = false;
+	this->label10->Visible = false;
+	this->label11->Visible = false;
+	this->label12->Visible = false;
+	this->Box1->Visible = false;
+	this->Box2->Visible = false;
+	this->Box3->Visible = false;
+	this->Box4->Visible = false;
+	this->Box5->Visible = false;
+	this->Box6->Visible = false;
+	this->Box7->Visible = false;
+	this->Box8->Visible = false;
+	this->Box9->Visible = false;
+	this->Box10->Visible = false;
+	this->Box11->Visible = false;
+	this->Box12->Visible = false;
+}*/
