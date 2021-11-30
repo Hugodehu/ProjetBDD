@@ -1,26 +1,35 @@
+#include "Client.h"
 #include "pch.h"
-#include "client.h"
-#include <iostream>
 
-System::String^ NS_client::client::Select()
+void NS_BDD::Client::set_id_client(System::String^ id_client) { this->id_client = id_client; }
+void NS_BDD::Client::set_nom(System::String^ nom) { this->nom = nom; }
+void NS_BDD::Client::set_prenom(System::String^ prenom) { this->prenom = prenom; }
+void NS_BDD::Client::set_date_naissance(System::String^ date_naissance) { this->date_naissance = date_naissance; }
+void NS_BDD::Client::set_date_premiere_commande(System::String^ Premiere_commande) { this->Date_premiere_commande = Premiere_commande; }
+
+
+System::String^ NS_BDD::Client::get_id_client() { return this->id_client; }
+System::String^ NS_BDD::Client::get_nom() { return this->nom; }
+System::String^ NS_BDD::Client::get_prenom() { return this->prenom; }
+System::String^ NS_BDD::Client::get_date_naissance() { return this->date_naissance;}
+System::String^ NS_BDD::Client::get_date_premiere_commande() { return this->Date_premiere_commande; }
+
+System::String^ NS_BDD::Client::Ajouter(void)
 {
-    return "SELECT BDDP6.id, email, mdp  FROM BDDP6;";
+	return "INSERT INTO";
 }
-System::String^ NS_client::client::Check(System::String^ attribut, System::String^ var)
+
+System::String^ NS_BDD::Client::Afficher(void)
 {
-    return "Use BDDP6; SELECT " + attribut + " FROM dbo.Table1p6 WHERE" + attribut + " ='" + var + "';";
-}
-NS_client::client::client() {
-    this->Id = 1;
-    this->email = "kylian.renault@viacesi.fr";
-    this->mdp = "kylian";
+	return "";
 }
 
-void NS_client::client::setId(int Id) { this->Id = Id; }
-void NS_client::client::setemail(System::String^ email) { this->email = email; }
-void NS_client::client::setmdp(System::String^ mdp) { this->mdp = mdp; }
+System::String^ NS_BDD::Client::Modifier(void)
+{
+	return "";
+}
 
-
-int NS_client::client::getId(void) { return this->Id; }
-System::String^ NS_client::client::getemail(void) { return this->email; }
-System::String^ NS_client::client::getmdp(void) { return this->mdp; }
+System::String^ NS_BDD::Client::Supprimer(void)
+{
+	return "";
+}
