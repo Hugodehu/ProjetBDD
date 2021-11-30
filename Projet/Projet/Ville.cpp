@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "Ville.h"
 #include "pch.h"
 
 void NS_BDD::Ville::set_id_ville(System::String^ id_ville) { this->id_ville = id_ville; }

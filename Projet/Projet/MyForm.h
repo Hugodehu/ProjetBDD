@@ -1,5 +1,6 @@
 #pragma once
-#include "Header.h"
+#include "pch.h"
+#include "Choix.h"
 #include <string>
 #include <iostream>
 namespace Projet {
@@ -37,6 +38,7 @@ namespace Projet {
 	private: System::Windows::Forms::Label^ label_mdp;
 	private: NS_BDDservice::Service_Authentification^ authentification;
 	private: System::Data::DataSet^ result;
+	private: System::Data::DataSet^ test;
 
 	private: System::ComponentModel::Container ^components;
 
@@ -138,17 +140,24 @@ namespace Projet {
 		authentification = gcnew NS_BDDservice::Service_Authentification;
 		result = gcnew Data::DataSet;
 		this->result = this->authentification->CheckAuthentification(this->txt_email->Text, this->txt_mdp->Text);
-		if (this->result->Tables[0]->Select()[0][0]) //Merci Tristan <3 //->to_String() == "true"
+		if (this->result->Tables[0]->Select()[0][0]->ToString() == "True") //Merci Tristan <3
 		{ 
+			test = gcnew Data::DataSet;
+			MessageBox::Show(this->txt_email->Text + this->txt_mdp->Text, "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			//this->test = this->authentification->CheckSup(this->txt_email->Text, this->txt_mdp->Text);
+			bool super;
+			//super = (this->result->Tables[0]->Select()[0][0]->ToString() == "1");
 			this->Hide();
-			Projet::Choix form;
-			form.ShowDialog();
+			Projet::Choix^ form = gcnew Choix(super);
+			form->ShowDialog();
 			this->Show();
+			MessageBox::Show(this->txt_email->Text + this->txt_mdp->Text, "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
 		else 
 		{
 			MessageBox::Show("Email ou mot de passe incorrect", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
+
 	}
 	
 };

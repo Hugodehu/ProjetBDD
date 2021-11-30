@@ -1,5 +1,4 @@
 #pragma once
-#include "Header.h"
 #include "pch.h"
 
 namespace NS_BDD
@@ -11,6 +10,8 @@ namespace NS_BDD
         System::String^ prenom;
         System::String^ date_embauche;
         System::String^ superieur;
+        System::String^ id_sup;
+       // System::Data::DataSet^ test;
 
     public:
         void set_id_personnel(System::String^);
@@ -19,6 +20,7 @@ namespace NS_BDD
         void set_date_embauche(System::String^);
         void set_superieur(System::String^);
         void set_id_superieur(System::String^);
+        //void set_test(System::Data::DataSet^);
 
 
         System::String^ Ajouter(void);
@@ -30,7 +32,9 @@ namespace NS_BDD
         System::String^ get_nom(void);
         System::String^ get_prenom(void);
         System::String^ get_date_embauche(void);
-        bool get_superieur(void);
+        System::String^ get_superieur(void);
+        System::String^ get_id_sup(void);
+        //System::Data::DataSet^ get_test(System::Data::DataSet^);
 
     };
 }

@@ -1,9 +1,9 @@
-#include "Header.h"
+#include "BDDload.h"
 #include "pch.h"
 NS_load::CLload::CLload(void)
 {
     //this->sCnx = "Data Source=KYLIAN;Initial Catalog=projet;Integrated Security=True";
-    this->sCnx = "Server=tcp:serveur-projet-poo.database.windows.net,1433;Initial Catalog=BDD_Projet_POO;Persist Security Info=False;User ID=Application;Password=3zj4z6JWM;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
+    this->sCnx = "Data Source=serveur-projet-poo.database.windows.net;Initial Catalog=BDD_Projet_POO;User ID=Application;Password=3zj4z6JWM";
     this->sSql = "Rien";
  
     this->oCnx = gcnew System::Data::SqlClient::SqlConnection(this->sCnx);

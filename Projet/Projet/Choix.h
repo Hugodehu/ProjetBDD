@@ -1,5 +1,6 @@
 #pragma once
-#include "Header.h"
+#include "BDDservice.h"
+#include "BDDload.h"
 #include "pch.h"
 namespace Projet {
 
@@ -11,9 +12,11 @@ namespace Projet {
 	using namespace System::Drawing;
 	public ref class Choix : public System::Windows::Forms::Form
 	{
+	public: bool sup;
 	public:
-		Choix(void)
+		Choix(bool superieur)
 		{
+			sup = superieur;
 			InitializeComponent();
 		}
 
@@ -74,11 +77,10 @@ namespace Projet {
 	private: System::Data::DataSet^ result;
 
 	private: short valider;
-	private: bool superieur;
 
 #pragma region Windows Form Designer generated code
 
-		   void InitializeComponent(void)
+		   void InitializeComponent()
 		   {
 			   this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			   this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
@@ -487,11 +489,6 @@ namespace Projet {
 		   //code a optimisiser ->
 #pragma endregion
 	private: System::Void Choix_Load(System::Object^ sender, System::EventArgs^ e) {
-		authentification = gcnew NS_BDDservice::Service_Authentification;
-		result = gcnew Data::DataSet;
-		this->result = this->authentification->CheckSup();
-		if (this->result->Tables[0]->Select()[0][0]->ToString() == "1") { superieur = 1; }
-		else { superieur = 0; }
 	}
 	private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		e->Cancel = MessageBox::Show("Vous, êtes sûr le point de quitter la page, êtes-vous sûr de ce choix ?", "Warning", MessageBoxButtons::YesNo, MessageBoxIcon::Question) != System::Windows::Forms::DialogResult::Yes;
@@ -500,7 +497,7 @@ namespace Projet {
 	};
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		if (comboBox1->SelectedIndex == 0) { //personnel
-			if (superieur) {
+			if (sup) {
 				this->buttonAjouter->Visible = true;
 				this->buttonSupprimer->Visible = true;
 				this->buttonModifier->Visible = true;

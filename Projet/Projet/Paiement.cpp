@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "Paiement.h"
 #include "pch.h"
 
 void NS_BDD::Paiement::set_id_paiement(System::String^ id_paiement) { this->id_paiement = id_paiement; }

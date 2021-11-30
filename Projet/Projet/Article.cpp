@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "Article.h"
 #include "pch.h"
 
 void NS_BDD::Article::set_id_article(System::String^ id_article) { this->id_article = id_article; }

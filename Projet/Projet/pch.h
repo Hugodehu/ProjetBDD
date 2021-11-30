@@ -7,5 +7,15 @@
 
 #ifndef PCH_H
 #define PCH_H
-
+#include "Adresse.h"
+#include "Article.h"
+#include "Client.h"
+#include "BDDservice.h"
+#include "Paiement.h"
+#include "BDDload.h"
+#include "Auth.h"
+#include "MyForm.h"
+#include "Personnel.h"
+#include "Ville.h"
+#include "Choix.h"
 #endif //PCH_H

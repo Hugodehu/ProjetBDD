@@ -1,5 +1,13 @@
 #pragma once
-#include "Header.h"
+#include "BDDload.h"
+#include "Personnel.h"
+#include "Auth.h"
+#include "Adresse.h"
+#include "Ville.h"
+#include "Article.h"
+#include "commande.h"
+#include "Paiement.h"
+#include "Client.h"
 #include "pch.h"
 
 namespace NS_BDDservice
@@ -8,11 +16,11 @@ namespace NS_BDDservice
     {
     private:
         NS_load::CLload^ oCad;
-        NS_BDD::Authentification^ oMappTB;
+        NS_BDD::Authentification^ oAuth;
 
     public:
         System::Data::DataSet^ CheckAuthentification(System::String^, System::String^);
-        System::Data::DataSet^ CheckSup();
+        System::Data::DataSet^ CheckSup(System::String^ email, System::String^ mdp);
     };
 
     ref class service_Personnel
@@ -21,8 +29,8 @@ namespace NS_BDDservice
         NS_load::CLload^ oCad;
         NS_BDD::Personnel^ oPersonnel; 
         NS_BDD::Authentification^ oAuth;
-        NS_BDD::Adresse^ oAdress;
-        NS_BDD::Ville^ oVill;
+        NS_BDD::Adresse^ oAdresse;
+        NS_BDD::Ville^ oVille;
     public:
         void Ajouter_personnel(System::String^ Nom, System::String^ Prenom, System::String^ Date_embauche, System::String^ id_sup, System::String^ email, System::String^ mdp, System::String^ rue, System::String^ Ville, System::String^ code_postal, System::String^ superieur);
         void Modifier_personnel(System::String^ id, System::String^ Nom, System::String^ Prenom, System::String^ Date_embauche, System::String^ id_sup, System::String^ email, System::String^ mdp, System::String^ rue, System::String^ Ville, System::String^ code_postal, System::String^ superieur);
@@ -35,9 +43,9 @@ namespace NS_BDDservice
     {
     private:
         NS_load::CLload^ oCad;
-        NS_BDD::Ville^ oVillle;
+        NS_BDD::Ville^ oVille;
         NS_BDD::Client^ oClient;
-        NS_BDD::Adresse^ oAdressse;
+        NS_BDD::Adresse^ oAdresse;
     public:
         void Ajouter_client(System::String^ ,System::String^ , System::String^ , System::String^, System::String^ , System::String^, System::String^, System::String^, System::String^, System::String^);
         void Modifier_client(System::String^ id, System::String^ Date_premiere_commande, System::String^ Nom, System::String^ Prenom, System::String^ Date_de_naissance, System::String^ rue_livraison, System::String^ ville_livraison, System::String^ Code_postal_livraison, System::String^ rue_facturation, System::String^ Ville_facturation, System::String^ code_postal_facturation);
@@ -62,7 +70,7 @@ namespace NS_BDDservice
     private:
         NS_load::CLload^ oCad;
         NS_BDD::Commande^ oCommande;
-        NS_BDD::Article^ oArticl;
+        NS_BDD::Article^ oArticle;
         NS_BDD::Paiement^ oPaiement;
     public:
         void Ajouter_commande(System::String^ Nom, System::String^ Quantité, System::String^ Couleur, System::String^ tva, System::String^ remise, System::String^ moyen_paiement, System::String^ Nbr_paiement, System::String^ Date_prem_paiment, System::String^ Date_paiement);

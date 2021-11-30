@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "Client.h"
 #include "pch.h"
 
 void NS_BDD::Client::set_id_client(System::String^ id_client) { this->id_client = id_client; }
