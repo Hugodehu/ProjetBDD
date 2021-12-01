@@ -19,16 +19,17 @@ namespace NS_BDD
         void set_date_paiement(System::String^);
         void set_moyen(System::String^);
 
+        System::String^ get_id_paiement(void);
+        System::String^ get_solde(void);
+        System::String^ get_date_emission(void);
+        System::String^ get_date_paiement(void);
+        System::String^ get_moyen(void);
+
         System::String^ Afficher(void); 
         System::String^ Ajouter(void); 
         System::String^ Modifier(void);
         System::String^ Supprimer(void);
 
-        System::String^ get_id_paiement(void);
-        System::String^ get_solde(void);
-        System::String^ get_date_emission(void);
 
-        System::String^ get_date_paiement(void);
-        System::String^ get_moyen(void);
     };
 }

@@ -134,7 +134,9 @@ namespace Projet {
 
 		}
 #pragma endregion
-	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {}
+	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+			
+	}
 
 	private: System::Void button_auth_Click(System::Object^ sender, System::EventArgs^ e) {
 		authentification = gcnew NS_BDDservice::Service_Authentification;
@@ -143,15 +145,15 @@ namespace Projet {
 		if (this->result->Tables[0]->Select()[0][0]->ToString() == "True") //Merci Tristan <3
 		{ 
 			test = gcnew Data::DataSet;
-			MessageBox::Show(this->txt_email->Text + this->txt_mdp->Text, "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			//this->test = this->authentification->CheckSup(this->txt_email->Text, this->txt_mdp->Text);
+			this->test = this->authentification->CheckSup(this->txt_email->Text, this->txt_mdp->Text);
 			bool super;
-			//super = (this->result->Tables[0]->Select()[0][0]->ToString() == "1");
+			if (super = this->result->Tables[0]->Select()[0][0]->ToString() == "1") {
+				super = 1;
+			}
 			this->Hide();
-			Projet::Choix^ form = gcnew Choix(super);
-			form->ShowDialog();
+			Projet::Choix^ forme = gcnew Choix(super);
+			forme ->ShowDialog();
 			this->Show();
-			MessageBox::Show(this->txt_email->Text + this->txt_mdp->Text, "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
 		else 
 		{

@@ -1,6 +1,7 @@
 #pragma once
 #include "BDDservice.h"
 #include "BDDload.h"
+#include "stats.h"
 #include "pch.h"
 namespace Projet {
 
@@ -75,6 +76,7 @@ namespace Projet {
 
 	private: System::Windows::Forms::Button^ A_Propos;
 	private: System::Data::DataSet^ result;
+	
 
 	private: short valider;
 
@@ -488,7 +490,39 @@ namespace Projet {
 		   }
 		   //code a optimisiser ->
 #pragma endregion
+	void hide() {
+	this->buttonValider->Visible = true;
+	this->label1->Visible = false;
+	this->label2->Visible = false;
+	this->label3->Visible = false;
+	this->label4->Visible = false;
+	this->label5->Visible = false;
+	this->label6->Visible = false;
+	this->label7->Visible = false;
+	this->label8->Visible = false;
+	this->label9->Visible = false;
+	this->label10->Visible = false;
+	this->label11->Visible = false;
+	this->label12->Visible = false;
+	this->Box1->Visible = false;
+	this->Box2->Visible = false;
+	this->Box3->Visible = false;
+	this->Box4->Visible = false;
+	this->Box5->Visible = false;
+	this->Box6->Visible = false;
+	this->Box7->Visible = false;
+	this->Box8->Visible = false;
+	this->Box9->Visible = false;
+	this->Box10->Visible = false;
+	this->Box11->Visible = false;
+	this->Box12->Visible = false;
+}
 	private: System::Void Choix_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->Article = gcnew NS_BDDservice::service_Article();
+		this->authentification = gcnew NS_BDDservice::Service_Authentification();
+		this->Client = gcnew NS_BDDservice::service_Client();
+		this->Commande = gcnew NS_BDDservice::service_Commande();
+		this->Personnel = gcnew NS_BDDservice::service_Personnel();
 	}
 	private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 		e->Cancel = MessageBox::Show("Vous, êtes sûr le point de quitter la page, êtes-vous sûr de ce choix ?", "Warning", MessageBoxButtons::YesNo, MessageBoxIcon::Question) != System::Windows::Forms::DialogResult::Yes;
@@ -507,7 +541,7 @@ namespace Projet {
 				MessageBox::Show("Vous n'avez pas les droits pour effectuer des modifications sur le personnel", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Stop);
 			}
 		}
-		else if (comboBox1->SelectedIndex == 1 || comboBox1->SelectedIndex == 2 || comboBox1->SelectedIndex == 3)  { //client
+		else if (comboBox1->SelectedIndex == 1 || comboBox1->SelectedIndex == 2 || comboBox1->SelectedIndex == 3) { //client
 			this->buttonAjouter->Visible = true;
 			this->buttonSupprimer->Visible = true;
 			this->buttonModifier->Visible = true;
@@ -518,66 +552,16 @@ namespace Projet {
 			this->buttonSupprimer->Visible = false;
 			this->buttonModifier->Visible = false;
 			this->buttonAjouter->Visible = false;
+			valider = 17;
 
 		}
 	}
 	private: System::Void comboBox1_Click(System::Object^ sender, System::EventArgs^ e) {
-		//hide();
-		//this->buttonValider->Visible = false;
-		this->buttonValider->Visible = true;
-		this->label1->Visible = false;
-		this->label2->Visible = false;
-		this->label3->Visible = false;
-		this->label4->Visible = false;
-		this->label5->Visible = false;
-		this->label6->Visible = false;
-		this->label7->Visible = false;
-		this->label8->Visible = false;
-		this->label9->Visible = false;
-		this->label10->Visible = false;
-		this->label11->Visible = false;
-		this->label12->Visible = false;
-		this->Box1->Visible = false;
-		this->Box2->Visible = false;
-		this->Box3->Visible = false;
-		this->Box4->Visible = false;
-		this->Box5->Visible = false;
-		this->Box6->Visible = false;
-		this->Box7->Visible = false;
-		this->Box8->Visible = false;
-		this->Box9->Visible = false;
-		this->Box10->Visible = false;
-		this->Box11->Visible = false;
-		this->Box12->Visible = false;
+		hide();
+		this->buttonValider->Visible = false;
 	}
 		   private: System::Void buttonAfficher_Click(System::Object^ sender, System::EventArgs^ e) {
-			   //hide();
-			   this->buttonValider->Visible = true;
-			   this->label1->Visible = false;
-			   this->label2->Visible = false;
-			   this->label3->Visible = false;
-			   this->label4->Visible = false;
-			   this->label5->Visible = false;
-			   this->label6->Visible = false;
-			   this->label7->Visible = false;
-			   this->label8->Visible = false;
-			   this->label9->Visible = false;
-			   this->label10->Visible = false;
-			   this->label11->Visible = false;
-			   this->label12->Visible = false;
-			   this->Box1->Visible = false;
-			   this->Box2->Visible = false;
-			   this->Box3->Visible = false;
-			   this->Box4->Visible = false;
-			   this->Box5->Visible = false;
-			   this->Box6->Visible = false;
-			   this->Box7->Visible = false;
-			   this->Box8->Visible = false;
-			   this->Box9->Visible = false;
-			   this->Box10->Visible = false;
-			   this->Box11->Visible = false;
-			   this->Box12->Visible = false;
-
+			   hide();
 			   if (comboBox1->SelectedIndex == 0) {
 				   this->label11->Visible = true;
 				   this->label11->Text = "Nom";
@@ -613,83 +597,19 @@ namespace Projet {
 			   }
 		   }
 	private: System::Void buttonAjouter_Click(System::Object^ sender, System::EventArgs^ e) {
-		//hide();
-		this->buttonValider->Visible = true;
-		this->label1->Visible = false;
-		this->label2->Visible = false;
-		this->label3->Visible = false;
-		this->label4->Visible = false;
-		this->label5->Visible = false;
-		this->label6->Visible = false;
-		this->label7->Visible = false;
-		this->label8->Visible = false;
-		this->label9->Visible = false;
-		this->label10->Visible = false;
-		this->label11->Visible = false;
-		this->label12->Visible = false;
-		this->Box1->Visible = false;
-		this->Box2->Visible = false;
-		this->Box3->Visible = false;
-		this->Box4->Visible = false;
-		this->Box5->Visible = false;
-		this->Box6->Visible = false;
-		this->Box7->Visible = false;
-		this->Box8->Visible = false;
-		this->Box9->Visible = false;
-		this->Box10->Visible = false;
-		this->Box11->Visible = false;
-		this->Box12->Visible = false;
+		hide();
 		
 		if (comboBox1->SelectedIndex == 0) { // personnel
-			this->label2->Text = "Nom";
-			this->label3->Text = "Prenom";
-			this->label4->Text = "Date d'embauche";
-			this->label5->Text = "Superieur";
-			this->label6->Text = "Id superieur";
-			this->label7->Text = "Email";
-			this->label8->Text = "Mot de passe";
-			//this->label9->Text = "Numéro de rue";
+			this->label3->Text = "Nom";
+			this->label4->Text = "Prenom";
+			this->label5->Text = "Date d'embauche";
+			this->label6->Text = "Superieur";
+			this->label7->Text = "Id superieur";
+			this->label8->Text = "Email";
+			this->label9->Text = "Mot de passe";
 			this->label10->Text = "Rue";
 			this->label11->Text = "Ville";
 			this->label12->Text = "Code Postal";
-			this->label2->Visible = true;
-			this->label3->Visible = true;
-			this->label4->Visible = true;
-			this->label5->Visible = true;
-			this->label6->Visible = true;
-			this->label7->Visible = true;
-			this->label8->Visible = true;
-			//this->label9->Visible = true;
-			this->label10->Visible = true;
-			this->label11->Visible = true;
-			this->label12->Visible = true;
-			this->Box2->Visible = true;
-			this->Box3->Visible = true;
-			this->Box3->Visible = true;
-			this->Box4->Visible = true;
-			this->Box5->Visible = true;
-			this->Box6->Visible = true;
-			this->Box7->Visible = true;
-			this->Box8->Visible = true;
-			//this->Box9->Visible = true;
-			this->Box10->Visible = true;
-			this->Box11->Visible = true;
-			this->Box12->Visible = true;
-			valider = 5;
-		}
-		else if (comboBox1->SelectedIndex == 1) {	//client
-			this->label2->Text = "Nom";
-			this->label3->Text = "Prenom";
-			this->label4->Text = "Date de Naissance";
-			this->label5->Text = "Date première commande";
-			this->label6->Text = "Rue livraison";
-			this->label7->Text = "Ville livraison";
-			this->label8->Text = "Code Postal Livraison";
-			this->label9->Text = "nrue facturation";
-			this->label10->Text = "Rue Facturation";
-			this->label11->Text = "Ville Facturation";
-			this->label12->Text = "Code Postal Facturation";
-			this->label2->Visible = true;
 			this->label3->Visible = true;
 			this->label4->Visible = true;
 			this->label5->Visible = true;
@@ -700,7 +620,40 @@ namespace Projet {
 			this->label10->Visible = true;
 			this->label11->Visible = true;
 			this->label12->Visible = true;
-			this->Box2->Visible = true;
+			this->Box3->Visible = true;
+			this->Box3->Visible = true;
+			this->Box4->Visible = true;
+			this->Box5->Visible = true;
+			this->Box6->Visible = true;
+			this->Box7->Visible = true;
+			this->Box8->Visible = true;
+			this->Box9->Visible = true;
+			this->Box10->Visible = true;
+			this->Box11->Visible = true;
+			this->Box12->Visible = true;
+			valider = 5;
+		}
+		else if (comboBox1->SelectedIndex == 1) {	//client
+			this->label3->Text = "Nom";
+			this->label4->Text = "Prenom";
+			this->label5->Text = "Date de Naissance";
+			this->label6->Text = "Date première commande";
+			this->label7->Text = "Rue livraison";
+			this->label8->Text = "Ville livraison";
+			this->label9->Text = "Code Postal Livraison";
+			this->label10->Text = "Rue Facturation";
+			this->label11->Text = "Ville Facturation";
+			this->label12->Text = "Code Postal Facturation";
+			this->label3->Visible = true;
+			this->label4->Visible = true;
+			this->label5->Visible = true;
+			this->label6->Visible = true;
+			this->label7->Visible = true;
+			this->label8->Visible = true;
+			this->label9->Visible = true;
+			this->label10->Visible = true;
+			this->label11->Visible = true;
+			this->label12->Visible = true;
 			this->Box3->Visible = true;
 			this->Box3->Visible = true;
 			this->Box4->Visible = true;
@@ -725,6 +678,8 @@ namespace Projet {
 			this->label10->Text = "Nombres paiements";
 			this->label11->Text = "Date emission";
 			this->label12->Text = "Date paiement";
+			this->label4->Visible = true;
+			this->label5->Visible = true;
 			this->label6->Visible = true;
 			this->label7->Visible = true;
 			this->label8->Visible = true;
@@ -732,6 +687,8 @@ namespace Projet {
 			this->label10->Visible = true;
 			this->label11->Visible = true;
 			this->label12->Visible = true;
+			this->Box4->Visible = true;
+			this->Box5->Visible = true;
 			this->Box6->Visible = true;
 			this->Box7->Visible = true;
 			this->Box8->Visible = true;
@@ -768,47 +725,19 @@ namespace Projet {
 		}
 	}
 	private: System::Void buttonModifier_Click(System::Object^ sender, System::EventArgs^ e) {
-		//hide();
-		this->buttonValider->Visible = true;
-		this->label1->Visible = false;
-		this->label2->Visible = false;
-		this->label3->Visible = false;
-		this->label4->Visible = false;
-		this->label5->Visible = false;
-		this->label6->Visible = false;
-		this->label7->Visible = false;
-		this->label8->Visible = false;
-		this->label9->Visible = false;
-		this->label10->Visible = false;
-		this->label11->Visible = false;
-		this->label12->Visible = false;
-		this->Box1->Visible = false;
-		this->Box2->Visible = false;
-		this->Box3->Visible = false;
-		this->Box4->Visible = false;
-		this->Box5->Visible = false;
-		this->Box6->Visible = false;
-		this->Box7->Visible = false;
-		this->Box8->Visible = false;
-		this->Box9->Visible = false;
-		this->Box10->Visible = false;
-		this->Box11->Visible = false;
-		this->Box12->Visible = false;
-
+		hide();
 		if (comboBox1->SelectedIndex == 0) { // personnel
-			this->label1->Text = "Id";
-			this->label2->Text = "Nom";
-			this->label3->Text = "Prenom";
-			this->label4->Text = "Date d'embauche";
-			this->label5->Text = "Superieur";
-			this->label6->Text = "Id superieur";
-			this->label7->Text = "Email";
-			this->label8->Text = "Mot de passe";
-			//this->label9->Text = "numéro rue";
+			this->label2->Text = "Id";
+			this->label3->Text = "Nom";
+			this->label4->Text = "Prenom";
+			this->label5->Text = "Date d'embauche";
+			this->label6->Text = "Superieur";
+			this->label7->Text = "Id superieur";
+			this->label8->Text = "Email";
+			this->label9->Text = "Mot de passe";
 			this->label10->Text = "Rue";
 			this->label11->Text = "Ville";
 			this->label12->Text = "Code Postal";
-			this->label1->Visible = true;
 			this->label2->Visible = true;
 			this->label3->Visible = true;
 			this->label4->Visible = true;
@@ -816,7 +745,7 @@ namespace Projet {
 			this->label6->Visible = true;
 			this->label7->Visible = true;
 			this->label8->Visible = true;
-			//this->label9->Visible = true;
+			this->label9->Visible = true;
 			this->label10->Visible = true;
 			this->label11->Visible = true;
 			this->label12->Visible = true;
@@ -829,25 +758,24 @@ namespace Projet {
 			this->Box6->Visible = true;
 			this->Box7->Visible = true;
 			this->Box8->Visible = true;
-			//this->Box9->Visible = true;
+			this->Box9->Visible = true;
 			this->Box10->Visible = true;
 			this->Box11->Visible = true;
 			this->Box12->Visible = true;
 			valider = 9;
 		}
 		else if (comboBox1->SelectedIndex == 1) {	//client
-			this->label1->Text = "Id";
-			this->label2->Text = "Nom";
-			this->label3->Text = "Prenom";
-			this->label4->Text = "Date Naissance";
-			this->label5->Text = "Date premiere commande";
-			this->label6->Text = "Rue Livraison";
-			this->label7->Text = "Ville Livraison";
-			this->label8->Text = "Code Postal Livraison";
+			this->label2->Text = "Id";
+			this->label3->Text = "Nom";
+			this->label4->Text = "Prenom";
+			this->label5->Text = "Date Naissance";
+			this->label6->Text = "Date premiere commande";
+			this->label7->Text = "Rue Livraison";
+			this->label8->Text = "Ville Livraison";
+			this->label9->Text = "Code Postal Livraison";
 			this->label10->Text = "Rue Facturation";
 			this->label11->Text = "Ville Facturation";
 			this->label12->Text = "Code Postal Facturation";
-			this->label1->Visible = true;
 			this->label2->Visible = true;
 			this->label3->Visible = true;
 			this->label4->Visible = true;
@@ -855,17 +783,18 @@ namespace Projet {
 			this->label6->Visible = true;
 			this->label7->Visible = true;
 			this->label8->Visible = true;
+			this->label9->Visible = true;
 			this->label10->Visible = true;
 			this->label11->Visible = true;
 			this->label12->Visible = true;
 			this->Box2->Visible = true;
-			this->Box3->Visible = true;
 			this->Box3->Visible = true;
 			this->Box4->Visible = true;
 			this->Box5->Visible = true;
 			this->Box6->Visible = true;
 			this->Box7->Visible = true;
 			this->Box8->Visible = true;
+			this->Box9->Visible = true;
 			this->Box10->Visible = true;
 			this->Box11->Visible = true;
 			this->Box12->Visible = true;
@@ -933,32 +862,7 @@ namespace Projet {
 		}
 	}
 	private: System::Void buttonSupprimer_Click(System::Object^ sender, System::EventArgs^ e) {
-		//hide();
-		this->buttonValider->Visible = true;
-		this->label1->Visible = false;
-		this->label2->Visible = false;
-		this->label3->Visible = false;
-		this->label4->Visible = false;
-		this->label5->Visible = false;
-		this->label6->Visible = false;
-		this->label7->Visible = false;
-		this->label8->Visible = false;
-		this->label9->Visible = false;
-		this->label10->Visible = false;
-		this->label11->Visible = false;
-		this->label12->Visible = false;
-		this->Box1->Visible = false;
-		this->Box2->Visible = false;
-		this->Box3->Visible = false;
-		this->Box4->Visible = false;
-		this->Box5->Visible = false;
-		this->Box6->Visible = false;
-		this->Box7->Visible = false;
-		this->Box8->Visible = false;
-		this->Box9->Visible = false;
-		this->Box10->Visible = false;
-		this->Box11->Visible = false;
-		this->Box12->Visible = false;
+		hide();
 		if (comboBox1->SelectedIndex == 0) {
 			this->label9->Text = "Id Personnel";
 			this->label9->Visible = true;
@@ -1031,11 +935,11 @@ namespace Projet {
 		}
 		else if (valider == 5) {
 			//fonction qui ajoute le personnel
-			this->Personnel->Ajouter_personnel(this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box10->Text,this->Box11->Text,this->Box12->Text);
+			this->Personnel->Ajouter_personnel(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text,this->Box11->Text,this->Box12->Text);
 		}
 		else if (valider == 6) {
 			//fonction qui ajoute le client
-			this->Client->Ajouter_client(this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+			this->Client->Ajouter_client(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
 		}
 		else if (valider == 7) {
 			//fonction qui ajoute la commande
@@ -1047,12 +951,12 @@ namespace Projet {
 		}
 		else if (valider == 9) {
 			//fonction qui modifie le personnel
-			this->Personnel->Modifier_personnel(this->Box1->Text,this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+			this->Personnel->Modifier_personnel(this->Box2->Text,this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
 
 		}
 		else if (valider == 10) {
 			//fonction qui modifie le client
-			this->Client->Modifier_client(this->Box1->Text, this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+			this->Client->Modifier_client(this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
 		}
 		else if (valider == 11) {
 			//fonction qui modifie la commande
@@ -1079,37 +983,14 @@ namespace Projet {
 			//fonction qui supprime un article
 			this->Article->effacer_article(this->Box11->Text, this->Box12->Text);
 		}
+		else if (valider == 17) {
+			Projet::Stats form;
+			form.ShowDialog();
+			this->Show();
+		}
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("BDD réalisées par RENAULT Kylian, GOSSET Olivier, LEFRANC Charles et DEHURTEVENT Hugo", "Propos", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 	};
 }
-
-/*int hide() {
-	this->buttonValider->Visible = true;
-	this->label1->Visible = false;
-	this->label2->Visible = false;
-	this->label3->Visible = false;
-	this->label4->Visible = false;
-	this->label5->Visible = false;
-	this->label6->Visible = false;
-	this->label7->Visible = false;
-	this->label8->Visible = false;
-	this->label9->Visible = false;
-	this->label10->Visible = false;
-	this->label11->Visible = false;
-	this->label12->Visible = false;
-	this->Box1->Visible = false;
-	this->Box2->Visible = false;
-	this->Box3->Visible = false;
-	this->Box4->Visible = false;
-	this->Box5->Visible = false;
-	this->Box6->Visible = false;
-	this->Box7->Visible = false;
-	this->Box8->Visible = false;
-	this->Box9->Visible = false;
-	this->Box10->Visible = false;
-	this->Box11->Visible = false;
-	this->Box12->Visible = false;
-}*/

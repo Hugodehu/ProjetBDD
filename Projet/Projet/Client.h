@@ -20,7 +20,6 @@ namespace NS_BDD
         void set_date_naissance(System::String^);
         void set_date_premiere_commande(System::String^);
 
-
         System::String^ get_id_client();
         System::String^ get_nom();
         System::String^ get_prenom();

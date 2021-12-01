@@ -14,6 +14,7 @@ namespace NS_BDD
         System::String^ TVA;
         System::String^ couleur;
         System::String^ seuil;
+        
     public:
         void set_id_article(System::String^);
         void set_nom(System::String^);

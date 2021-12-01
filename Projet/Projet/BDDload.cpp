@@ -23,12 +23,16 @@ System::Data::DataSet^ NS_load::CLload::getRows(System::String^ sSql)
 
     return this->oDs;
 }
-void NS_load::CLload::actionRows(System::String^ sSql)
-{
-    this->sSql = sSql;
-    this->oCmd->CommandText = this->sSql;
-    this->oDA->SelectCommand = this->oCmd;
-    this->oCnx->Open();
-    this->oCmd->ExecuteNonQuery();
-    this->oCnx->Close();
+void NS_load::CLload::actionRows(System::String^ sSql){
+    //try {
+        this->sSql = sSql;
+        this->oCmd->CommandText = this->sSql;
+        this->oDA->SelectCommand = this->oCmd;
+        this->oCnx->Open();
+        this->oCmd->ExecuteNonQuery();
+        this->oCnx->Close();
+    //}
+    //catch (const std::exception&) {
+       // this->oCnx->Close();
+   // }
 }

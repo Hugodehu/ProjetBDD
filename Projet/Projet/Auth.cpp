@@ -17,7 +17,7 @@ System::String^ NS_BDD::Authentification::Check()
 
 System::String^ NS_BDD::Authentification::CheckSupp()
 {
-    return "SELECT superieur FROM Personnel INNER JOIN Authentification ON Personnel.id_personnel = Authentication.id_authentification WHERE email = '" + this->getEmail() + "' and mot_de_passe = '" + this->getMdp() + "';";
+    return "SELECT Personnel.superieur FROM Personnel INNER JOIN Authentification ON Authentification.id_authentification = Personnel.id_authentification WHERE email = '" + this->getEmail() + "' and mot_de_passe = '" + this->getMdp() + "';";
 }
 
 System::String^  NS_BDD::Authentification::Ajouter() {
