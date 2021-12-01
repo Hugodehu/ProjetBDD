@@ -15,8 +15,8 @@ namespace NS_BDD
         System::String^ CheckSupp();
         System::String^ Afficher(void);
         System::String^ Ajouter(void);
-        System::String^ Modifier(void);
-        System::String^ Supprimer(void);
+        System::String^ Modifier(System::String^ id_perso, System::String^ nomPerso, System::String^ prenomPerso);
+        System::String^ Supprimer(System::String^, System::String^ , System::String^ );
 
         void setId(System::String^);
         void setEmail(System::String^);

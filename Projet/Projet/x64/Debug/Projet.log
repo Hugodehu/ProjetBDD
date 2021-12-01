@@ -1,17 +1,3 @@
-﻿  pch.cpp
-  Adresse.cpp
-  Article.cpp
-  AssemblyInfo.cpp
-  Auth.cpp
-  BDDload.cpp
-  BDDservice.cpp
-  Choix.cpp
-  Client.cpp
-  Commande.cpp
-  MyForm.cpp
-  Paiement.cpp
-  Personnel.cpp
-  Ville.cpp
-  Génération de code en cours...
+﻿  Personnel.cpp
   Adresse.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
   Projet.vcxproj -> C:\Users\hugod\OneDrive\Documents\GitHub\ProjetPOO\Projet\x64\Debug\Projet.exe

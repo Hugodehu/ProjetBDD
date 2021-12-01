@@ -23,7 +23,7 @@ namespace NS_BDD
         //void set_test(System::Data::DataSet^);
 
 
-        System::String^ Ajouter(void);
+        System::String^ Ajouter(System::String^, System::String^ );
         System::String^ Afficher(void);
         System::String^ Modifier(void);
         System::String^ Supprimer(void);

@@ -15,10 +15,10 @@ namespace NS_BDD
         System::String^ get_id_adresse(void);
         System::String^ get_rue(void);
 
-        System::String^ Ajouter(void);
-        System::String^ Afficher(void);
-        System::String^ Modifier(void);
-        System::String^ Supprimer(void);
+        System::String^ Ajouter(System::String^);
+        System::String^ Afficher(System::String^ , System::String^ , System::String^ );
+        System::String^ Modifier(System::String^, System::String^ , System::String^ , System::String^ , System::String^);
+        System::String^ Supprimer(System::String^, System::String^, System::String^);
 
     };
 }

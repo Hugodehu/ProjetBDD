@@ -21,17 +21,17 @@ System::String^ NS_BDD::Authentification::CheckSupp()
 }
 
 System::String^  NS_BDD::Authentification::Ajouter() {
-    return "";
+    return "INSERT INTO Authentification (email, mot_de_passe) VALUES('" +this->getEmail() +"', '" + this->getMdp()+"')";
 }
 
 System::String^ NS_BDD::Authentification::Afficher() {
     return "";
 }
 
-System::String^ NS_BDD::Authentification::Modifier() {
-    return "";
+System::String^ NS_BDD::Authentification::Modifier(System::String^ id_perso, System::String^ nomPerso, System::String^ prenomPerso) {
+    return "UPDATE Authentification SET Authentification.email = '" + this->getEmail() + "', mot_de_passe = '" + this->getMdp() + "' FROM Authentification INNER JOIN Personnel ON Personnel.id_authentification = Authentification.id_authentification WHERE Authentification.id_authentification = Personnel.id_authentification AND Personnel.id_personnel = '" + id_perso +"' AND Personnel.nom = '" + nomPerso + "' AND Personnel.prenom = '" + prenomPerso + "'";
 }
 
-System::String^ NS_BDD::Authentification::Supprimer() {
-    return "";
+System::String^ NS_BDD::Authentification::Supprimer(System::String^ id, System::String^ nom, System::String^ prenom) {
+    return "DELETE FROM Authentification WHERE id_authentification IN(SELECT DeletePersonnel.id_authentification FROM DeletePersonnel WHERE DeletePersonnel.Id = " + id + " AND DeletePersonnel.nom = '" + nom + "' AND DeletePersonnel.prenom = '" + prenom + "')";
 }

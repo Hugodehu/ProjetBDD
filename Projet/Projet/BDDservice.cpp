@@ -82,14 +82,14 @@ void NS_BDDservice::service_Personnel::Ajouter_personnel(System::String^ Nom, Sy
     this->oVille->set_nom(Ville);
     this->oVille->set_code_postal(code_postal);
     
-    result = this->oPersonnel->Ajouter();
-    this->oCad->actionRows(result);
+   
     result = this->oAuth->Ajouter();
     this->oCad->actionRows(result);
-    result = this->oAdresse->Ajouter();
+    result = this->oAdresse->Ajouter(this->oVille->get_nom());
     this->oCad->actionRows(result);
-    result = this->oVille->Ajouter();
+    result = this->oPersonnel->Ajouter(this->oAuth->getEmail(), this->oAdresse->get_rue());
     this->oCad->actionRows(result);
+    
 }
 
 void NS_BDDservice::service_Personnel::Modifier_personnel(System::String^ id, System::String^ Nom, System::String^ Prenom, System::String^ Date_embauche, System::String^ superieur, System::String^ id_sup, System::String^ email, System::String^ mdp, System::String^ rue, System::String^ Ville, System::String^ code_postal){
@@ -110,9 +110,9 @@ void NS_BDDservice::service_Personnel::Modifier_personnel(System::String^ id, Sy
 
     result = this->oPersonnel->Modifier();
     this->oCad->actionRows(result);
-    result = this->oAuth->Modifier();
+    result = this->oAuth->Modifier(this->oPersonnel->get_id_personnel(), this->oPersonnel->get_nom(), this->oPersonnel->get_prenom());
     this->oCad->actionRows(result);
-    result = this->oAdresse->Modifier();
+    result = this->oAdresse->Modifier(this->oPersonnel->get_id_personnel(), this->oPersonnel->get_nom(), this->oPersonnel->get_prenom(), this->oVille->get_nom(), this->oVille->get_code_postal());
     this->oCad->actionRows(result);
     result = this->oVille->Modifier();
     this->oCad->actionRows(result);
@@ -127,6 +127,10 @@ void NS_BDDservice::service_Personnel::effacer_personnel(System::String^ id, Sys
     this->oPersonnel->set_id_personnel(id);
    
     result = this->oPersonnel->Supprimer();
+    this->oCad->actionRows(result);
+    result = this->oAuth->Supprimer(this->oPersonnel->get_id_personnel(), this->oPersonnel->get_nom(), this->oPersonnel->get_prenom());
+    this->oCad->actionRows(result);
+    result = this->oAdresse->Supprimer(this->oPersonnel->get_id_personnel(), this->oPersonnel->get_nom(), this->oPersonnel->get_prenom());
     this->oCad->actionRows(result);
 }
 
@@ -172,7 +176,7 @@ void NS_BDDservice::service_Client::Ajouter_client(System::String^ Nom, System::
     this->oCad->actionRows(result);
     result = this->oVille->Ajouter();
     this->oCad->actionRows(result);
-    result = this->oAdresse->Ajouter();
+    result = this->oAdresse->Ajouter(this->oVille->get_nom());
     this->oCad->actionRows(result);
 }
 
@@ -196,7 +200,7 @@ void NS_BDDservice::service_Client::Modifier_client(System::String^ id, System::
     this->oCad->actionRows(result);
     result = this->oVille->Modifier();
     this->oCad->actionRows(result);
-    result = this->oAdresse->Modifier();
+    //result = this->oAdresse->Modifier();
     this->oCad->actionRows(result);
 }
 
