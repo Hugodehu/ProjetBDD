@@ -19,19 +19,20 @@ System::String^ NS_BDD::Article::get_TVA(void) { return this->TVA; }
 System::String^ NS_BDD::Article::get_couleur(void) { return this->couleur; }
 System::String^ NS_BDD::Article::get_seuil(void) { return this->seuil; }
 
-System::String^ NS_BDD::Article::Ajouter(void)
+System::String^ NS_BDD::Article::Ajouter()
 {
-    return "INSERT INTO Article(nom, nature, prix_HT, quantite_stock, seuil_reapprovisionnement, TVA, couleur)  Values('" + this->get_nom() + "', '" + this->get_nature() + "', '" + this->get_prix_HT() + "', '" + this->get_quantite_stock() + "', '" + this->get_seuil() + "', '" + this->get_TVA() + "', '" + this->get_couleur() + "'); ";
+
+    return "INSERT INTO Article (nom, nature, prix_HT, quantite_stock, seuil_reapprovisionnement, TVA, couleur) Values ('"+this->get_nom()+"', '"+this->get_nature()+"', '" +this->get_prix_HT() +"', '"+this->get_quantite_stock() +"', '"+this->get_seuil() +"', '"+this->get_TVA()+"', '"+this->get_couleur()+"');  ";
 }
 
 System::String^ NS_BDD::Article::Afficher(void)
 {
-    return "SELECT nom, nature, prix_HT, quantite_stock, seuil_reapprovisionnement, TVA, couleur FROM Article WHERE ( Article.nom = '" + this->get_nom() + "'OR Article.nature = '" + this->get_nature() + "' OR Article.nom = '" + this->get_nom() + "' and Article.couleur = '" + this->get_couleur() + "' OR Article.nature = '" + this->get_nature() + "' and Article.couleur = '"+this->get_couleur()+"')";
+    return "SELECT nom, nature, prix_HT, quantite_stock, seuil_reapprovisionnement, TVA, couleur FROM Article WHERE ( Article.nom = '" + this->get_nom() + "'OR Article.nature = '" + this->get_nature() + "' OR Article.nom = '" + this->get_nom() + "' and Article.couleur = '" + this->get_couleur() + "' OR Article.nature = '" + this->get_nature() + "' and Article.couleur = '" + this->get_couleur() + "')";
 }
 
-System::String^ NS_BDD::Article::Modifier(void)
+System::String^ NS_BDD::Article::Modifier()
 {
-    return "UPDATE Article SET Article.nom = '" + this->get_nom() + "', Article.nature = '" + this->get_nature() + "', Article.prix_HT = '" + this->get_prix_HT() + "', Article.quantite_stock = '" + this->get_quantite_stock() + "', Article.seuil_reapprovisionnement = '" + this->get_seuil() + "', Article.TVA = '" + this->get_TVA() + "', Article.couleur = '" + this->get_couleur() + "' FROM Article WHERE(Article.id_article = '" + this->get_id_article() + "')";
+    return "UPDATE Article SET Article.nom = '" + this->get_nom() + "', Article.nature = '" + this->get_nature() + "', Article.prix_HT = " + this->get_prix_HT() + ", Article.quantite_stock = '" + this->get_quantite_stock() + "' , Article.seuil_reapprovisionnement = '" + this->get_seuil() + "' , Article.TVA = '" + this->get_TVA() + "' , Article.couleur = '" + this->get_couleur() + "' FROM Article WHERE Article.id_article = '" + this->get_id_article() + "'";
 }
 
 System::String^ NS_BDD::Article::Supprimer(void)

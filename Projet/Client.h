@@ -27,7 +27,7 @@ namespace NS_BDD
         System::String^ get_date_naissance();
         System::String^ get_date_premiere_commande();
 
-        System::String^ Ajouter(System::String^, System::String^);
+        System::String^ Ajouter(System::String^, System::String^, System::String^, System::String^);
         //ICI
         System::String^ Afficher(void);
         //ICI

@@ -50,7 +50,10 @@ namespace Projet {
 	private: NS_BDDservice::service_Client^ Client;
 	private: NS_BDDservice::service_Article^ Article;
 	private: NS_BDDservice::service_Commande^ Commande;
+
 	private: NS_BDDservice::service_Personnel^ Personnel;
+
+
 	private: System::String^ index;
 
 
@@ -539,6 +542,7 @@ namespace Projet {
 		this->authentification = gcnew NS_BDDservice::Service_Authentification();
 		this->Client = gcnew NS_BDDservice::service_Client();
 		this->Commande = gcnew NS_BDDservice::service_Commande();
+
 		this->Personnel = gcnew NS_BDDservice::service_Personnel();
 	}
 	private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
@@ -991,7 +995,7 @@ namespace Projet {
 				this->dataGridView1->Refresh();
 				this->result = this->Article->Afficher_article(this->Box9->Text, this->Box11->Text, this->Box12->Text);
 				this->dataGridView1->DataSource = this->result;
-				this->dataGridView1->DataMember = "Stock";
+				this->dataGridView1->DataMember = "Commande";
 				this->Sauvegarder->Visible = true;
 				index = "Article :";
 			}

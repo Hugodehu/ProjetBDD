@@ -2,9 +2,10 @@
 #include "pch.h"
 NS_load::CLload::CLload(void)
 {
+    //this->sCnx = "Data Source=KYLIAN;Initial Catalog=projet;Integrated Security=True";
     this->sCnx = "Data Source=serveur-projet-poo.database.windows.net;Initial Catalog=BDD_Projet_POO;User ID=Application;Password=3zj4z6JWM";
     this->sSql = "Rien";
-    //test2
+ 
     this->oCnx = gcnew System::Data::SqlClient::SqlConnection(this->sCnx);
     this->oCmd = gcnew System::Data::SqlClient::SqlCommand(this->sSql, this->oCnx);
     this->oDA = gcnew System::Data::SqlClient::SqlDataAdapter();
@@ -12,21 +13,22 @@ NS_load::CLload::CLload(void)
 
     this->oCmd->CommandType = System::Data::CommandType::Text;
 }
-System::Data::DataSet^ NS_load::CLload::getRows(System::String^ sSql,System::String^ table)
+System::Data::DataSet^ NS_load::CLload::getRows(System::String^ sSql, System::String^ sDataTableName)
 {
     this->oDs->Clear();
     this->sSql = sSql;
     this->oCmd->CommandText = this->sSql;
     this->oDA->SelectCommand = this->oCmd;
-    this->oDA->Fill(this->oDs, table);
+    this->oDA->Fill(this->oDs, sDataTableName);
 
     return this->oDs;
 }
-void NS_load::CLload::actionRows(System::String^ sSql){
-        this->sSql = sSql;
-        this->oCmd->CommandText = this->sSql;
-        this->oDA->SelectCommand = this->oCmd;
-        this->oCnx->Open();
-        this->oCmd->ExecuteNonQuery();
-        this->oCnx->Close();
+void NS_load::CLload::actionRows(System::String^ sSql)
+{
+    this->sSql = sSql;
+    this->oCmd->CommandText = this->sSql;
+    this->oDA->SelectCommand = this->oCmd;
+    this->oCnx->Open();
+    this->oCmd->ExecuteNonQuery();
+    this->oCnx->Close();
 }
