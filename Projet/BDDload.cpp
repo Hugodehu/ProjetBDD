@@ -4,7 +4,7 @@ NS_load::CLload::CLload(void)
 {
     this->sCnx = "Data Source=serveur-projet-poo.database.windows.net;Initial Catalog=BDD_Projet_POO;User ID=Application;Password=3zj4z6JWM";
     this->sSql = "Rien";
- 
+    //test
     this->oCnx = gcnew System::Data::SqlClient::SqlConnection(this->sCnx);
     this->oCmd = gcnew System::Data::SqlClient::SqlCommand(this->sSql, this->oCnx);
     this->oDA = gcnew System::Data::SqlClient::SqlDataAdapter();
