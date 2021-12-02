@@ -503,7 +503,7 @@ namespace Projet {
 #pragma endregion
 	void error()
 	{
-		MessageBox::Show("Veulliez remplir toutes les cases", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		MessageBox::Show("Veuillez remplir toutes les cases", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 
 	void hide() {
