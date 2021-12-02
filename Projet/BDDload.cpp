@@ -2,7 +2,6 @@
 #include "pch.h"
 NS_load::CLload::CLload(void)
 {
-    //this->sCnx = "Data Source=KYLIAN;Initial Catalog=projet;Integrated Security=True";
     this->sCnx = "Data Source=serveur-projet-poo.database.windows.net;Initial Catalog=BDD_Projet_POO;User ID=Application;Password=3zj4z6JWM";
     this->sSql = "Rien";
  
