@@ -30,7 +30,7 @@ System::String^ NS_BDD::Commande::Ajouter(void)
 
 System::String^ NS_BDD::Commande::Afficher(void)
 {
-    return "";
+    return "SELECT Client.nom, Client.prenom, Commande.reference, Commande.date_livraison, Commande.date_emission, Article.nom as Nom_Article, Contenir.Quantite, Commande.prix_HT, Commande.prix_TTC, Commande.TVA, Commande.remise, Commande.prix_final FROM Commande INNER JOIN Contenir ON Commande.id_commande = Contenir.id_commande INNER JOIN Article ON Contenir.id_article = Article.id_article INNER JOIN Client ON Commande.id_client = Client.id_client WHERE (Commande.reference = '" + this->get_reference() + "')";
 };
 
 System::String^ NS_BDD::Commande::Modifier(void)

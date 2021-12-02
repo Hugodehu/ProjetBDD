@@ -20,7 +20,7 @@ namespace NS_BDD
         void set_moyen(System::String^);
 
         System::String^ Afficher(void); 
-        System::String^ Ajouter(void); 
+        System::String^ Ajouter(System::String^, System::String^ );
         System::String^ Modifier(void);
         System::String^ Supprimer(void);
 

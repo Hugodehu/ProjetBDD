@@ -15,12 +15,12 @@ System::String^ NS_BDD::Paiement::get_moyen(void) { return this->moyen; }
 
 System::String^ NS_BDD::Paiement::Afficher(void)
 {
-    return "USE BDD_Projet_POO; SELECT id_paiement, solde, date_emission, date_paiement, moyen FROM Paiement WHERE id_paiement = '" + this->get_id_paiement() + "';";
+    return "";
 }
 
-System::String^ NS_BDD::Paiement::Ajouter(void)
+System::String^ NS_BDD::Paiement::Ajouter(System::String^ nb_paiement, System::String^ reference)
 {
-    return "USE BDD_Projet_POO; INSERT INTO Paiement (solde, date_emission, date_paiement, moyen) VALUES ('" + this->get_solde() + "','" + this->get_date_emission() + "','" + this->get_moyen() + "');";
+    return "INSERT INTO Paiement Paiement (solde, date_emission, date_paiement, moyen, id_commande) select Commande.prix_final/"+nb_paiement+", Commande.date_emission, " + this->get_date_paiement() + ", '" + this->get_moyen() + "', Commande.id_commande from Commande where (Commande.reference = '" + reference + "')";
 }
 
 System::String^ NS_BDD::Paiement::Modifier(void)

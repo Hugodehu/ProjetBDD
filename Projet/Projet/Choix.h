@@ -85,15 +85,12 @@ namespace Projet {
 		   {
 			   this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			   this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-
 			   this->buttonAjouter = (gcnew System::Windows::Forms::Button());
 			   this->buttonModifier = (gcnew System::Windows::Forms::Button());
 			   this->buttonSupprimer = (gcnew System::Windows::Forms::Button());
 			   this->buttonAfficher = (gcnew System::Windows::Forms::Button());
 			   this->buttonValider = (gcnew System::Windows::Forms::Button());
 			   this->A_Propos = (gcnew System::Windows::Forms::Button());
-
-
 			   this->label1 = (gcnew System::Windows::Forms::Label());
 			   this->label2 = (gcnew System::Windows::Forms::Label());
 			   this->label3 = (gcnew System::Windows::Forms::Label());
@@ -106,7 +103,6 @@ namespace Projet {
 			   this->label10 = (gcnew System::Windows::Forms::Label());
 			   this->label11 = (gcnew System::Windows::Forms::Label());
 			   this->label12 = (gcnew System::Windows::Forms::Label());
-
 			   this->Box1 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box2 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box3 = (gcnew System::Windows::Forms::TextBox());
@@ -119,8 +115,6 @@ namespace Projet {
 			   this->Box10 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box11 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box12 = (gcnew System::Windows::Forms::TextBox());
-			   
-			   
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -130,21 +124,26 @@ namespace Projet {
 			   this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			   this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			   this->comboBox1->FormattingEnabled = true;
-			   this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"Personnel", L"Clients", L"Commandes", L"Stock", L"Statistiques" });
+			   this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+				   L"Personnel", L"Clients", L"Commandes", L"Stock",
+					   L"Statistiques"
+			   });
 			   this->comboBox1->Location = System::Drawing::Point(12, 230);
 			   this->comboBox1->Name = L"comboBox1";
-			   this->comboBox1->Size = System::Drawing::Size(203, 27);
+			   this->comboBox1->Size = System::Drawing::Size(203, 31);
 			   this->comboBox1->TabIndex = 0;
 			   this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Choix::comboBox1_SelectedIndexChanged);
 			   this->comboBox1->Click += gcnew System::EventHandler(this, &Choix::comboBox1_Click);
 			   // 
 			   // dataGridView1
 			   // 
+			   this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			   this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			   this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			   this->dataGridView1->Location = System::Drawing::Point(12, 12);
 			   this->dataGridView1->Name = L"dataGridView1";
-			   this->dataGridView1->Size = System::Drawing::Size(655, 191);
+			   this->dataGridView1->RowHeadersWidth = 51;
+			   this->dataGridView1->Size = System::Drawing::Size(885, 191);
 			   this->dataGridView1->TabIndex = 5;
 			   // 
 			   // buttonAjouter
@@ -217,7 +216,7 @@ namespace Projet {
 			   this->label1->AutoSize = true;
 			   this->label1->Location = System::Drawing::Point(241, 206);
 			   this->label1->Name = L"label1";
-			   this->label1->Size = System::Drawing::Size(63, 19);
+			   this->label1->Size = System::Drawing::Size(76, 23);
 			   this->label1->TabIndex = 15;
 			   this->label1->Text = L"label1";
 			   this->label1->Visible = false;
@@ -227,7 +226,7 @@ namespace Projet {
 			   this->label2->AutoSize = true;
 			   this->label2->Location = System::Drawing::Point(456, 206);
 			   this->label2->Name = L"label2";
-			   this->label2->Size = System::Drawing::Size(63, 19);
+			   this->label2->Size = System::Drawing::Size(76, 23);
 			   this->label2->TabIndex = 16;
 			   this->label2->Text = L"label2";
 			   this->label2->Visible = false;
@@ -237,7 +236,7 @@ namespace Projet {
 			   this->label3->AutoSize = true;
 			   this->label3->Location = System::Drawing::Point(241, 260);
 			   this->label3->Name = L"label3";
-			   this->label3->Size = System::Drawing::Size(63, 19);
+			   this->label3->Size = System::Drawing::Size(76, 23);
 			   this->label3->TabIndex = 17;
 			   this->label3->Text = L"label3";
 			   this->label3->Visible = false;
@@ -247,7 +246,7 @@ namespace Projet {
 			   this->label4->AutoSize = true;
 			   this->label4->Location = System::Drawing::Point(456, 259);
 			   this->label4->Name = L"label4";
-			   this->label4->Size = System::Drawing::Size(63, 19);
+			   this->label4->Size = System::Drawing::Size(76, 23);
 			   this->label4->TabIndex = 18;
 			   this->label4->Text = L"label4";
 			   this->label4->Visible = false;
@@ -257,7 +256,7 @@ namespace Projet {
 			   this->label5->AutoSize = true;
 			   this->label5->Location = System::Drawing::Point(241, 311);
 			   this->label5->Name = L"label5";
-			   this->label5->Size = System::Drawing::Size(63, 19);
+			   this->label5->Size = System::Drawing::Size(76, 23);
 			   this->label5->TabIndex = 19;
 			   this->label5->Text = L"label5";
 			   this->label5->Visible = false;
@@ -267,7 +266,7 @@ namespace Projet {
 			   this->label6->AutoSize = true;
 			   this->label6->Location = System::Drawing::Point(456, 310);
 			   this->label6->Name = L"label6";
-			   this->label6->Size = System::Drawing::Size(63, 19);
+			   this->label6->Size = System::Drawing::Size(76, 23);
 			   this->label6->TabIndex = 20;
 			   this->label6->Text = L"label6";
 			   this->label6->Visible = false;
@@ -277,7 +276,7 @@ namespace Projet {
 			   this->label7->AutoSize = true;
 			   this->label7->Location = System::Drawing::Point(241, 362);
 			   this->label7->Name = L"label7";
-			   this->label7->Size = System::Drawing::Size(63, 19);
+			   this->label7->Size = System::Drawing::Size(76, 23);
 			   this->label7->TabIndex = 21;
 			   this->label7->Text = L"label7";
 			   this->label7->Visible = false;
@@ -287,7 +286,7 @@ namespace Projet {
 			   this->label8->AutoSize = true;
 			   this->label8->Location = System::Drawing::Point(456, 361);
 			   this->label8->Name = L"label8";
-			   this->label8->Size = System::Drawing::Size(63, 19);
+			   this->label8->Size = System::Drawing::Size(76, 23);
 			   this->label8->TabIndex = 22;
 			   this->label8->Text = L"label8";
 			   this->label8->Visible = false;
@@ -297,7 +296,7 @@ namespace Projet {
 			   this->label9->AutoSize = true;
 			   this->label9->Location = System::Drawing::Point(241, 412);
 			   this->label9->Name = L"label9";
-			   this->label9->Size = System::Drawing::Size(63, 19);
+			   this->label9->Size = System::Drawing::Size(76, 23);
 			   this->label9->TabIndex = 28;
 			   this->label9->Text = L"label9";
 			   this->label9->Visible = false;
@@ -307,7 +306,7 @@ namespace Projet {
 			   this->label10->AutoSize = true;
 			   this->label10->Location = System::Drawing::Point(456, 412);
 			   this->label10->Name = L"label10";
-			   this->label10->Size = System::Drawing::Size(72, 19);
+			   this->label10->Size = System::Drawing::Size(87, 23);
 			   this->label10->TabIndex = 29;
 			   this->label10->Text = L"label10";
 			   this->label10->Visible = false;
@@ -317,7 +316,7 @@ namespace Projet {
 			   this->label11->AutoSize = true;
 			   this->label11->Location = System::Drawing::Point(241, 463);
 			   this->label11->Name = L"label11";
-			   this->label11->Size = System::Drawing::Size(72, 19);
+			   this->label11->Size = System::Drawing::Size(87, 23);
 			   this->label11->TabIndex = 30;
 			   this->label11->Text = L"label11";
 			   this->label11->Visible = false;
@@ -327,7 +326,7 @@ namespace Projet {
 			   this->label12->AutoSize = true;
 			   this->label12->Location = System::Drawing::Point(456, 463);
 			   this->label12->Name = L"label12";
-			   this->label12->Size = System::Drawing::Size(72, 19);
+			   this->label12->Size = System::Drawing::Size(87, 23);
 			   this->label12->TabIndex = 31;
 			   this->label12->Text = L"label12";
 			   this->label12->Visible = false;
@@ -336,7 +335,7 @@ namespace Projet {
 			   // 
 			   this->Box1->Location = System::Drawing::Point(245, 231);
 			   this->Box1->Name = L"Box1";
-			   this->Box1->Size = System::Drawing::Size(148, 26);
+			   this->Box1->Size = System::Drawing::Size(148, 31);
 			   this->Box1->TabIndex = 14;
 			   this->Box1->Visible = false;
 			   // 
@@ -344,7 +343,7 @@ namespace Projet {
 			   // 
 			   this->Box2->Location = System::Drawing::Point(460, 231);
 			   this->Box2->Name = L"Box2";
-			   this->Box2->Size = System::Drawing::Size(161, 26);
+			   this->Box2->Size = System::Drawing::Size(161, 31);
 			   this->Box2->TabIndex = 13;
 			   this->Box2->Visible = false;
 			   // 
@@ -352,7 +351,7 @@ namespace Projet {
 			   // 
 			   this->Box3->Location = System::Drawing::Point(245, 282);
 			   this->Box3->Name = L"Box3";
-			   this->Box3->Size = System::Drawing::Size(148, 26);
+			   this->Box3->Size = System::Drawing::Size(148, 31);
 			   this->Box3->TabIndex = 12;
 			   this->Box3->Visible = false;
 			   // 
@@ -360,7 +359,7 @@ namespace Projet {
 			   // 
 			   this->Box4->Location = System::Drawing::Point(460, 281);
 			   this->Box4->Name = L"Box4";
-			   this->Box4->Size = System::Drawing::Size(161, 26);
+			   this->Box4->Size = System::Drawing::Size(161, 31);
 			   this->Box4->TabIndex = 11;
 			   this->Box4->Visible = false;
 			   // 
@@ -368,7 +367,7 @@ namespace Projet {
 			   // 
 			   this->Box5->Location = System::Drawing::Point(245, 333);
 			   this->Box5->Name = L"Box5";
-			   this->Box5->Size = System::Drawing::Size(148, 26);
+			   this->Box5->Size = System::Drawing::Size(148, 31);
 			   this->Box5->TabIndex = 10;
 			   this->Box5->Visible = false;
 			   // 
@@ -376,7 +375,7 @@ namespace Projet {
 			   // 
 			   this->Box6->Location = System::Drawing::Point(460, 332);
 			   this->Box6->Name = L"Box6";
-			   this->Box6->Size = System::Drawing::Size(161, 26);
+			   this->Box6->Size = System::Drawing::Size(161, 31);
 			   this->Box6->TabIndex = 8;
 			   this->Box6->Visible = false;
 			   // 
@@ -384,7 +383,7 @@ namespace Projet {
 			   // 
 			   this->Box7->Location = System::Drawing::Point(245, 384);
 			   this->Box7->Name = L"Box7";
-			   this->Box7->Size = System::Drawing::Size(148, 26);
+			   this->Box7->Size = System::Drawing::Size(148, 31);
 			   this->Box7->TabIndex = 9;
 			   this->Box7->Visible = false;
 			   // 
@@ -392,7 +391,7 @@ namespace Projet {
 			   // 
 			   this->Box8->Location = System::Drawing::Point(460, 383);
 			   this->Box8->Name = L"Box8";
-			   this->Box8->Size = System::Drawing::Size(161, 26);
+			   this->Box8->Size = System::Drawing::Size(161, 31);
 			   this->Box8->TabIndex = 7;
 			   this->Box8->Visible = false;
 			   // 
@@ -400,7 +399,7 @@ namespace Projet {
 			   // 
 			   this->Box9->Location = System::Drawing::Point(245, 434);
 			   this->Box9->Name = L"Box9";
-			   this->Box9->Size = System::Drawing::Size(148, 26);
+			   this->Box9->Size = System::Drawing::Size(148, 31);
 			   this->Box9->TabIndex = 24;
 			   this->Box9->Visible = false;
 			   // 
@@ -408,7 +407,7 @@ namespace Projet {
 			   // 
 			   this->Box10->Location = System::Drawing::Point(460, 434);
 			   this->Box10->Name = L"Box10";
-			   this->Box10->Size = System::Drawing::Size(161, 26);
+			   this->Box10->Size = System::Drawing::Size(161, 31);
 			   this->Box10->TabIndex = 26;
 			   this->Box10->Visible = false;
 			   // 
@@ -416,7 +415,7 @@ namespace Projet {
 			   // 
 			   this->Box11->Location = System::Drawing::Point(245, 485);
 			   this->Box11->Name = L"Box11";
-			   this->Box11->Size = System::Drawing::Size(148, 26);
+			   this->Box11->Size = System::Drawing::Size(148, 31);
 			   this->Box11->TabIndex = 25;
 			   this->Box11->Visible = false;
 			   // 
@@ -424,26 +423,23 @@ namespace Projet {
 			   // 
 			   this->Box12->Location = System::Drawing::Point(460, 485);
 			   this->Box12->Name = L"Box12";
-			   this->Box12->Size = System::Drawing::Size(161, 26);
+			   this->Box12->Size = System::Drawing::Size(161, 31);
 			   this->Box12->TabIndex = 27;
 			   this->Box12->Visible = false;
 			   // 
 			   // Choix
 			   // 
-			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 19);
+			   this->AutoScaleDimensions = System::Drawing::SizeF(11, 23);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			   this->ClientSize = System::Drawing::Size(675, 565);
-
+			   this->ClientSize = System::Drawing::Size(909, 565);
 			   this->Controls->Add(this->comboBox1);
 			   this->Controls->Add(this->dataGridView1);
-
 			   this->Controls->Add(this->buttonAjouter);
 			   this->Controls->Add(this->buttonModifier);
 			   this->Controls->Add(this->buttonSupprimer);
 			   this->Controls->Add(this->buttonAfficher);
 			   this->Controls->Add(this->buttonValider);
 			   this->Controls->Add(this->A_Propos);
-
 			   this->Controls->Add(this->label1);
 			   this->Controls->Add(this->label2);
 			   this->Controls->Add(this->label3);
@@ -456,7 +452,6 @@ namespace Projet {
 			   this->Controls->Add(this->label10);
 			   this->Controls->Add(this->label11);
 			   this->Controls->Add(this->label12);
-
 			   this->Controls->Add(this->Box1);
 			   this->Controls->Add(this->Box2);
 			   this->Controls->Add(this->Box3);
@@ -468,11 +463,9 @@ namespace Projet {
 			   this->Controls->Add(this->Box9);
 			   this->Controls->Add(this->Box10);
 			   this->Controls->Add(this->Box11);
-			   this->Controls->Add(this->Box12);	   
-
+			   this->Controls->Add(this->Box12);
 			   this->Font = (gcnew System::Drawing::Font(L"Consolas", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-				   
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
 			   this->Margin = System::Windows::Forms::Padding(4);
 			   this->MaximizeBox = false;
@@ -1033,7 +1026,7 @@ namespace Projet {
 			this->dataGridView1->Refresh();
 			this->result = this->Article->Afficher_article(this->Box11->Text, this->Box12->Text);
 			this->dataGridView1->DataSource = this->result;
-			this->dataGridView1->DataMember = "Stock";
+			this->dataGridView1->DataMember = "Article";
 		}
 		else if (valider == 5) {
 			//fonction qui ajoute le personnel

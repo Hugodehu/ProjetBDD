@@ -15,7 +15,7 @@ namespace NS_load
 
     public:
         CLload(void);
-        System::Data::DataSet^ getRows(System::String^);
+        System::Data::DataSet^ getRows(System::String^, System::String^);
         void actionRows(System::String^);
     };
 }

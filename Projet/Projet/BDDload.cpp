@@ -13,13 +13,13 @@ NS_load::CLload::CLload(void)
 
     this->oCmd->CommandType = System::Data::CommandType::Text;
 }
-System::Data::DataSet^ NS_load::CLload::getRows(System::String^ sSql)
+System::Data::DataSet^ NS_load::CLload::getRows(System::String^ sSql, System::String^ sDataTableName)
 {
     this->oDs->Clear();
     this->sSql = sSql;
     this->oCmd->CommandText = this->sSql;
     this->oDA->SelectCommand = this->oCmd;
-    this->oDA->Fill(this->oDs);
+    this->oDA->Fill(this->oDs, sDataTableName);
 
     return this->oDs;
 }

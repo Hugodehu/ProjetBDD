@@ -18,12 +18,12 @@ System::String^ NS_BDD::Personnel::get_superieur() { return this->superieur; }
 System::String^ NS_BDD::Personnel::get_date_embauche() { return this->date_embauche; }
 
 System::String^ NS_BDD::Personnel::Afficher(/*System::String^*/) {
-    return "SELECT id_personnel, Personnel.nom, prenom, Ville.nom Nom_de_la_ville, Ville.code_postal, Adresse.rue, date_embauche, superieur FROM Personnel INNER JOIN Adresse ON Adresse.id_adresse = Personnel.id_adresse INNER JOIN Ville ON Ville.id_ville = Adresse.id_ville WHERE(Adresse.id_adresse = Personnel.id_adresse AND Personnel.id_personnel = 2 AND Personnel.nom = 'Shockley' AND prenom = 'Kay');";
+    return "SELECT id_personnel, Personnel.nom, prenom, Ville.nom Nom_de_la_ville, Ville.code_postal, Adresse.rue, date_embauche, superieur FROM Personnel INNER JOIN Adresse ON Adresse.id_adresse = Personnel.id_adresse INNER JOIN Ville ON Ville.id_ville = Adresse.id_ville WHERE(Adresse.id_adresse = Personnel.id_adresse  AND Personnel.nom = '"+this->get_nom()+"' AND prenom = '"+this->get_prenom()+"');";
 }
 //test
 
 System::String^ NS_BDD::Personnel::Modifier() {
-    return "UPDATE Personnel SET Personnel.nom = 'DR. XXXXXX', Personnel.prenom = 'douze',  Personnel.date_embauche = 2020-02-07, Personnel.superieur = 0 FROM Personnel WHERE Personnel.id_personnel = 2;";
+    return "UPDATE Personnel SET Personnel.nom = '" + this->get_nom() + "', Personnel.prenom = '" + this->get_prenom() + "',  Personnel.date_embauche = '" + this->get_date_embauche() + "', Personnel.superieur = '" + this->get_superieur() + "' FROM Personnel WHERE Personnel.id_personnel = '" + this->get_id_personnel() + "';";
 }
 
 System::String^ NS_BDD::Personnel::Ajouter(System::String^ email, System::String^ rue) {
@@ -32,5 +32,5 @@ System::String^ NS_BDD::Personnel::Ajouter(System::String^ email, System::String
 }
 
 System::String^ NS_BDD::Personnel::Supprimer() {
-    return "CREATE TABLE DeletePersonnel(Id int Not NULL primary key, Id_authentification int NOT NULL, Id_adresse int NOT NULL, nom char (30), prenom char(30)) INSERT INTO DeletePersonnel SELECT Personnel.id_personnel, Personnel.id_authentification, Personnel.nom, Personnel.prenom from Personnel WHERE(id_personnel = "+ this->get_id_personnel()+" AND nom = '"+ this->get_nom()+"' AND prenom = '"+this->get_prenom() + "'); DELETE FROM Personnel WHERE id_personnel IN(SELECT DeletePersonnel.Id FROM DeletePersonnel WHERE DeletePersonnel.Id = "+ this->get_id_personnel() + "  AND DeletePersonnel.nom = '"+ this->get_nom()+"' AND DeletePersonnel.prenom = '"+this->get_prenom()+"');";
+    return "CREATE TABLE dbo.DeletePersonnel(Id int Not NULL primary key, Id_authentification int NOT NULL, Id_adresse int NOT NULL, nom char (30), prenom char(30)) INSERT INTO dbo.DeletePersonnel SELECT Personnel.id_personnel, Personnel.id_authentification, Personnel.id_adresse , Personnel.nom, Personnel.prenom from Personnel WHERE(id_personnel = "+ this->get_id_personnel()+" AND nom = '"+ this->get_nom()+"' AND prenom = '"+this->get_prenom() + "')  DELETE FROM Personnel WHERE id_personnel = (SELECT DeletePersonnel.Id FROM dbo.DeletePersonnel WHERE DeletePersonnel.Id = '" + this->get_id_personnel() + "'  AND DeletePersonnel.nom = '" + this->get_nom() + "' AND DeletePersonnel.prenom = '" + this->get_prenom() + "')";
 }
