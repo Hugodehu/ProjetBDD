@@ -67,7 +67,7 @@ System::Data::DataSet^ NS_BDDservice::service_Personnel::Afficher_personnel(Syst
 
 void NS_BDDservice::service_Personnel::Ajouter_personnel(System::String^ Nom, System::String^ Prenom, System::String^ Date_embauche, System::String^ superieur, System::String^ id_sup, System::String^ email, System::String^ mdp, System::String^ rue, System::String^ Ville, System::String^ code_postal)
 {
-     System::String^ result;
+       System::String^ result;
     oPersonnel = gcnew NS_BDD::Personnel;
    
 
@@ -89,12 +89,13 @@ void NS_BDDservice::service_Personnel::Ajouter_personnel(System::String^ Nom, Sy
     this->oCad->actionRows(result);
     result = this->oPersonnel->Ajouter(this->oAuth->getEmail(), this->oAdresse->get_rue());
     this->oCad->actionRows(result);
+    
 }
 
 void NS_BDDservice::service_Personnel::Modifier_personnel(System::String^ id, System::String^ Nom, System::String^ Prenom, System::String^ Date_embauche, System::String^ superieur, System::String^ id_sup, System::String^ email, System::String^ mdp, System::String^ rue, System::String^ Ville, System::String^ code_postal)
 {
     System::String^ result;
-    
+   
     this->oPersonnel->set_id_personnel(id);
     this->oPersonnel->set_nom(Nom);
     this->oPersonnel->set_prenom(Prenom);
@@ -155,22 +156,20 @@ System::Data::DataSet^ NS_BDDservice::service_Client::Afficher_client(System::St
 
 void NS_BDDservice::service_Client::Ajouter_client(System::String^ Nom, System::String^ Prenom, System::String^ Date_de_naissance, System::String^ Date_premiere_commande, System::String^ rue_livraison, System::String^ ville_livraison, System::String^ Code_postal_livraison, System::String^ rue_facturation, System::String^ Ville_facturation, System::String^ code_postal_facturation)
 {
+    
     System::String^ result;
     
+
     this->oClient->set_date_premiere_commande(Date_premiere_commande);
     this->oClient->set_nom(Nom);
     this->oClient->set_prenom(Prenom);
     this->oClient->set_date_naissance(Date_de_naissance);
-    this->oAdresse->set_rue(rue_livraison);
-    this->oVille->set_nom(ville_livraison);
     this->oVille->set_code_postal(Code_postal_livraison);
     this->oAdresse->set_rue(rue_facturation);
     this->oVille->set_nom(ville_livraison);
     this->oVille->set_code_postal(code_postal_facturation);
     
-    result = this->oClient->Ajouter(this->oAdresse->get_rue(), this->oVille->get_id_ville());
-    this->oCad->actionRows(result);
-    result = this->oAdresse->Ajouter(this->oVille->get_nom());
+    result = this->oClient->Ajouter(rue_facturation, Ville_facturation, rue_livraison, ville_livraison);
     this->oCad->actionRows(result);
 }
 
@@ -178,7 +177,6 @@ void NS_BDDservice::service_Client::Modifier_client(System::String^ id, System::
     
     System::String^ result;
     
-   
     this->oClient->set_id_client(id);
     this->oClient->set_date_premiere_commande(Date_premiere_commande);
     this->oClient->set_nom(Nom);
@@ -193,13 +191,13 @@ void NS_BDDservice::service_Client::Modifier_client(System::String^ id, System::
    
     result = this->oClient->Modifier(this->oAdresse->get_rue(), this->oVille->get_id_ville(), this->oVille->get_code_postal());
     this->oCad->actionRows(result);
-    result = this->oAdresse->Modifier(this->oClient->get_id_client(), this->oClient->get_nom(), this->oClient->get_prenom(),this->oVille->get_id_ville(), this->oVille->get_code_postal()); 
+    result = this->oAdresse->Modifier();
     this->oCad->actionRows(result);
 }
 
 void NS_BDDservice::service_Client::effacer_client(System::String^ id, System::String^ Nom, System::String^ Prenom) {
     
-    System::String^ result;
+     System::String^ result;
     
     this->oClient->set_nom(Nom);
     this->oClient->set_prenom(Prenom);
@@ -207,6 +205,7 @@ void NS_BDDservice::service_Client::effacer_client(System::String^ id, System::S
     
     result = this->oClient->Supprimer();
     this->oCad->actionRows(result);
+
 
 }
 //
@@ -238,10 +237,8 @@ void NS_BDDservice::service_Commande::Ajouter_commande(System::String^ id, Syste
 {
     System::String^ result;
     
-    this->oArticle->set_nom(Nomart);
-    this->oClient->set_nom(Nomclient);
-    this->oClient->set_prenom(Prenomclient);
-    this->oClient->set_id_client(id);
+
+    this->oArticle->set_nom(Nomclient); 
     this->oCommande->set_quantité(Quantité);
     this->oArticle->set_couleur(Couleur);
     this->oCommande->set_TVA(tva);
@@ -250,12 +247,10 @@ void NS_BDDservice::service_Commande::Ajouter_commande(System::String^ id, Syste
     this->oPaiement->set_solde(Nbr_paiement);
     this->oPaiement->set_date_emission(Date_prem_paiment);
     this->oPaiement->set_date_paiement(Date_paiement);
-    result = this->oCommande->Ajouter(this->oClient->get_nom(), this->oClient->get_prenom(), this->oClient->get_id_client(), this->oCommande->get_quantite(), this->oArticle->get_nom(), this->oArticle->get_nature(), this->oArticle->get_couleur());
-    //ICI
+
+    result = this->oCommande->Ajouter();
     this->oCad->actionRows(result);
-    result = this->oPaiement->Ajouter(Nbr_paiement, this->oCommande->get_reference()); 
-    this->oCad->actionRows(result);
-    result = this->oArticle->Ajouter();
+    result = this->oPaiement->Ajouter(Nbr_paiement, this->oCommande->get_reference());
     this->oCad->actionRows(result);
 
 }
@@ -277,10 +272,6 @@ void NS_BDDservice::service_Commande::Modifier_commande(System::String^ Referenc
 
     result = this->oCommande->Modifier();
     this->oCad->actionRows(result);
-
-    result = this->oArticle->Modifier();
-    this->oCad->actionRows(result);
-
     result = this->oPaiement->Modifier();
     this->oCad->actionRows(result);
 }
@@ -317,33 +308,33 @@ System::Data::DataSet^ NS_BDDservice::service_Article::Afficher_article(System::
 
 void NS_BDDservice::service_Article::Ajouter_article(System::String^ nom,System::String^ Nature, System::String^ PrixHT, System::String^ TVA, System::String^ quantitéstock, System::String^ couleur, System::String^ Seuilrea)
 {
-    System::String^ result;
-
+   System::String^ result;
+   
     this->oArticle->set_nom(nom);
     this->oArticle->set_nature(Nature);
-    this->oArticle->set_nature(PrixHT);
+    this->oArticle->set_prix_HT(PrixHT);
     this->oArticle->set_TVA(TVA);
     this->oArticle->set_quantite_stock(quantitéstock);
     this->oArticle->set_couleur(couleur);
     this->oArticle->set_seuil(Seuilrea);
-
     result = this->oArticle->Ajouter();
+    
     this->oCad->actionRows(result);
 }
 
 void NS_BDDservice::service_Article::Modifier_article(System::String^ Id, System::String^ nom,System::String^ Nature, System::String^ PrixHT, System::String^ TVA, System::String^ quantitéstock, System::String^ couleur, System::String^ Seuilrea)
 {
     System::String^ result;
+    
 
     this->oArticle->set_id_article(Id);
     this->oArticle->set_nom(nom);
     this->oArticle->set_nature(Nature);
-    this->oArticle->set_nature(PrixHT);
+    this->oArticle->set_prix_HT(PrixHT);
     this->oArticle->set_TVA(TVA);
     this->oArticle->set_quantite_stock(quantitéstock);
     this->oArticle->set_couleur(couleur);
     this->oArticle->set_seuil(Seuilrea);
-
     result = this->oArticle->Modifier();
     this->oCad->actionRows(result);
 }
@@ -351,7 +342,8 @@ void NS_BDDservice::service_Article::Modifier_article(System::String^ Id, System
 void NS_BDDservice::service_Article::effacer_article(System::String^ nature, System::String^ nom, System::String^ couleur)
 {
     System::String^ result;
-    this->oArticle->set_nature(nature);
+    
+
     this->oArticle->set_nom(nom);
     this->oArticle->set_couleur(couleur);
 

@@ -14,15 +14,15 @@ System::String^ NS_BDD::Client::get_prenom() { return this->prenom; }
 System::String^ NS_BDD::Client::get_date_naissance() { return this->date_naissance;}
 System::String^ NS_BDD::Client::get_date_premiere_commande() { return this->Date_premiere_commande; }
 
-System::String^ NS_BDD::Client::Ajouter(System::String^ rue, System::String^ ville)
+System::String^ NS_BDD::Client::Ajouter(System::String^ rue_fact, System::String^ ville_fact, System::String^ rue_livr, System::String^ ville_livr )
 {
-	return "INSERT INTO Client (nom, prenom, date_naissance, date_premiere_commande) Values('" + this->get_nom() + "', '" + this->get_prenom() + "', '" + this->get_date_naissance() + "', '" + this->get_date_premiere_commande() + "') INSERT INTO Adresse(rue, id_ville, id_client) select '" + rue + "', Ville.id_ville, Client.id_client FROM Ville, Client WHERE Ville.nom = '" + ville + "' and Client.nom = '" + this->get_nom() + "' and Client.prenom = '" + this->get_prenom() + "'; ";
+	return "INSERT INTO Client (nom, prenom, date_naissance, date_premiere_commande) Values('" + this->get_nom() + "', '" + this->get_prenom() + "', '" + this->get_date_naissance() + "', '" + this->get_date_premiere_commande() + "') INSERT INTO Adresse(rue, id_ville, id_client) select '" + rue_fact + "', Ville.id_ville, Client.id_client FROM Ville, Client WHERE Ville.nom = '" + ville_fact + "' and Client.nom = '" + this->get_nom() + "' and Client.prenom = '" + this->get_prenom() + "' INSERT INTO Adresse(rue, id_ville, id_client_Livrer) select '" + rue_livr + "', Ville.id_ville, Client.id_client FROM Ville, Client WHERE Ville.nom = '" + ville_livr + "' and Client.nom = '" + this->get_nom() + "' and Client.prenom = '" + this->get_prenom() + "'; ";
 	//ICI
 }
 
 System::String^ NS_BDD::Client::Afficher()
 {
-	return "SELECT Client.id_client, client.nom, Client.prenom, Ville.nom Nom_de_la_ville, Ville.code_postal, Adresse.rue FROM Client INNER JOIN Adresse ON Adresse.id_client = Client.id_client INNER JOIN Ville ON Ville.id_ville = Adresse.id_ville WHERE (Client.nom = '" + this->get_nom() + "' AND Client.prenom = '" + this->get_prenom() + "'); ";
+	return "SELECT Client.id_client, Client.nom, Client.prenom, Ville.nom Nom_de_la_ville, Ville.code_postal, Adresse.rue FROM Client INNER JOIN Adresse ON Adresse.id_client = Client.id_client OR Adresse.id_client_Livrer = Client.id_client INNER JOIN Ville ON Ville.id_ville = Adresse.id_ville WHERE ( (Adresse.id_client = Client.id_client AND Client.nom = '" + this->get_nom() + "' AND Client.prenom = '" + this->get_prenom() + "') OR Adresse.id_client_Livrer = Client.id_client AND Client.nom = '" + this->get_nom() + "' AND Client.prenom = '" + this->get_prenom() + "'); ";
 	//ICI
 }
 

@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Adresse.h"
 
+//salut la team
+
 
 void NS_BDD::Adresse::set_id_adresse(System::String^ id_adresse) { this->id_adresse = id_adresse; }
 void NS_BDD::Adresse::set_rue(System::String^ rue) { this->rue = rue; }

@@ -18,12 +18,12 @@ System::String^ NS_BDD::Personnel::get_superieur() { return this->superieur; }
 System::String^ NS_BDD::Personnel::get_date_embauche() { return this->date_embauche; }
 
 System::String^ NS_BDD::Personnel::Afficher(/*System::String^*/) {
-    return "SELECT id_personnel, Personnel.nom, prenom, Ville.nom Nom_de_la_ville, Ville.code_postal, Adresse.rue, date_embauche, superieur FROM Personnel INNER JOIN Adresse ON Adresse.id_adresse = Personnel.id_adresse INNER JOIN Ville ON Ville.id_ville = Adresse.id_ville WHERE(Adresse.id_adresse = Personnel.id_adresse AND Personnel.id_personnel = 2 AND Personnel.nom = 'Shockley' AND prenom = 'Kay');";
+    return "SELECT id_personnel, Personnel.nom, prenom, Ville.nom Nom_de_la_ville, Ville.code_postal, Adresse.rue, date_embauche, superieur FROM Personnel INNER JOIN Adresse ON Adresse.id_adresse = Personnel.id_adresse INNER JOIN Ville ON Ville.id_ville = Adresse.id_ville WHERE(Adresse.id_adresse = Personnel.id_adresse  AND Personnel.nom = '"+this->get_nom()+"' AND prenom = '"+this->get_prenom()+"');";
 }
 //test
 
 System::String^ NS_BDD::Personnel::Modifier() {
-    return "UPDATE Personnel SET Personnel.nom = 'DR. XXXXXX', Personnel.prenom = 'douze',  Personnel.date_embauche = 2020-02-07, Personnel.superieur = 0 FROM Personnel WHERE Personnel.id_personnel = 2;";
+    return "UPDATE Personnel SET Personnel.nom = '" + this->get_nom() + "', Personnel.prenom = '" + this->get_prenom() + "',  Personnel.date_embauche = '" + this->get_date_embauche() + "', Personnel.superieur = '" + this->get_superieur() + "' FROM Personnel WHERE Personnel.id_personnel = '" + this->get_id_personnel() + "';";
 }
 
 System::String^ NS_BDD::Personnel::Ajouter(System::String^ email, System::String^ rue) {

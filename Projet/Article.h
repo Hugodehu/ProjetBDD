@@ -33,9 +33,9 @@ namespace NS_BDD
         System::String^ get_couleur(void);
         System::String^ get_seuil(void);
 
-        System::String^ Ajouter(void);
+        System::String^ Ajouter();
         System::String^ Afficher(void);
-        System::String^ Modifier(void);
+        System::String^ Modifier();
         System::String^ Supprimer(void);
     };
 }
