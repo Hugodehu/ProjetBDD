@@ -191,8 +191,6 @@ void NS_BDDservice::service_Client::Modifier_client(System::String^ id, System::
    
     result = this->oClient->Modifier(this->oAdresse->get_rue(), this->oVille->get_id_ville(), this->oVille->get_code_postal());
     this->oCad->actionRows(result);
-    result = this->oAdresse->Modifier();
-    this->oCad->actionRows(result);
 }
 
 void NS_BDDservice::service_Client::effacer_client(System::String^ id, System::String^ Nom, System::String^ Prenom) {
@@ -236,9 +234,8 @@ System::Data::DataSet^ NS_BDDservice::service_Commande::Afficher_commande(System
 void NS_BDDservice::service_Commande::Ajouter_commande(System::String^ id, System::String^ Nomclient, System::String^ Prenomclient, System::String^ Nomart, System::String^ Quantité, System::String^ Couleur, System::String^ tva, System::String^ remise, System::String^ moyen_paiement, System::String^ Nbr_paiement, System::String^ Date_prem_paiment, System::String^ Date_paiement)
 {
     System::String^ result;
-    
-
-    this->oArticle->set_nom(Nomclient); 
+    System::String^ sql;
+    this->oArticle->set_nom(Nomart); 
     this->oCommande->set_quantité(Quantité);
     this->oArticle->set_couleur(Couleur);
     this->oCommande->set_TVA(tva);
@@ -247,10 +244,18 @@ void NS_BDDservice::service_Commande::Ajouter_commande(System::String^ id, Syste
     this->oPaiement->set_solde(Nbr_paiement);
     this->oPaiement->set_date_emission(Date_prem_paiment);
     this->oPaiement->set_date_paiement(Date_paiement);
+    this->oClient->set_id_client(id);
+    this->oClient->set_nom(Nomclient);
+    this->oClient->set_prenom(Prenomclient);
 
-    result = this->oCommande->Ajouter();
+sql ="update Commande set Commande.reference = (select concat(LEFT(upper(Client.prenom), 2), '', LEFT(upper(Client.nom), 2), '', YEAR(Commande.date_emission), '', LEFT(upper(Ville.nom), 3), '', Commande.id_commande)) from Commande Full join Client on Commande.id_client = Client.id_client Full join Adresse on Adresse.id_client_Livrer = Client.id_client Full join Ville on Ville.id_ville = Adresse.id_ville where(Commande.id_client = '"+this->oClient->get_id_client()+"' and Commande.date_emission = '"+this->oCommande->get_date_emission()+"' and Commande.date_livraison = '"+this->oCommande->get_date_livraison()+"') ;";
+    
+result = this->oCommande->Ajouter(this->oClient->get_nom(), this->oClient->get_prenom(), this->oClient->get_id_client());
     this->oCad->actionRows(result);
-    result = this->oPaiement->Ajouter(Nbr_paiement, this->oCommande->get_reference());
+    this->oCad->actionRows(sql);
+    sql = "Select Commande.reference from Commande where (id_client = '" + this->oClient->get_id_client() + "' and Commande.date_emission = '" + this->oCommande->get_date_emission() + "' and Commande.date_livraison = '" + this->oCommande->get_date_livraison() + "');";
+    this->oCommande->set_reference(this->oCad->getRows(sql, "Commande")->ToString());
+    result = this->oCommande->Ajouter2(this->oArticle->get_nom(), this->oArticle->get_nature(), this->oArticle->get_couleur(), this->oPaiement->get_solde(), this->oPaiement->get_date_paiement(), this->oPaiement->get_moyen());
     this->oCad->actionRows(result);
 
 }

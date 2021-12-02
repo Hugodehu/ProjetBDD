@@ -38,8 +38,8 @@ namespace NS_BDD
         System::String^ get_remise(void);
         System::String^ get_prix_final(void);
         System::String^ get_quantite(void);
-
-        System::String^ Ajouter(System::String^ , System::String^ , System::String^ , System::String^ , System::String^, System::String^ , System::String^ , System::String^ , System::String^ );
+        System::String^ Ajouter2(System::String^, System::String^, System::String^, System::String^, System::String^, System::String^);
+        System::String^ Ajouter(System::String^ , System::String^ , System::String^ );
         System::String^ Afficher(void);
         System::String^ Modifier(void);
         System::String^ Supprimer(void);

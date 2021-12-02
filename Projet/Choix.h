@@ -133,6 +133,7 @@ namespace Projet {
 			   // comboBox1
 			   // 
 			   this->comboBox1->AllowDrop = true;
+			   this->comboBox1->BackColor = System::Drawing::Color::White;
 			   this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			   this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			   this->comboBox1->FormattingEnabled = true;
@@ -142,83 +143,91 @@ namespace Projet {
 			   });
 			   this->comboBox1->Location = System::Drawing::Point(12, 230);
 			   this->comboBox1->Name = L"comboBox1";
-			   this->comboBox1->Size = System::Drawing::Size(203, 27);
+			   this->comboBox1->Size = System::Drawing::Size(203, 31);
 			   this->comboBox1->TabIndex = 0;
 			   this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Choix::comboBox1_SelectedIndexChanged);
 			   this->comboBox1->Click += gcnew System::EventHandler(this, &Choix::comboBox1_Click);
 			   // 
 			   // dataGridView1
 			   // 
+			   this->dataGridView1->BackgroundColor = System::Drawing::Color::White;
 			   this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			   this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			   this->dataGridView1->Location = System::Drawing::Point(12, 12);
 			   this->dataGridView1->Name = L"dataGridView1";
+			   this->dataGridView1->RowHeadersWidth = 51;
 			   this->dataGridView1->Size = System::Drawing::Size(655, 191);
 			   this->dataGridView1->TabIndex = 5;
 			   // 
 			   // buttonAjouter
 			   // 
+			   this->buttonAjouter->BackColor = System::Drawing::Color::White;
 			   this->buttonAjouter->Location = System::Drawing::Point(117, 365);
 			   this->buttonAjouter->Name = L"buttonAjouter";
 			   this->buttonAjouter->Size = System::Drawing::Size(98, 66);
 			   this->buttonAjouter->TabIndex = 1;
 			   this->buttonAjouter->Text = L"Ajouter";
-			   this->buttonAjouter->UseVisualStyleBackColor = true;
+			   this->buttonAjouter->UseVisualStyleBackColor = false;
 			   this->buttonAjouter->Visible = false;
 			   this->buttonAjouter->Click += gcnew System::EventHandler(this, &Choix::buttonAjouter_Click);
 			   // 
 			   // buttonModifier
 			   // 
+			   this->buttonModifier->BackColor = System::Drawing::Color::White;
 			   this->buttonModifier->Location = System::Drawing::Point(12, 434);
 			   this->buttonModifier->Name = L"buttonModifier";
 			   this->buttonModifier->Size = System::Drawing::Size(99, 66);
 			   this->buttonModifier->TabIndex = 2;
 			   this->buttonModifier->Text = L"Modifier";
-			   this->buttonModifier->UseVisualStyleBackColor = true;
+			   this->buttonModifier->UseVisualStyleBackColor = false;
 			   this->buttonModifier->Visible = false;
 			   this->buttonModifier->Click += gcnew System::EventHandler(this, &Choix::buttonModifier_Click);
 			   // 
 			   // buttonSupprimer
 			   // 
+			   this->buttonSupprimer->BackColor = System::Drawing::Color::White;
 			   this->buttonSupprimer->Location = System::Drawing::Point(117, 434);
 			   this->buttonSupprimer->Name = L"buttonSupprimer";
 			   this->buttonSupprimer->Size = System::Drawing::Size(98, 66);
 			   this->buttonSupprimer->TabIndex = 3;
 			   this->buttonSupprimer->Text = L"Supprimer";
-			   this->buttonSupprimer->UseVisualStyleBackColor = true;
+			   this->buttonSupprimer->UseVisualStyleBackColor = false;
 			   this->buttonSupprimer->Visible = false;
 			   this->buttonSupprimer->Click += gcnew System::EventHandler(this, &Choix::buttonSupprimer_Click);
 			   // 
 			   // buttonAfficher
 			   // 
+			   this->buttonAfficher->BackColor = System::Drawing::Color::White;
 			   this->buttonAfficher->Location = System::Drawing::Point(12, 365);
 			   this->buttonAfficher->Name = L"buttonAfficher";
 			   this->buttonAfficher->Size = System::Drawing::Size(99, 66);
 			   this->buttonAfficher->TabIndex = 4;
 			   this->buttonAfficher->Text = L"Afficher";
-			   this->buttonAfficher->UseVisualStyleBackColor = true;
+			   this->buttonAfficher->UseVisualStyleBackColor = false;
 			   this->buttonAfficher->Visible = false;
 			   this->buttonAfficher->Click += gcnew System::EventHandler(this, &Choix::buttonAfficher_Click);
 			   // 
 			   // buttonValider
 			   // 
+			   this->buttonValider->BackColor = System::Drawing::Color::White;
 			   this->buttonValider->Location = System::Drawing::Point(245, 517);
 			   this->buttonValider->Name = L"buttonValider";
 			   this->buttonValider->Size = System::Drawing::Size(376, 42);
 			   this->buttonValider->TabIndex = 23;
 			   this->buttonValider->Text = L"Valider";
-			   this->buttonValider->UseVisualStyleBackColor = true;
+			   this->buttonValider->UseVisualStyleBackColor = false;
 			   this->buttonValider->Visible = false;
 			   this->buttonValider->Click += gcnew System::EventHandler(this, &Choix::buttonValider_Click);
 			   // 
 			   // A_Propos
 			   // 
+			   this->A_Propos->BackColor = System::Drawing::Color::White;
 			   this->A_Propos->Location = System::Drawing::Point(12, 506);
 			   this->A_Propos->Name = L"A_Propos";
 			   this->A_Propos->Size = System::Drawing::Size(203, 53);
 			   this->A_Propos->TabIndex = 32;
 			   this->A_Propos->Text = L"À Propos";
-			   this->A_Propos->UseVisualStyleBackColor = true;
+			   this->A_Propos->UseVisualStyleBackColor = false;
 			   this->A_Propos->Click += gcnew System::EventHandler(this, &Choix::button1_Click);
 			   // 
 			   // label1
@@ -226,7 +235,7 @@ namespace Projet {
 			   this->label1->AutoSize = true;
 			   this->label1->Location = System::Drawing::Point(241, 206);
 			   this->label1->Name = L"label1";
-			   this->label1->Size = System::Drawing::Size(63, 19);
+			   this->label1->Size = System::Drawing::Size(76, 23);
 			   this->label1->TabIndex = 15;
 			   this->label1->Text = L"label1";
 			   this->label1->Visible = false;
@@ -236,7 +245,7 @@ namespace Projet {
 			   this->label2->AutoSize = true;
 			   this->label2->Location = System::Drawing::Point(456, 206);
 			   this->label2->Name = L"label2";
-			   this->label2->Size = System::Drawing::Size(63, 19);
+			   this->label2->Size = System::Drawing::Size(76, 23);
 			   this->label2->TabIndex = 16;
 			   this->label2->Text = L"label2";
 			   this->label2->Visible = false;
@@ -246,7 +255,7 @@ namespace Projet {
 			   this->label3->AutoSize = true;
 			   this->label3->Location = System::Drawing::Point(241, 260);
 			   this->label3->Name = L"label3";
-			   this->label3->Size = System::Drawing::Size(63, 19);
+			   this->label3->Size = System::Drawing::Size(76, 23);
 			   this->label3->TabIndex = 17;
 			   this->label3->Text = L"label3";
 			   this->label3->Visible = false;
@@ -256,7 +265,7 @@ namespace Projet {
 			   this->label4->AutoSize = true;
 			   this->label4->Location = System::Drawing::Point(456, 259);
 			   this->label4->Name = L"label4";
-			   this->label4->Size = System::Drawing::Size(63, 19);
+			   this->label4->Size = System::Drawing::Size(76, 23);
 			   this->label4->TabIndex = 18;
 			   this->label4->Text = L"label4";
 			   this->label4->Visible = false;
@@ -266,7 +275,7 @@ namespace Projet {
 			   this->label5->AutoSize = true;
 			   this->label5->Location = System::Drawing::Point(241, 311);
 			   this->label5->Name = L"label5";
-			   this->label5->Size = System::Drawing::Size(63, 19);
+			   this->label5->Size = System::Drawing::Size(76, 23);
 			   this->label5->TabIndex = 19;
 			   this->label5->Text = L"label5";
 			   this->label5->Visible = false;
@@ -276,7 +285,7 @@ namespace Projet {
 			   this->label6->AutoSize = true;
 			   this->label6->Location = System::Drawing::Point(456, 310);
 			   this->label6->Name = L"label6";
-			   this->label6->Size = System::Drawing::Size(63, 19);
+			   this->label6->Size = System::Drawing::Size(76, 23);
 			   this->label6->TabIndex = 20;
 			   this->label6->Text = L"label6";
 			   this->label6->Visible = false;
@@ -286,7 +295,7 @@ namespace Projet {
 			   this->label7->AutoSize = true;
 			   this->label7->Location = System::Drawing::Point(241, 362);
 			   this->label7->Name = L"label7";
-			   this->label7->Size = System::Drawing::Size(63, 19);
+			   this->label7->Size = System::Drawing::Size(76, 23);
 			   this->label7->TabIndex = 21;
 			   this->label7->Text = L"label7";
 			   this->label7->Visible = false;
@@ -296,7 +305,7 @@ namespace Projet {
 			   this->label8->AutoSize = true;
 			   this->label8->Location = System::Drawing::Point(456, 361);
 			   this->label8->Name = L"label8";
-			   this->label8->Size = System::Drawing::Size(63, 19);
+			   this->label8->Size = System::Drawing::Size(76, 23);
 			   this->label8->TabIndex = 22;
 			   this->label8->Text = L"label8";
 			   this->label8->Visible = false;
@@ -306,7 +315,7 @@ namespace Projet {
 			   this->label9->AutoSize = true;
 			   this->label9->Location = System::Drawing::Point(241, 412);
 			   this->label9->Name = L"label9";
-			   this->label9->Size = System::Drawing::Size(63, 19);
+			   this->label9->Size = System::Drawing::Size(76, 23);
 			   this->label9->TabIndex = 28;
 			   this->label9->Text = L"label9";
 			   this->label9->Visible = false;
@@ -316,7 +325,7 @@ namespace Projet {
 			   this->label10->AutoSize = true;
 			   this->label10->Location = System::Drawing::Point(456, 412);
 			   this->label10->Name = L"label10";
-			   this->label10->Size = System::Drawing::Size(72, 19);
+			   this->label10->Size = System::Drawing::Size(87, 23);
 			   this->label10->TabIndex = 29;
 			   this->label10->Text = L"label10";
 			   this->label10->Visible = false;
@@ -326,7 +335,7 @@ namespace Projet {
 			   this->label11->AutoSize = true;
 			   this->label11->Location = System::Drawing::Point(241, 463);
 			   this->label11->Name = L"label11";
-			   this->label11->Size = System::Drawing::Size(72, 19);
+			   this->label11->Size = System::Drawing::Size(87, 23);
 			   this->label11->TabIndex = 30;
 			   this->label11->Text = L"label11";
 			   this->label11->Visible = false;
@@ -336,7 +345,7 @@ namespace Projet {
 			   this->label12->AutoSize = true;
 			   this->label12->Location = System::Drawing::Point(456, 463);
 			   this->label12->Name = L"label12";
-			   this->label12->Size = System::Drawing::Size(72, 19);
+			   this->label12->Size = System::Drawing::Size(87, 23);
 			   this->label12->TabIndex = 31;
 			   this->label12->Text = L"label12";
 			   this->label12->Visible = false;
@@ -345,7 +354,7 @@ namespace Projet {
 			   // 
 			   this->Box1->Location = System::Drawing::Point(245, 231);
 			   this->Box1->Name = L"Box1";
-			   this->Box1->Size = System::Drawing::Size(148, 26);
+			   this->Box1->Size = System::Drawing::Size(148, 31);
 			   this->Box1->TabIndex = 14;
 			   this->Box1->Visible = false;
 			   // 
@@ -353,7 +362,7 @@ namespace Projet {
 			   // 
 			   this->Box2->Location = System::Drawing::Point(460, 231);
 			   this->Box2->Name = L"Box2";
-			   this->Box2->Size = System::Drawing::Size(161, 26);
+			   this->Box2->Size = System::Drawing::Size(161, 31);
 			   this->Box2->TabIndex = 13;
 			   this->Box2->Visible = false;
 			   // 
@@ -361,7 +370,7 @@ namespace Projet {
 			   // 
 			   this->Box3->Location = System::Drawing::Point(245, 282);
 			   this->Box3->Name = L"Box3";
-			   this->Box3->Size = System::Drawing::Size(148, 26);
+			   this->Box3->Size = System::Drawing::Size(148, 31);
 			   this->Box3->TabIndex = 12;
 			   this->Box3->Visible = false;
 			   // 
@@ -369,7 +378,7 @@ namespace Projet {
 			   // 
 			   this->Box4->Location = System::Drawing::Point(460, 281);
 			   this->Box4->Name = L"Box4";
-			   this->Box4->Size = System::Drawing::Size(161, 26);
+			   this->Box4->Size = System::Drawing::Size(161, 31);
 			   this->Box4->TabIndex = 11;
 			   this->Box4->Visible = false;
 			   // 
@@ -377,7 +386,7 @@ namespace Projet {
 			   // 
 			   this->Box5->Location = System::Drawing::Point(245, 333);
 			   this->Box5->Name = L"Box5";
-			   this->Box5->Size = System::Drawing::Size(148, 26);
+			   this->Box5->Size = System::Drawing::Size(148, 31);
 			   this->Box5->TabIndex = 10;
 			   this->Box5->Visible = false;
 			   // 
@@ -385,7 +394,7 @@ namespace Projet {
 			   // 
 			   this->Box6->Location = System::Drawing::Point(460, 332);
 			   this->Box6->Name = L"Box6";
-			   this->Box6->Size = System::Drawing::Size(161, 26);
+			   this->Box6->Size = System::Drawing::Size(161, 31);
 			   this->Box6->TabIndex = 8;
 			   this->Box6->Visible = false;
 			   // 
@@ -393,7 +402,7 @@ namespace Projet {
 			   // 
 			   this->Box7->Location = System::Drawing::Point(245, 384);
 			   this->Box7->Name = L"Box7";
-			   this->Box7->Size = System::Drawing::Size(148, 26);
+			   this->Box7->Size = System::Drawing::Size(148, 31);
 			   this->Box7->TabIndex = 9;
 			   this->Box7->Visible = false;
 			   // 
@@ -401,7 +410,7 @@ namespace Projet {
 			   // 
 			   this->Box8->Location = System::Drawing::Point(460, 383);
 			   this->Box8->Name = L"Box8";
-			   this->Box8->Size = System::Drawing::Size(161, 26);
+			   this->Box8->Size = System::Drawing::Size(161, 31);
 			   this->Box8->TabIndex = 7;
 			   this->Box8->Visible = false;
 			   // 
@@ -409,7 +418,7 @@ namespace Projet {
 			   // 
 			   this->Box9->Location = System::Drawing::Point(245, 434);
 			   this->Box9->Name = L"Box9";
-			   this->Box9->Size = System::Drawing::Size(148, 26);
+			   this->Box9->Size = System::Drawing::Size(148, 31);
 			   this->Box9->TabIndex = 24;
 			   this->Box9->Visible = false;
 			   // 
@@ -417,7 +426,7 @@ namespace Projet {
 			   // 
 			   this->Box10->Location = System::Drawing::Point(460, 434);
 			   this->Box10->Name = L"Box10";
-			   this->Box10->Size = System::Drawing::Size(161, 26);
+			   this->Box10->Size = System::Drawing::Size(161, 31);
 			   this->Box10->TabIndex = 26;
 			   this->Box10->Visible = false;
 			   // 
@@ -425,7 +434,7 @@ namespace Projet {
 			   // 
 			   this->Box11->Location = System::Drawing::Point(245, 485);
 			   this->Box11->Name = L"Box11";
-			   this->Box11->Size = System::Drawing::Size(148, 26);
+			   this->Box11->Size = System::Drawing::Size(148, 31);
 			   this->Box11->TabIndex = 25;
 			   this->Box11->Visible = false;
 			   // 
@@ -433,25 +442,27 @@ namespace Projet {
 			   // 
 			   this->Box12->Location = System::Drawing::Point(460, 485);
 			   this->Box12->Name = L"Box12";
-			   this->Box12->Size = System::Drawing::Size(161, 26);
+			   this->Box12->Size = System::Drawing::Size(161, 31);
 			   this->Box12->TabIndex = 27;
 			   this->Box12->Visible = false;
 			   // 
 			   // Sauvegarder
 			   // 
+			   this->Sauvegarder->BackColor = System::Drawing::Color::White;
 			   this->Sauvegarder->Location = System::Drawing::Point(12, 282);
 			   this->Sauvegarder->Name = L"Sauvegarder";
 			   this->Sauvegarder->Size = System::Drawing::Size(203, 73);
 			   this->Sauvegarder->TabIndex = 33;
 			   this->Sauvegarder->Text = L"Sauvegarder";
-			   this->Sauvegarder->UseVisualStyleBackColor = true;
-			   this->Sauvegarder->Click += gcnew System::EventHandler(this, &Choix::button1_Click_1);
+			   this->Sauvegarder->UseVisualStyleBackColor = false;
 			   this->Sauvegarder->Visible = false;
+			   this->Sauvegarder->Click += gcnew System::EventHandler(this, &Choix::button1_Click_1);
 			   // 
 			   // Choix
 			   // 
-			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 19);
+			   this->AutoScaleDimensions = System::Drawing::SizeF(11, 23);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			   this->BackColor = System::Drawing::Color::LightSkyBlue;
 			   this->ClientSize = System::Drawing::Size(675, 565);
 			   this->Controls->Add(this->Sauvegarder);
 			   this->Controls->Add(this->comboBox1);
