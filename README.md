@@ -14,10 +14,13 @@ Voici les pré-requis pour utiliser notre application:
 
 Pour installer l'application, il suffit de télécharger le fichier Projet.exe situé dans la branche Projet_Final.
 
-
 ## Démarrage
 
 Pour lancer l'application, il faut double-cliquer sur le fichier précédement téléchargé.
+
+## Utilisation de l'application: 
+
+### Test
 
 ## Cette application a été créée à l'aide de :
 
