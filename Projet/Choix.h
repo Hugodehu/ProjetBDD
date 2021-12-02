@@ -3,6 +3,7 @@
 #include "BDDload.h"
 #include "stats.h"
 #include "pch.h"
+#include <fstream>
 namespace Projet {
 
 	using namespace System;
@@ -11,6 +12,10 @@ namespace Projet {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Collections::Generic;
+	using namespace System::Text;
+	using namespace System::IO;
+	using namespace std;
 	public ref class Choix : public System::Windows::Forms::Form
 	{
 	public: bool sup;
@@ -46,6 +51,7 @@ namespace Projet {
 	private: NS_BDDservice::service_Article^ Article;
 	private: NS_BDDservice::service_Commande^ Commande;
 	private: NS_BDDservice::service_Personnel^ Personnel;
+	private: System::String^ index;
 
 
 	private: System::Windows::Forms::Label^ label1;
@@ -73,10 +79,11 @@ namespace Projet {
 	private: System::Windows::Forms::TextBox^ Box10;
 	private: System::Windows::Forms::TextBox^ Box11;
 	private: System::Windows::Forms::TextBox^ Box12;
-
 	private: System::Windows::Forms::Button^ A_Propos;
 	private: System::Data::DataSet^ result;
-	
+	private: System::Windows::Forms::Button^ Sauvegarder;
+
+
 
 	private: short valider;
 
@@ -86,15 +93,12 @@ namespace Projet {
 		   {
 			   this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			   this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-
 			   this->buttonAjouter = (gcnew System::Windows::Forms::Button());
 			   this->buttonModifier = (gcnew System::Windows::Forms::Button());
 			   this->buttonSupprimer = (gcnew System::Windows::Forms::Button());
 			   this->buttonAfficher = (gcnew System::Windows::Forms::Button());
 			   this->buttonValider = (gcnew System::Windows::Forms::Button());
 			   this->A_Propos = (gcnew System::Windows::Forms::Button());
-
-
 			   this->label1 = (gcnew System::Windows::Forms::Label());
 			   this->label2 = (gcnew System::Windows::Forms::Label());
 			   this->label3 = (gcnew System::Windows::Forms::Label());
@@ -107,7 +111,6 @@ namespace Projet {
 			   this->label10 = (gcnew System::Windows::Forms::Label());
 			   this->label11 = (gcnew System::Windows::Forms::Label());
 			   this->label12 = (gcnew System::Windows::Forms::Label());
-
 			   this->Box1 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box2 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box3 = (gcnew System::Windows::Forms::TextBox());
@@ -120,8 +123,7 @@ namespace Projet {
 			   this->Box10 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box11 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box12 = (gcnew System::Windows::Forms::TextBox());
-			   
-			   
+			   this->Sauvegarder = (gcnew System::Windows::Forms::Button());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -131,7 +133,10 @@ namespace Projet {
 			   this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			   this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			   this->comboBox1->FormattingEnabled = true;
-			   this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"Personnel", L"Clients", L"Commandes", L"Stock", L"Statistiques" });
+			   this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+				   L"Personnel", L"Clients", L"Commandes", L"Stock",
+					   L"Statistiques"
+			   });
 			   this->comboBox1->Location = System::Drawing::Point(12, 230);
 			   this->comboBox1->Name = L"comboBox1";
 			   this->comboBox1->Size = System::Drawing::Size(203, 27);
@@ -429,22 +434,31 @@ namespace Projet {
 			   this->Box12->TabIndex = 27;
 			   this->Box12->Visible = false;
 			   // 
+			   // Sauvegarder
+			   // 
+			   this->Sauvegarder->Location = System::Drawing::Point(12, 282);
+			   this->Sauvegarder->Name = L"Sauvegarder";
+			   this->Sauvegarder->Size = System::Drawing::Size(203, 73);
+			   this->Sauvegarder->TabIndex = 33;
+			   this->Sauvegarder->Text = L"Sauvegarder";
+			   this->Sauvegarder->UseVisualStyleBackColor = true;
+			   this->Sauvegarder->Click += gcnew System::EventHandler(this, &Choix::button1_Click_1);
+			   this->Sauvegarder->Visible = false;
+			   // 
 			   // Choix
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 19);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(675, 565);
-
+			   this->Controls->Add(this->Sauvegarder);
 			   this->Controls->Add(this->comboBox1);
 			   this->Controls->Add(this->dataGridView1);
-
 			   this->Controls->Add(this->buttonAjouter);
 			   this->Controls->Add(this->buttonModifier);
 			   this->Controls->Add(this->buttonSupprimer);
 			   this->Controls->Add(this->buttonAfficher);
 			   this->Controls->Add(this->buttonValider);
 			   this->Controls->Add(this->A_Propos);
-
 			   this->Controls->Add(this->label1);
 			   this->Controls->Add(this->label2);
 			   this->Controls->Add(this->label3);
@@ -457,7 +471,6 @@ namespace Projet {
 			   this->Controls->Add(this->label10);
 			   this->Controls->Add(this->label11);
 			   this->Controls->Add(this->label12);
-
 			   this->Controls->Add(this->Box1);
 			   this->Controls->Add(this->Box2);
 			   this->Controls->Add(this->Box3);
@@ -469,11 +482,9 @@ namespace Projet {
 			   this->Controls->Add(this->Box9);
 			   this->Controls->Add(this->Box10);
 			   this->Controls->Add(this->Box11);
-			   this->Controls->Add(this->Box12);	   
-
+			   this->Controls->Add(this->Box12);
 			   this->Font = (gcnew System::Drawing::Font(L"Consolas", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-				   
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
 			   this->Margin = System::Windows::Forms::Padding(4);
 			   this->MaximizeBox = false;
@@ -490,7 +501,13 @@ namespace Projet {
 		   }
 		   //code a optimisiser ->
 #pragma endregion
+	void error()
+	{
+		MessageBox::Show("Veulliez remplir toutes les cases", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+
 	void hide() {
+	this->Sauvegarder->Visible = false;
 	this->buttonValider->Visible = true;
 	this->label1->Visible = false;
 	this->label2->Visible = false;
@@ -676,12 +693,6 @@ namespace Projet {
 			valider = 6;
 		}
 		else if (comboBox1->SelectedIndex == 2) { //commande
-			/// <summary>
-			/// AJOUTER ID CLIENT, NOM, PRENOM
-			/// </summary>
-			/// <param name="sender"></param>
-			/// <param name="e"></param>
-			/// <returns></returns>
 			this->label1->Text = "id";
 			this->label2->Text = "Nom";
 			this->label3->Text = "Prenom";
@@ -771,7 +782,6 @@ namespace Projet {
 			this->label10->Visible = true;
 			this->label11->Visible = true;
 			this->label12->Visible = true;
-			this->Box1->Visible = true;
 			this->Box2->Visible = true;
 			this->Box3->Visible = true;
 			this->Box3->Visible = true;
@@ -929,103 +939,218 @@ namespace Projet {
 		}
 	}
 	private: System::Void buttonValider_Click(System::Object^ sender, System::EventArgs^ e) {
+
 		result = gcnew Data::DataSet;
-		if (valider == 1) {
-			//fonction qui affiche le personnel
-			this->dataGridView1->Refresh();
-			this->result = this->Personnel->Afficher_personnel(this->Box11->Text, this->Box12->Text);
-			this->dataGridView1->DataSource = this->result;
-			this->dataGridView1->DataMember = "Personnel";
+
+		if (valider == 1) // Afficher un personnel
+		{
+			if (this->Box11->TextLength != 0 && this->Box12->TextLength != 0) 
+			{
+				this->dataGridView1->Refresh();
+				this->result = this->Personnel->Afficher_personnel(this->Box11->Text, this->Box12->Text);
+				this->dataGridView1->DataSource = this->result;
+				this->dataGridView1->DataMember = "Personnel";
+				this->Sauvegarder->Visible = true;
+				index = "Personnel :";
+			}
+			else { error(); }
 		}
-		else if (valider == 2) {
-			//fonction qui affiche le client
-			this->dataGridView1->Refresh();
-			this->result = this->Client->Afficher_client(this->Box11->Text,this->Box12->Text);
-			this->dataGridView1->DataSource = this->result;
-			this->dataGridView1->DataMember = "Client";
+
+		else if (valider == 2) // Afficher un client
+		{
+			if (this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->dataGridView1->Refresh();
+				this->result = this->Client->Afficher_client(this->Box11->Text, this->Box12->Text);
+				this->dataGridView1->DataSource = this->result;
+				this->dataGridView1->DataMember = "Client";
+				this->Sauvegarder->Visible = true;
+				index = "Client :";
+			}
+			else { error(); }
 		}
-		else if (valider == 3) {
-			//fonction qui affiche la commande
-			this->dataGridView1->Refresh();
-			this->result = this->Commande->Afficher_commande(this->Box11->Text);
-			this->dataGridView1->DataSource = this->result;
-			this->dataGridView1->DataMember = "Commande";
+
+		else if (valider == 3) // Afficher une commande
+		{
+			if (this->Box11->TextLength != 0)
+			{
+				this->dataGridView1->Refresh();
+				this->result = this->Commande->Afficher_commande(this->Box11->Text);
+				this->dataGridView1->DataSource = this->result;
+				this->dataGridView1->DataMember = "Commande";
+				this->Sauvegarder->Visible = true;
+				index = "Facture :";
+			}
+			else { error(); }
 		}
-		else if (valider == 4) {
-			//fonction qui affiche le stock
-			this->dataGridView1->Refresh();
-			this->result = this->Article->Afficher_article(this->Box9->Text, this->Box11->Text, this->Box12->Text);
-			this->dataGridView1->DataSource = this->result;
-			this->dataGridView1->DataMember = "Stock";
+
+		else if (valider == 4) // Afficher un article
+		{
+			if (this->Box9->TextLength != 0 && this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->dataGridView1->Refresh();
+				this->result = this->Article->Afficher_article(this->Box9->Text, this->Box11->Text, this->Box12->Text);
+				this->dataGridView1->DataSource = this->result;
+				this->dataGridView1->DataMember = "Stock";
+				this->Sauvegarder->Visible = true;
+				index = "Article :";
+			}
+			else { error(); }
 		}
-		else if (valider == 5) {
-			//fonction qui ajoute le personnel
-			this->Personnel->Ajouter_personnel(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text,this->Box11->Text,this->Box12->Text);
-			MessageBox::Show("Personnel ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 5) // Ajouter un personnel
+		{
+			if (this->Box3->TextLength != 0 && this->Box4->TextLength != 0 && this->Box5->TextLength != 0 && this->Box6->TextLength != 0 && this->Box7->TextLength != 0 && this->Box8->TextLength != 0 && this->Box9->TextLength != 0 && this->Box10->TextLength != 0 && this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->Personnel->Ajouter_personnel(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Personnel ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 6) {
-			//fonction qui ajoute le client
-			this->Client->Ajouter_client(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Client ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 6) // Ajouter un client
+		{
+			if (this->Box3->TextLength != 0 && this->Box4->TextLength != 0 && this->Box5->TextLength != 0 && this->Box6->TextLength != 0 && this->Box7->TextLength != 0 && this->Box8->TextLength != 0 && this->Box9->TextLength != 0 && this->Box10->TextLength != 0 && this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->Client->Ajouter_client(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Client ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 7) {
-			//fonction qui ajoute la commande
-			this->Commande->Ajouter_commande(this->Box1->Text, this->Box2->Text, this->Box3->Text,this->Box4->Text,this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text,this->Box12->Text);
-			MessageBox::Show("Commande ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 7) // Ajouter une commande
+		{
+			if (this->Box1->TextLength != 0 && this->Box2->TextLength != 0 && this->Box3->TextLength != 0 && this->Box4->TextLength != 0 && this->Box5->TextLength != 0 && this->Box6->TextLength != 0 && this->Box7->TextLength != 0 && this->Box8->TextLength != 0 && this->Box9->TextLength != 0 && this->Box10->TextLength != 0 && this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->Commande->Ajouter_commande(this->Box1->Text, this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Commande ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 8) {
-			//fonction qui ajoute le stock
-			this->Article->Ajouter_article(this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Article ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 8) // Ajouter un article
+		{
+			if (this->Box6->TextLength != 0 && this->Box7->TextLength != 0 && this->Box8->TextLength != 0 && this->Box9->TextLength != 0 && this->Box10->TextLength != 0 && this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->Article->Ajouter_article(this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Article ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 9) {
-			//fonction qui modifie le personnel
-			this->Personnel->Modifier_personnel(this->Box2->Text,this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Personnel modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 9) // Modifier un personnel
+		{
+			if (this->Box2->TextLength != 0 && this->Box3->TextLength != 0 && this->Box4->TextLength != 0 && this->Box5->TextLength != 0 && this->Box6->TextLength != 0 && this->Box7->TextLength != 0 && this->Box8->TextLength != 0 && this->Box9->TextLength != 0 && this->Box10->TextLength != 0 && this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->Personnel->Modifier_personnel(this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Personnel modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 10) {
-			//fonction qui modifie le client
-			this->Client->Modifier_client(this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Client modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	
+		else if (valider == 10) // Modifier un client
+		{
+			if (this->Box2->TextLength != 0 && this->Box3->TextLength != 0 && this->Box4->TextLength != 0 && this->Box5->TextLength != 0 && this->Box6->TextLength != 0 && this->Box7->TextLength != 0 && this->Box8->TextLength != 0 && this->Box9->TextLength != 0 && this->Box10->TextLength != 0 && this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->Client->Modifier_client(this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Client modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 11) {
-			//fonction qui modifie la commande
-			this->Commande->Modifier_commande(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Commande modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 11) // Modifier une commande
+		{
+			if (this->Box3->TextLength != 0 && this->Box4->TextLength != 0 && this->Box5->TextLength != 0 && this->Box6->TextLength != 0 && this->Box7->TextLength != 0 && this->Box8->TextLength != 0 && this->Box9->TextLength != 0 && this->Box10->TextLength != 0 && this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->Commande->Modifier_commande(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Commande modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 12) {
-			//fonction qui modifie le stock
-			this->Article->Modifier_article(this->Box5->Text,this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Article modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 12) // Modifier un article
+		{
+			if (this->Box5->TextLength != 0 && this->Box6->TextLength != 0 && this->Box7->TextLength != 0 && this->Box8->TextLength != 0 && this->Box9->TextLength != 0 && this->Box10->TextLength != 0 && this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->Article->Modifier_article(this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Article modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 13) {
-			//fonction qui supprime un personnel
-			this->Personnel->effacer_personnel(this->Box9->Text, this->Box11->Text,this->Box12->Text);
-			MessageBox::Show("Personnel supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 13) // Supprimer un personnel
+		{
+			if (this->Box9->TextLength != 0 && this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->Personnel->effacer_personnel(this->Box9->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Personnel supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 14) {
-			//fonction qui supprime un client
-			this->Client->effacer_client(this->Box9->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Client supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 14) // Supprimer un client
+		{
+			if (this->Box9->TextLength != 0 && this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->Client->effacer_client(this->Box9->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Client supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 15) {
-			//fonction qui supprime la commande
-			this->Commande->effacer_commande(this->Box11->Text);
-			MessageBox::Show("Commande supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 15) // Supprimer une commande
+		{
+			if (this->Box11->TextLength != 0)
+			{
+				this->Commande->effacer_commande(this->Box11->Text);
+				MessageBox::Show("Commande supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 16) {
-			//fonction qui supprime un article
-			this->Article->effacer_article(this->Box9->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Article supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 16) // Supprimer un article
+		{
+			if (this->Box9->TextLength != 0 && this->Box11->TextLength != 0 && this->Box12->TextLength != 0)
+			{
+				this->Article->effacer_article(this->Box9->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Article supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 17) {
+
+		else if (valider == 17)
+		{
 			Projet::Stats form;
 			form.ShowDialog();
 			this->Show();
 		}
 	}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
+	{
 		MessageBox::Show("BDD réalisées par RENAULT Kylian, GOSSET Olivier, LEFRANC Charles et DEHURTEVENT Hugo", "Propos", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
-	};
+	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		this->Sauvegarder->Visible = false;
+		SaveFileDialog^ saveFileDialog1 = gcnew SaveFileDialog;
+		saveFileDialog1->Filter = "txt files(*.txt) | *.txt";
+		saveFileDialog1->FilterIndex = 2;
+		saveFileDialog1->RestoreDirectory = true;
+		if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			System::String^ res;
+			for each (System::Data::DataTable^ table in this->result->Tables)
+			{
+				for each (System::Data::DataRow^ row in table->Rows)
+				{
+				res += index + "\n\n";
+				for each (System::Data::DataColumn^ column in table->Columns)
+				{
+                res += row[column]+"\n";
+            	}
+			}
+		}
+			File::WriteAllText(saveFileDialog1->FileName, res);
+	}
+	}
+};
 }
