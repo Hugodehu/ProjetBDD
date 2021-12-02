@@ -35,8 +35,6 @@ DELETE FROM Adresse WHERE id_adresse IN(SELECT #DeletePersonnel.id_adresse FROM 
 
 DROP TABLE #DeletePersonnel
 
-	vérifié c Hugo
-
 
 
 Afficher personnel
@@ -48,15 +46,6 @@ INNER JOIN Ville ON Ville.id_ville = Adresse.id_ville
 WHERE(Adresse.id_adresse = Personnel.id_adresse AND Personnel.id_personnel = id_personnel AND Personnel.nom = 'nomPersonnel' AND prenom = 'prenomPrenom');
 
 
-
-
-	
-
-
-
-
-
-	vérifié c bon normalement
 
 Modifier personnel
 
@@ -81,8 +70,6 @@ FROM Authentification
 INNER JOIN Personnel ON Personnel.id_authentification = Authentification.id_authentification
 WHERE Authentification.id_authentification = Personnel.id_authentification AND Personnel.id_personnel = 2 AND Personnel.nom = 'DR. XXXXXX' AND Personnel.prenom = 'douze'
 	vérifié fait
-
-
 
 
 
@@ -115,7 +102,7 @@ DELETE FROM Adresse WHERE Adresse.id_client IN(SELECT Client.id_client FROM Clie
 OR id_client_Livrer IN(SELECT Client.id_client FROM Client WHERE Client.id_client = 1099 AND Client.nom = 'Michelle' AND Client.prenom = 'Miche');
 
 DELETE FROM Client WHERE Client.id_client IN(SELECT  Client.id_client FROM Client WHERE Client.id_client = 1099  AND Client.nom = 'Michelle' AND Client.prenom = 'Miche')
-	vérifié ok a dit hugo Hurt qui a des origines allemandes
+	vérifié
 	
 
 Afficher client
@@ -183,8 +170,6 @@ Insert into Paiement (solde, date_emission, date_paiement, moyen, id_commande)
 select 12365, Commande.date_emission, 1995-01-25, 'carte banc', Commande.id_commande
 from Commande
 where (Commande.reference = 'Salade5')
-	vérifié Hugo
-
 
 Afficher une commande
 
