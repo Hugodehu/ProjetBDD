@@ -113,8 +113,6 @@ void NS_BDDservice::service_Personnel::Modifier_personnel(System::String^ id, Sy
     this->oCad->actionRows(result);
     result = this->oAdresse->Modifier(this->oPersonnel->get_id_personnel(), this->oPersonnel->get_nom(), this->oPersonnel->get_prenom(), this->oVille->get_nom(), this->oVille->get_code_postal());
     this->oCad->actionRows(result);
-    result = this->oVille->Modifier();
-    this->oCad->actionRows(result);
 }
 
 void NS_BDDservice::service_Personnel::effacer_personnel(System::String^ id, System::String^ Nom, System::String^ Prenom)
@@ -172,8 +170,6 @@ void NS_BDDservice::service_Client::Ajouter_client(System::String^ Nom, System::
     
     result = this->oClient->Ajouter(this->oAdresse->get_rue(), this->oVille->get_id_ville());
     this->oCad->actionRows(result);
-    result = this->oVille->Ajouter();
-    this->oCad->actionRows(result);
     result = this->oAdresse->Ajouter(this->oVille->get_nom());
     this->oCad->actionRows(result);
 }
@@ -196,8 +192,6 @@ void NS_BDDservice::service_Client::Modifier_client(System::String^ id, System::
     this->oVille->set_code_postal(code_postal_facturation);
    
     result = this->oClient->Modifier(this->oAdresse->get_rue(), this->oVille->get_id_ville(), this->oVille->get_code_postal());
-    this->oCad->actionRows(result);
-    result = this->oVille->Modifier();
     this->oCad->actionRows(result);
     result = this->oAdresse->Modifier(this->oClient->get_id_client(), this->oClient->get_nom(), this->oClient->get_prenom(),this->oVille->get_id_ville(), this->oVille->get_code_postal()); 
     this->oCad->actionRows(result);

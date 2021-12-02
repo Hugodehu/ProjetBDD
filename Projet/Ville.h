@@ -17,10 +17,5 @@ namespace NS_BDD
         System::String^ get_id_ville(void);
         System::String^ get_nom(void);
         System::String^ get_code_postal(void);
-
-        System::String^ Ajouter(void);
-        System::String^ Afficher(void);
-        System::String^ Modifier(void);
-        System::String^ Supprimer(void);
     };
 }
