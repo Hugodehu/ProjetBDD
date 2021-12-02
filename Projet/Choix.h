@@ -3,6 +3,7 @@
 #include "BDDload.h"
 #include "stats.h"
 #include "pch.h"
+#include <fstream>
 namespace Projet {
 
 	using namespace System;
@@ -11,6 +12,10 @@ namespace Projet {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Collections::Generic;
+	using namespace System::Text;
+	using namespace System::IO;
+	using namespace std;
 	public ref class Choix : public System::Windows::Forms::Form
 	{
 	public: bool sup;
@@ -46,6 +51,7 @@ namespace Projet {
 	private: NS_BDDservice::service_Article^ Article;
 	private: NS_BDDservice::service_Commande^ Commande;
 	private: NS_BDDservice::service_Personnel^ Personnel;
+	private: System::String^ index;
 
 
 	private: System::Windows::Forms::Label^ label1;
@@ -73,10 +79,11 @@ namespace Projet {
 	private: System::Windows::Forms::TextBox^ Box10;
 	private: System::Windows::Forms::TextBox^ Box11;
 	private: System::Windows::Forms::TextBox^ Box12;
-
 	private: System::Windows::Forms::Button^ A_Propos;
 	private: System::Data::DataSet^ result;
-	
+	private: System::Windows::Forms::Button^ Sauvegarder;
+
+
 
 	private: short valider;
 
@@ -86,15 +93,12 @@ namespace Projet {
 		   {
 			   this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			   this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-
 			   this->buttonAjouter = (gcnew System::Windows::Forms::Button());
 			   this->buttonModifier = (gcnew System::Windows::Forms::Button());
 			   this->buttonSupprimer = (gcnew System::Windows::Forms::Button());
 			   this->buttonAfficher = (gcnew System::Windows::Forms::Button());
 			   this->buttonValider = (gcnew System::Windows::Forms::Button());
 			   this->A_Propos = (gcnew System::Windows::Forms::Button());
-
-
 			   this->label1 = (gcnew System::Windows::Forms::Label());
 			   this->label2 = (gcnew System::Windows::Forms::Label());
 			   this->label3 = (gcnew System::Windows::Forms::Label());
@@ -107,7 +111,6 @@ namespace Projet {
 			   this->label10 = (gcnew System::Windows::Forms::Label());
 			   this->label11 = (gcnew System::Windows::Forms::Label());
 			   this->label12 = (gcnew System::Windows::Forms::Label());
-
 			   this->Box1 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box2 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box3 = (gcnew System::Windows::Forms::TextBox());
@@ -120,8 +123,7 @@ namespace Projet {
 			   this->Box10 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box11 = (gcnew System::Windows::Forms::TextBox());
 			   this->Box12 = (gcnew System::Windows::Forms::TextBox());
-			   
-			   
+			   this->Sauvegarder = (gcnew System::Windows::Forms::Button());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -131,7 +133,10 @@ namespace Projet {
 			   this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			   this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			   this->comboBox1->FormattingEnabled = true;
-			   this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"Personnel", L"Clients", L"Commandes", L"Stock", L"Statistiques" });
+			   this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+				   L"Personnel", L"Clients", L"Commandes", L"Stock",
+					   L"Statistiques"
+			   });
 			   this->comboBox1->Location = System::Drawing::Point(12, 230);
 			   this->comboBox1->Name = L"comboBox1";
 			   this->comboBox1->Size = System::Drawing::Size(203, 27);
@@ -429,22 +434,31 @@ namespace Projet {
 			   this->Box12->TabIndex = 27;
 			   this->Box12->Visible = false;
 			   // 
+			   // Sauvegarder
+			   // 
+			   this->Sauvegarder->Location = System::Drawing::Point(12, 282);
+			   this->Sauvegarder->Name = L"Sauvegarder";
+			   this->Sauvegarder->Size = System::Drawing::Size(203, 73);
+			   this->Sauvegarder->TabIndex = 33;
+			   this->Sauvegarder->Text = L"Sauvegarder";
+			   this->Sauvegarder->UseVisualStyleBackColor = true;
+			   this->Sauvegarder->Click += gcnew System::EventHandler(this, &Choix::button1_Click_1);
+			   this->Sauvegarder->Visible = false;
+			   // 
 			   // Choix
 			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 19);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->ClientSize = System::Drawing::Size(675, 565);
-
+			   this->Controls->Add(this->Sauvegarder);
 			   this->Controls->Add(this->comboBox1);
 			   this->Controls->Add(this->dataGridView1);
-
 			   this->Controls->Add(this->buttonAjouter);
 			   this->Controls->Add(this->buttonModifier);
 			   this->Controls->Add(this->buttonSupprimer);
 			   this->Controls->Add(this->buttonAfficher);
 			   this->Controls->Add(this->buttonValider);
 			   this->Controls->Add(this->A_Propos);
-
 			   this->Controls->Add(this->label1);
 			   this->Controls->Add(this->label2);
 			   this->Controls->Add(this->label3);
@@ -457,7 +471,6 @@ namespace Projet {
 			   this->Controls->Add(this->label10);
 			   this->Controls->Add(this->label11);
 			   this->Controls->Add(this->label12);
-
 			   this->Controls->Add(this->Box1);
 			   this->Controls->Add(this->Box2);
 			   this->Controls->Add(this->Box3);
@@ -469,11 +482,9 @@ namespace Projet {
 			   this->Controls->Add(this->Box9);
 			   this->Controls->Add(this->Box10);
 			   this->Controls->Add(this->Box11);
-			   this->Controls->Add(this->Box12);	   
-
+			   this->Controls->Add(this->Box12);
 			   this->Font = (gcnew System::Drawing::Font(L"Consolas", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-				   
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
 			   this->Margin = System::Windows::Forms::Padding(4);
 			   this->MaximizeBox = false;
@@ -496,7 +507,7 @@ namespace Projet {
 	}
 
 	void hide() {
-
+	this->Sauvegarder->Visible = false;
 	this->buttonValider->Visible = true;
 	this->label1->Visible = false;
 	this->label2->Visible = false;
@@ -681,7 +692,7 @@ namespace Projet {
 			this->Box12->Visible = true;
 			valider = 6;
 		}
-		else if (comboBox1->SelectedIndex == 2) {
+		else if (comboBox1->SelectedIndex == 2) { //commande
 			this->label1->Text = "id";
 			this->label2->Text = "Nom";
 			this->label3->Text = "Prenom";
@@ -771,7 +782,6 @@ namespace Projet {
 			this->label10->Visible = true;
 			this->label11->Visible = true;
 			this->label12->Visible = true;
-			this->Box1->Visible = true;
 			this->Box2->Visible = true;
 			this->Box3->Visible = true;
 			this->Box3->Visible = true;
@@ -936,11 +946,12 @@ namespace Projet {
 		{
 			if (this->Box11->TextLength != 0 && this->Box12->TextLength != 0) 
 			{
-
 				this->dataGridView1->Refresh();
 				this->result = this->Personnel->Afficher_personnel(this->Box11->Text, this->Box12->Text);
 				this->dataGridView1->DataSource = this->result;
 				this->dataGridView1->DataMember = "Personnel";
+				this->Sauvegarder->Visible = true;
+				index = "Personnel :";
 			}
 			else { error(); }
 		}
@@ -953,6 +964,8 @@ namespace Projet {
 				this->result = this->Client->Afficher_client(this->Box11->Text, this->Box12->Text);
 				this->dataGridView1->DataSource = this->result;
 				this->dataGridView1->DataMember = "Client";
+				this->Sauvegarder->Visible = true;
+				index = "Client :";
 			}
 			else { error(); }
 		}
@@ -965,6 +978,8 @@ namespace Projet {
 				this->result = this->Commande->Afficher_commande(this->Box11->Text);
 				this->dataGridView1->DataSource = this->result;
 				this->dataGridView1->DataMember = "Commande";
+				this->Sauvegarder->Visible = true;
+				index = "Facture :";
 			}
 			else { error(); }
 		}
@@ -977,6 +992,8 @@ namespace Projet {
 				this->result = this->Article->Afficher_article(this->Box9->Text, this->Box11->Text, this->Box12->Text);
 				this->dataGridView1->DataSource = this->result;
 				this->dataGridView1->DataMember = "Stock";
+				this->Sauvegarder->Visible = true;
+				index = "Article :";
 			}
 			else { error(); }
 		}
@@ -1108,8 +1125,32 @@ namespace Projet {
 			this->Show();
 		}
 	}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
+	{
 		MessageBox::Show("BDD réalisées par RENAULT Kylian, GOSSET Olivier, LEFRANC Charles et DEHURTEVENT Hugo", "Propos", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
-	};
+	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		this->Sauvegarder->Visible = false;
+		SaveFileDialog^ saveFileDialog1 = gcnew SaveFileDialog;
+		saveFileDialog1->Filter = "txt files(*.txt) | *.txt";
+		saveFileDialog1->FilterIndex = 2;
+		saveFileDialog1->RestoreDirectory = true;
+		if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			System::String^ res;
+			for each (System::Data::DataTable^ table in this->result->Tables)
+			{
+				for each (System::Data::DataRow^ row in table->Rows)
+				{
+				res += index + "\n\n";
+				for each (System::Data::DataColumn^ column in table->Columns)
+				{
+                res += row[column]+"\n";
+            	}
+			}
+		}
+			File::WriteAllText(saveFileDialog1->FileName, res);
+	}
+	}
+};
 }
