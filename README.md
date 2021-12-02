@@ -10,6 +10,7 @@ Voici les prérequis pour utiliser notre application:
 - Une connexion Internet
 - Un compte Utilisateur 
 
+
 ### Installation
 
 Pour installer l'application, il suffit de télécharger le fichier Projet.exe situé dans la branche Projet_Final.
@@ -21,6 +22,7 @@ Pour lancer l'application, il faut double-cliquer sur le fichier précédemment 
 ## Utilisation de l'application: 
 
 ### I) Connection
+
 Pour des raisons évidentes de sécurité, l'utilisation de l'application nécessite de se connecter avec une adresse email ainsi qu'un mot de passe situé dans la BDD.
 
 ### II) Les catégories
@@ -31,7 +33,7 @@ L'application permet la gestion de plusieurs catégories de données:
   - Le Stock d'Article disponibles
   - Les différentes Statistiques (cas particulier)
  
-![image](https://user-images.githubusercontent.com/78081509/144478681-b7d65517-00ff-41a0-923d-47a6fd3e91de.png) Pour accéder à la catégorie Personnel, l'utilisateur doit être le supérieur hiérarchique de quelqu'un.
+ __Attention, pour accéder à la catégorie Personnel, l'utilisateur doit être le supérieur hiérarchique de quelqu'un.__
 
 ### III) Les actions
 Pour chaque catégorie (sauf statistique), l'utilisateur peut faire 4 actions:
@@ -63,6 +65,31 @@ Pour cette dernière statistique, l'utilisateur doit rentrer 4 données différe
   - Une démarque inconnue (2%, 3% ou 5%)
 
 Chacune de ces valeurs peut également rester vide.
+
+## Démonstration
+
+Voici une démonstration en image de notre application:
+
+### Etape 1: Se connecter
+
+![2](https://user-images.githubusercontent.com/78081509/144502482-c695e396-b20b-4809-8131-10b116e4f0ff.png)
+
+### Etape 2: Selectionner la catégorie (ici Commande)
+
+![3](https://user-images.githubusercontent.com/78081509/144502652-40354654-5710-421f-9f30-a748ac437289.png)
+
+### Etape 3: Selectionner l'action (ici Afficher)
+
+![4](https://user-images.githubusercontent.com/78081509/144502959-da5b818e-f61d-46a4-a4c8-634d5973f70d.png)
+
+
+### Etape 4: Remplir le/les zone(s) de texte
+
+![5](https://user-images.githubusercontent.com/78081509/144503110-e24d4282-2bce-4f18-99cc-872dbfb32e51.png)
+
+### Etape 5: Appuyer sur Valider et admirer le résultat
+
+![6](https://user-images.githubusercontent.com/78081509/144503176-83dc4a34-8fa6-4646-94a2-e6019fe5b4c5.png)
 
 ## Cette application a été créée à l'aide de :
 
