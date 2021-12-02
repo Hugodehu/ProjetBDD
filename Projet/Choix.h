@@ -490,7 +490,13 @@ namespace Projet {
 		   }
 		   //code a optimisiser ->
 #pragma endregion
+	void error()
+	{
+		MessageBox::Show("Veulliez remplir toutes les cases", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+
 	void hide() {
+
 	this->buttonValider->Visible = true;
 	this->label1->Visible = false;
 	this->label2->Visible = false;
@@ -675,13 +681,7 @@ namespace Projet {
 			this->Box12->Visible = true;
 			valider = 6;
 		}
-		else if (comboBox1->SelectedIndex == 2) { //commande
-			/// <summary>
-			/// AJOUTER ID CLIENT, NOM, PRENOM
-			/// </summary>
-			/// <param name="sender"></param>
-			/// <param name="e"></param>
-			/// <returns></returns>
+		else if (comboBox1->SelectedIndex == 2) {
 			this->label1->Text = "id";
 			this->label2->Text = "Nom";
 			this->label3->Text = "Prenom";
@@ -929,96 +929,180 @@ namespace Projet {
 		}
 	}
 	private: System::Void buttonValider_Click(System::Object^ sender, System::EventArgs^ e) {
+
 		result = gcnew Data::DataSet;
-		if (valider == 1) {
-			//fonction qui affiche le personnel
-			this->dataGridView1->Refresh();
-			this->result = this->Personnel->Afficher_personnel(this->Box11->Text, this->Box12->Text);
-			this->dataGridView1->DataSource = this->result;
-			this->dataGridView1->DataMember = "Personnel";
+
+		if (valider == 1) // Afficher un personnel
+		{
+			if (this->Box11->TextLength != 0 || this->Box12->TextLength != 0) 
+			{
+
+				this->dataGridView1->Refresh();
+				this->result = this->Personnel->Afficher_personnel(this->Box11->Text, this->Box12->Text);
+				this->dataGridView1->DataSource = this->result;
+				this->dataGridView1->DataMember = "Personnel";
+			}
+			else { error(); }
 		}
-		else if (valider == 2) {
-			//fonction qui affiche le client
-			this->dataGridView1->Refresh();
-			this->result = this->Client->Afficher_client(this->Box11->Text,this->Box12->Text);
-			this->dataGridView1->DataSource = this->result;
-			this->dataGridView1->DataMember = "Client";
+
+		else if (valider == 2) // Afficher un client
+		{
+			if (this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->dataGridView1->Refresh();
+				this->result = this->Client->Afficher_client(this->Box11->Text, this->Box12->Text);
+				this->dataGridView1->DataSource = this->result;
+				this->dataGridView1->DataMember = "Client";
+			}
+			else { error(); }
 		}
-		else if (valider == 3) {
-			//fonction qui affiche la commande
-			this->dataGridView1->Refresh();
-			this->result = this->Commande->Afficher_commande(this->Box11->Text);
-			this->dataGridView1->DataSource = this->result;
-			this->dataGridView1->DataMember = "Commande";
+
+		else if (valider == 3) // Afficher une commande
+		{
+			if (this->Box11->TextLength != 0)
+			{
+				this->dataGridView1->Refresh();
+				this->result = this->Commande->Afficher_commande(this->Box11->Text);
+				this->dataGridView1->DataSource = this->result;
+				this->dataGridView1->DataMember = "Commande";
+			}
+			else { error(); }
 		}
-		else if (valider == 4) {
-			//fonction qui affiche le stock
-			this->dataGridView1->Refresh();
-			this->result = this->Article->Afficher_article(this->Box9->Text, this->Box11->Text, this->Box12->Text);
-			this->dataGridView1->DataSource = this->result;
-			this->dataGridView1->DataMember = "Stock";
+
+		else if (valider == 4) // Afficher un article
+		{
+			if (this->Box9->TextLength != 0 || this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->dataGridView1->Refresh();
+				this->result = this->Article->Afficher_article(this->Box9->Text, this->Box11->Text, this->Box12->Text);
+				this->dataGridView1->DataSource = this->result;
+				this->dataGridView1->DataMember = "Stock";
+			}
+			else { error(); }
 		}
-		else if (valider == 5) {
-			//fonction qui ajoute le personnel
-			this->Personnel->Ajouter_personnel(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text,this->Box11->Text,this->Box12->Text);
-			MessageBox::Show("Personnel ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 5) // Ajouter un personnel
+		{
+			if (this->Box3->TextLength != 0 || this->Box4->TextLength != 0 || this->Box5->TextLength != 0 || this->Box6->TextLength != 0 || this->Box7->TextLength != 0 || this->Box8->TextLength != 0 || this->Box9->TextLength != 0 || this->Box10->TextLength != 0 || this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->Personnel->Ajouter_personnel(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Personnel ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 6) {
-			//fonction qui ajoute le client
-			this->Client->Ajouter_client(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Client ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 6) // Ajouter un client
+		{
+			if (this->Box3->TextLength != 0 || this->Box4->TextLength != 0 || this->Box5->TextLength != 0 || this->Box6->TextLength != 0 || this->Box7->TextLength != 0 || this->Box8->TextLength != 0 || this->Box9->TextLength != 0 || this->Box10->TextLength != 0 || this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->Client->Ajouter_client(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Client ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 7) {
-			//fonction qui ajoute la commande
-			this->Commande->Ajouter_commande(this->Box1->Text, this->Box2->Text, this->Box3->Text,this->Box4->Text,this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text,this->Box12->Text);
-			MessageBox::Show("Commande ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 7) // Ajouter une commande
+		{
+			if (this->Box1->TextLength != 0 || this->Box2->TextLength != 0 || this->Box3->TextLength != 0 || this->Box4->TextLength != 0 || this->Box5->TextLength != 0 || this->Box6->TextLength != 0 || this->Box7->TextLength != 0 || this->Box8->TextLength != 0 || this->Box9->TextLength != 0 || this->Box10->TextLength != 0 || this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->Commande->Ajouter_commande(this->Box1->Text, this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Commande ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 8) {
-			//fonction qui ajoute le stock
-			this->Article->Ajouter_article(this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Article ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 8) // Ajouter un article
+		{
+			if (this->Box6->TextLength != 0 || this->Box7->TextLength != 0 || this->Box8->TextLength != 0 || this->Box9->TextLength != 0 || this->Box10->TextLength != 0 || this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->Article->Ajouter_article(this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Article ajouté avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 9) {
-			//fonction qui modifie le personnel
-			this->Personnel->Modifier_personnel(this->Box2->Text,this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Personnel modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 9) // Modifier un personnel
+		{
+			if (this->Box2->TextLength != 0 || this->Box3->TextLength != 0 || this->Box4->TextLength != 0 || this->Box5->TextLength != 0 || this->Box6->TextLength != 0 || this->Box7->TextLength != 0 || this->Box8->TextLength != 0 || this->Box9->TextLength != 0 || this->Box10->TextLength != 0 || this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->Personnel->Modifier_personnel(this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Personnel modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 10) {
-			//fonction qui modifie le client
-			this->Client->Modifier_client(this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Client modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	
+		else if (valider == 10) // Modifier un client
+		{
+			if (this->Box2->TextLength != 0 || this->Box3->TextLength != 0 || this->Box4->TextLength != 0 || this->Box5->TextLength != 0 || this->Box6->TextLength != 0 || this->Box7->TextLength != 0 || this->Box8->TextLength != 0 || this->Box9->TextLength != 0 || this->Box10->TextLength != 0 || this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->Client->Modifier_client(this->Box2->Text, this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Client modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 11) {
-			//fonction qui modifie la commande
-			this->Commande->Modifier_commande(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Commande modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 11) // Modifier une commande
+		{
+			if (this->Box3->TextLength != 0 || this->Box4->TextLength != 0 || this->Box5->TextLength != 0 || this->Box6->TextLength != 0 || this->Box7->TextLength != 0 || this->Box8->TextLength != 0 || this->Box9->TextLength != 0 || this->Box10->TextLength != 0 || this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->Commande->Modifier_commande(this->Box3->Text, this->Box4->Text, this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Commande modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 12) {
-			//fonction qui modifie le stock
-			this->Article->Modifier_article(this->Box5->Text,this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Article modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 12) // Modifier un article
+		{
+			if (this->Box5->TextLength != 0 || this->Box6->TextLength != 0 || this->Box7->TextLength != 0 || this->Box8->TextLength != 0 || this->Box9->TextLength != 0 || this->Box10->TextLength != 0 || this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->Article->Modifier_article(this->Box5->Text, this->Box6->Text, this->Box7->Text, this->Box8->Text, this->Box9->Text, this->Box10->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Article modifié avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 13) {
-			//fonction qui supprime un personnel
-			this->Personnel->effacer_personnel(this->Box9->Text, this->Box11->Text,this->Box12->Text);
-			MessageBox::Show("Personnel supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 13) // Supprimer un personnel
+		{
+			if (this->Box9->TextLength != 0 || this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->Personnel->effacer_personnel(this->Box9->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Personnel supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 14) {
-			//fonction qui supprime un client
-			this->Client->effacer_client(this->Box9->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Client supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 14) // Supprimer un client
+		{
+			if (this->Box9->TextLength != 0 || this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->Client->effacer_client(this->Box9->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Client supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 15) {
-			//fonction qui supprime la commande
-			this->Commande->effacer_commande(this->Box11->Text);
-			MessageBox::Show("Commande supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 15) // Supprimer une commande
+		{
+			if (this->Box11->TextLength != 0)
+			{
+				this->Commande->effacer_commande(this->Box11->Text);
+				MessageBox::Show("Commande supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 16) {
-			//fonction qui supprime un article
-			this->Article->effacer_article(this->Box9->Text, this->Box11->Text, this->Box12->Text);
-			MessageBox::Show("Article supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		else if (valider == 16) // Supprimer un article
+		{
+			if (this->Box9->TextLength != 0 || this->Box11->TextLength != 0 || this->Box12->TextLength != 0)
+			{
+				this->Article->effacer_article(this->Box9->Text, this->Box11->Text, this->Box12->Text);
+				MessageBox::Show("Article supprimé avec succès", "Notification", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else { error(); }
 		}
-		else if (valider == 17) {
+
+		else if (valider == 17)
+		{
 			Projet::Stats form;
 			form.ShowDialog();
 			this->Show();
