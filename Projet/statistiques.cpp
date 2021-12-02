@@ -32,7 +32,9 @@ System::String^ NS_BDD::statistique::seuil_appro() {
 }
 
 System::String^ NS_BDD::statistique::montant_total_achat() {
-	return "SELECT Client.nom, Client.prenom, SUM(Commande.prix_final) AS Montant_des_achats FROM Client FULL JOIN Commande ON Client.id_client = Commande.id_client WHERE (Client.id_client = " + this->get_id() + " AND Client.nom = '" + this->get_nom() + "' AND Client.prenom = '" + this->get_prenom() + "') GROUP BY Client.id_client, Client.nom, Client.prenom";
+	//return "SELECT Client.nom, Client.prenom, SUM(Commande.prix_final) AS Montant_des_achats FROM Client FULL JOIN Commande ON Client.id_client = Commande.id_client WHERE (Client.id_client = " + this->get_id() + " AND Client.nom = '" + this->get_nom() + "' AND Client.prenom = '" + this->get_prenom() + "') GROUP BY Client.id_client, Client.nom, Client.prenom";
+	//problème avec le AND
+	return "";
 }
 
 System::String^ NS_BDD::statistique::arcticle_plus_vendu() {

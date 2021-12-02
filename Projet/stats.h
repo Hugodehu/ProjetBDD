@@ -90,13 +90,12 @@ namespace Projet {
 			   // dataGridView
 			   // 
 			   this->dataGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			   this->dataGridView->Location = System::Drawing::Point(359, 15);
-			   this->dataGridView->Margin = System::Windows::Forms::Padding(2);
+			   this->dataGridView->Location = System::Drawing::Point(538, 23);
 			   this->dataGridView->Name = L"dataGridView";
 			   this->dataGridView->ReadOnly = true;
 			   this->dataGridView->RowHeadersWidth = 62;
 			   this->dataGridView->RowTemplate->Height = 28;
-			   this->dataGridView->Size = System::Drawing::Size(358, 175);
+			   this->dataGridView->Size = System::Drawing::Size(537, 269);
 			   this->dataGridView->TabIndex = 2;
 			   // 
 			   // label_titre
@@ -104,19 +103,19 @@ namespace Projet {
 			   this->label_titre->AutoSize = true;
 			   this->label_titre->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->label_titre->Location = System::Drawing::Point(64, 9);
-			   this->label_titre->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			   this->label_titre->Location = System::Drawing::Point(96, 14);
 			   this->label_titre->Name = L"label_titre";
-			   this->label_titre->Size = System::Drawing::Size(232, 24);
+			   this->label_titre->Size = System::Drawing::Size(347, 32);
 			   this->label_titre->TabIndex = 1;
 			   this->label_titre->Text = L"Gestion des Statistiques";
 			   // 
 			   // label_mois
 			   // 
 			   this->label_mois->AutoSize = true;
-			   this->label_mois->Location = System::Drawing::Point(5, 79);
+			   this->label_mois->Location = System::Drawing::Point(8, 122);
+			   this->label_mois->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->label_mois->Name = L"label_mois";
-			   this->label_mois->Size = System::Drawing::Size(29, 13);
+			   this->label_mois->Size = System::Drawing::Size(42, 20);
 			   this->label_mois->TabIndex = 29;
 			   this->label_mois->Text = L"Mois";
 			   this->label_mois->Visible = false;
@@ -124,9 +123,10 @@ namespace Projet {
 			   // label_nom
 			   // 
 			   this->label_nom->AutoSize = true;
-			   this->label_nom->Location = System::Drawing::Point(5, 131);
+			   this->label_nom->Location = System::Drawing::Point(8, 202);
+			   this->label_nom->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->label_nom->Name = L"label_nom";
-			   this->label_nom->Size = System::Drawing::Size(29, 13);
+			   this->label_nom->Size = System::Drawing::Size(42, 20);
 			   this->label_nom->TabIndex = 18;
 			   this->label_nom->Text = L"Nom";
 			   this->label_nom->Visible = false;
@@ -134,9 +134,10 @@ namespace Projet {
 			   // label_prenom
 			   // 
 			   this->label_prenom->AutoSize = true;
-			   this->label_prenom->Location = System::Drawing::Point(141, 131);
+			   this->label_prenom->Location = System::Drawing::Point(212, 202);
+			   this->label_prenom->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->label_prenom->Name = L"label_prenom";
-			   this->label_prenom->Size = System::Drawing::Size(43, 13);
+			   this->label_prenom->Size = System::Drawing::Size(64, 20);
 			   this->label_prenom->TabIndex = 19;
 			   this->label_prenom->Text = L"Prenom";
 			   this->label_prenom->Visible = false;
@@ -144,9 +145,10 @@ namespace Projet {
 			   // label_TVA
 			   // 
 			   this->label_TVA->AutoSize = true;
-			   this->label_TVA->Location = System::Drawing::Point(5, 199);
+			   this->label_TVA->Location = System::Drawing::Point(8, 306);
+			   this->label_TVA->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->label_TVA->Name = L"label_TVA";
-			   this->label_TVA->Size = System::Drawing::Size(28, 13);
+			   this->label_TVA->Size = System::Drawing::Size(40, 20);
 			   this->label_TVA->TabIndex = 21;
 			   this->label_TVA->Text = L"TVA";
 			   this->label_TVA->Visible = false;
@@ -154,9 +156,10 @@ namespace Projet {
 			   // label_marge
 			   // 
 			   this->label_marge->AutoSize = true;
-			   this->label_marge->Location = System::Drawing::Point(178, 199);
+			   this->label_marge->Location = System::Drawing::Point(267, 306);
+			   this->label_marge->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->label_marge->Name = L"label_marge";
-			   this->label_marge->Size = System::Drawing::Size(37, 13);
+			   this->label_marge->Size = System::Drawing::Size(54, 20);
 			   this->label_marge->TabIndex = 22;
 			   this->label_marge->Text = L"Marge";
 			   this->label_marge->Visible = false;
@@ -164,9 +167,10 @@ namespace Projet {
 			   // label_remise
 			   // 
 			   this->label_remise->AutoSize = true;
-			   this->label_remise->Location = System::Drawing::Point(2, 280);
+			   this->label_remise->Location = System::Drawing::Point(3, 431);
+			   this->label_remise->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->label_remise->Name = L"label_remise";
-			   this->label_remise->Size = System::Drawing::Size(42, 13);
+			   this->label_remise->Size = System::Drawing::Size(63, 20);
 			   this->label_remise->TabIndex = 25;
 			   this->label_remise->Text = L"Remise";
 			   this->label_remise->Visible = false;
@@ -174,9 +178,10 @@ namespace Projet {
 			   // label_demarque
 			   // 
 			   this->label_demarque->AutoSize = true;
-			   this->label_demarque->Location = System::Drawing::Point(178, 279);
+			   this->label_demarque->Location = System::Drawing::Point(267, 429);
+			   this->label_demarque->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->label_demarque->Name = L"label_demarque";
-			   this->label_demarque->Size = System::Drawing::Size(56, 13);
+			   this->label_demarque->Size = System::Drawing::Size(84, 20);
 			   this->label_demarque->TabIndex = 26;
 			   this->label_demarque->Text = L"Demarque";
 			   this->label_demarque->Visible = false;
@@ -192,10 +197,9 @@ namespace Projet {
 					   L"Produits sous le seuil de reapprovisionnement", L"Montant total des achats d\'un client", L"10 articles les plus vendus", L"10 articles les moins vendus",
 					   L"Valeur commerciale du stock", L"Valeur d\'achat du stock", L"Simulation"
 			   });
-			   this->comboBox_stat->Location = System::Drawing::Point(8, 42);
-			   this->comboBox_stat->Margin = System::Windows::Forms::Padding(2);
+			   this->comboBox_stat->Location = System::Drawing::Point(12, 65);
 			   this->comboBox_stat->Name = L"comboBox_stat";
-			   this->comboBox_stat->Size = System::Drawing::Size(347, 21);
+			   this->comboBox_stat->Size = System::Drawing::Size(339, 28);
 			   this->comboBox_stat->TabIndex = 0;
 			   this->comboBox_stat->SelectedIndexChanged += gcnew System::EventHandler(this, &Stats::comboBox_SelectedIndexChanged);
 			   // 
@@ -209,10 +213,9 @@ namespace Projet {
 				   L"Janvier", L"Fevrier", L"Mars", L"Avril",
 					   L"Mai", L"Juin", L"Juillet", L"Aout", L"Septembre", L"Octobre", L"Novembre", L"Decembre"
 			   });
-			   this->comboBox_mois->Location = System::Drawing::Point(8, 94);
-			   this->comboBox_mois->Margin = System::Windows::Forms::Padding(2);
+			   this->comboBox_mois->Location = System::Drawing::Point(12, 145);
 			   this->comboBox_mois->Name = L"comboBox_mois";
-			   this->comboBox_mois->Size = System::Drawing::Size(85, 21);
+			   this->comboBox_mois->Size = System::Drawing::Size(126, 28);
 			   this->comboBox_mois->TabIndex = 15;
 			   this->comboBox_mois->Visible = false;
 			   this->comboBox_mois->SelectedIndexChanged += gcnew System::EventHandler(this, &Stats::comboBox_mois_SelectedIndexChanged);
@@ -226,9 +229,10 @@ namespace Projet {
 				   L" ", L"Taux normal (20%)", L"Taux intermediaire (10%)",
 					   L"Taux reduit (5.5%)"
 			   });
-			   this->comboBox_TVA->Location = System::Drawing::Point(5, 215);
+			   this->comboBox_TVA->Location = System::Drawing::Point(8, 331);
+			   this->comboBox_TVA->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->comboBox_TVA->Name = L"comboBox_TVA";
-			   this->comboBox_TVA->Size = System::Drawing::Size(145, 21);
+			   this->comboBox_TVA->Size = System::Drawing::Size(216, 28);
 			   this->comboBox_TVA->TabIndex = 23;
 			   this->comboBox_TVA->Visible = false;
 			   // 
@@ -242,9 +246,10 @@ namespace Projet {
 				   L" ", L"Marge commerciale de 5%", L"Marge commerciale de 10%",
 					   L"Marge commerciale de 15%"
 			   });
-			   this->comboBox_marge->Location = System::Drawing::Point(181, 215);
+			   this->comboBox_marge->Location = System::Drawing::Point(272, 331);
+			   this->comboBox_marge->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->comboBox_marge->Name = L"comboBox_marge";
-			   this->comboBox_marge->Size = System::Drawing::Size(145, 21);
+			   this->comboBox_marge->Size = System::Drawing::Size(216, 28);
 			   this->comboBox_marge->TabIndex = 24;
 			   this->comboBox_marge->Visible = false;
 			   // 
@@ -258,9 +263,10 @@ namespace Projet {
 				   L" ", L"Demarque inconnue de 2%", L"Demarque inconnue de 3%",
 					   L"Demarque inconnue de 5%"
 			   });
-			   this->comboBox_demarque->Location = System::Drawing::Point(181, 296);
+			   this->comboBox_demarque->Location = System::Drawing::Point(272, 455);
+			   this->comboBox_demarque->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->comboBox_demarque->Name = L"comboBox_demarque";
-			   this->comboBox_demarque->Size = System::Drawing::Size(145, 21);
+			   this->comboBox_demarque->Size = System::Drawing::Size(216, 28);
 			   this->comboBox_demarque->TabIndex = 27;
 			   this->comboBox_demarque->Visible = false;
 			   // 
@@ -271,33 +277,37 @@ namespace Projet {
 			   this->comboBox_remise->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			   this->comboBox_remise->FormattingEnabled = true;
 			   this->comboBox_remise->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L" ", L"Remise commerciale de 5%", L"Remise commerciale de 6%" });
-			   this->comboBox_remise->Location = System::Drawing::Point(5, 296);
+			   this->comboBox_remise->Location = System::Drawing::Point(8, 455);
+			   this->comboBox_remise->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->comboBox_remise->Name = L"comboBox_remise";
-			   this->comboBox_remise->Size = System::Drawing::Size(145, 21);
+			   this->comboBox_remise->Size = System::Drawing::Size(216, 28);
 			   this->comboBox_remise->TabIndex = 28;
 			   this->comboBox_remise->Visible = false;
 			   // 
 			   // textBox_nom
 			   // 
-			   this->textBox_nom->Location = System::Drawing::Point(8, 147);
+			   this->textBox_nom->Location = System::Drawing::Point(12, 226);
+			   this->textBox_nom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->textBox_nom->Name = L"textBox_nom";
-			   this->textBox_nom->Size = System::Drawing::Size(130, 20);
+			   this->textBox_nom->Size = System::Drawing::Size(193, 26);
 			   this->textBox_nom->TabIndex = 16;
 			   this->textBox_nom->Visible = false;
 			   // 
 			   // textBox_prenom
 			   // 
-			   this->textBox_prenom->Location = System::Drawing::Point(144, 147);
+			   this->textBox_prenom->Location = System::Drawing::Point(216, 226);
+			   this->textBox_prenom->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->textBox_prenom->Name = L"textBox_prenom";
-			   this->textBox_prenom->Size = System::Drawing::Size(119, 20);
+			   this->textBox_prenom->Size = System::Drawing::Size(176, 26);
 			   this->textBox_prenom->TabIndex = 17;
 			   this->textBox_prenom->Visible = false;
 			   // 
 			   // button_valider
 			   // 
-			   this->button_valider->Location = System::Drawing::Point(359, 226);
+			   this->button_valider->Location = System::Drawing::Point(538, 348);
+			   this->button_valider->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->button_valider->Name = L"button_valider";
-			   this->button_valider->Size = System::Drawing::Size(358, 75);
+			   this->button_valider->Size = System::Drawing::Size(537, 115);
 			   this->button_valider->TabIndex = 20;
 			   this->button_valider->Text = L"Valider";
 			   this->button_valider->UseVisualStyleBackColor = true;
@@ -305,27 +315,29 @@ namespace Projet {
 			   // 
 			   // textBox_id
 			   // 
-			   this->textBox_id->Location = System::Drawing::Point(280, 147);
+			   this->textBox_id->Location = System::Drawing::Point(420, 226);
+			   this->textBox_id->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			   this->textBox_id->Name = L"textBox_id";
-			   this->textBox_id->Size = System::Drawing::Size(75, 20);
+			   this->textBox_id->Size = System::Drawing::Size(110, 26);
 			   this->textBox_id->TabIndex = 30;
 			   this->textBox_id->Visible = false;
 			   // 
 			   // label_id
 			   // 
 			   this->label_id->AutoSize = true;
-			   this->label_id->Location = System::Drawing::Point(277, 131);
+			   this->label_id->Location = System::Drawing::Point(416, 202);
+			   this->label_id->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			   this->label_id->Name = L"label_id";
-			   this->label_id->Size = System::Drawing::Size(16, 13);
+			   this->label_id->Size = System::Drawing::Size(23, 20);
 			   this->label_id->TabIndex = 31;
 			   this->label_id->Text = L"Id";
 			   this->label_id->Visible = false;
 			   // 
 			   // Stats
 			   // 
-			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			   this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			   this->ClientSize = System::Drawing::Size(738, 335);
+			   this->ClientSize = System::Drawing::Size(1107, 515);
 			   this->Controls->Add(this->label_id);
 			   this->Controls->Add(this->textBox_id);
 			   this->Controls->Add(this->dataGridView);
@@ -347,7 +359,6 @@ namespace Projet {
 			   this->Controls->Add(this->textBox_prenom);
 			   this->Controls->Add(this->button_valider);
 			   this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			   this->Margin = System::Windows::Forms::Padding(2);
 			   this->MaximizeBox = false;
 			   this->MinimizeBox = false;
 			   this->Name = L"Stats";
