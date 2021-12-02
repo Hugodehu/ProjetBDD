@@ -370,6 +370,11 @@ namespace Projet {
 
 		   }
 #pragma endregion
+		   void error()
+		   {
+			   MessageBox::Show("Veulliez remplir toutes les cases", "Erreur", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		   }
+
 		   void hide() {
 			   this->label_mois->Visible = false;
 			   this->label_nom->Visible = false;
@@ -470,6 +475,7 @@ namespace Projet {
 				this->dataGridView->DataSource = this->stat->montant_total_achat(this->textBox_id->Text ,this->textBox_nom->Text, this->textBox_prenom->Text);
 				this->dataGridView->DataMember = "Article";
 			}
+			else { error(); }
 		}
 
 		else if (comboBox_stat->SelectedIndex == 4) // 10 articles les plus vendu
