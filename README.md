@@ -66,7 +66,7 @@ Pour cette dernière statistique, l'utilisateur doit rentrer 4 données différe
 
 Chacune de ces valeurs peut également rester vide.
 
-## Démonstration
+## Test Unitaire
 
 Voici une démonstration en image de notre application:
 
@@ -90,6 +90,13 @@ Voici une démonstration en image de notre application:
 ### Etape 5: Appuyer sur Valider et admirer le résultat
 
 ![6](https://user-images.githubusercontent.com/78081509/144503176-83dc4a34-8fa6-4646-94a2-e6019fe5b4c5.png)
+
+### Tableau des tests unitaires
+
+Voici les tests que nous avons réalisé pour notre application:
+
+![image](https://user-images.githubusercontent.com/78081509/144584873-613ea224-2fff-484d-990f-433ad7b75a02.png)
+
 
 ## Cette application a été créée à l'aide de :
 
