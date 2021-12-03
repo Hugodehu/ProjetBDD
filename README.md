@@ -66,7 +66,7 @@ Pour cette dernière statistique, l'utilisateur doit rentrer 4 données différe
 
 Chacune de ces valeurs peut également rester vide.
 
-## Démonstration
+## Test Unitaire
 
 Voici une démonstration en image de notre application:
 
