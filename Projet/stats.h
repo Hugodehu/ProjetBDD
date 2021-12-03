@@ -450,9 +450,9 @@ namespace Projet {
 
 	private: System::Void valider_Click(System::Object^ sender, System::EventArgs^ e)
 	{
+		this->stat = gcnew NS_BDDservice::service_Stat();
 		if (comboBox_stat->SelectedIndex == 0) //Panier moyen
 		{	
-			this->stat = gcnew NS_BDDservice::service_Stat();
 			this->dataGridView->Refresh();
 			this->dataGridView->DataSource = this->stat->panier_moy();
 			this->dataGridView->DataMember = "Article";
@@ -462,7 +462,6 @@ namespace Projet {
 		{
 			if (comboBox_mois->SelectedIndex != -1)
 			{
-				this->stat = gcnew NS_BDDservice::service_Stat();
 				this->dataGridView->Refresh();
 				this->dataGridView->DataSource = this->stat->chiffre_affaire((mois+1).ToString());
 				this->dataGridView->DataMember = "Article";
@@ -471,7 +470,6 @@ namespace Projet {
 
 		else if (comboBox_stat->SelectedIndex == 2) // Produits sous le seuil de reapprovisionnement
 		{
-			this->stat = gcnew NS_BDDservice::service_Stat();
 			this->dataGridView->Refresh();
 			this->dataGridView->DataSource = this->stat->seuil_appro();
 			this->dataGridView->DataMember = "Article";
@@ -481,7 +479,6 @@ namespace Projet {
 		{
 			if (this->textBox_id->TextLength != 0 && this->textBox_nom->TextLength != 0 && this->textBox_prenom->TextLength != 0)
 			{
-				this->stat = gcnew NS_BDDservice::service_Stat();
 				this->dataGridView->Refresh();
 				this->dataGridView->DataSource = this->stat->montant_total_achat(this->textBox_id->Text ,this->textBox_nom->Text, this->textBox_prenom->Text);
 				this->dataGridView->DataMember = "Article";
@@ -491,7 +488,6 @@ namespace Projet {
 
 		else if (comboBox_stat->SelectedIndex == 4) // 10 articles les plus vendu
 		{
-			this->stat = gcnew NS_BDDservice::service_Stat();
 			this->dataGridView->Refresh();
 			this->dataGridView->DataSource = this->stat->arcticle_plus_vendu();
 			this->dataGridView->DataMember = "Article";
@@ -499,7 +495,6 @@ namespace Projet {
 
 		else if (comboBox_stat->SelectedIndex == 5) // 10 articles les moins vendu
 		{
-			this->stat = gcnew NS_BDDservice::service_Stat();
 			this->dataGridView->Refresh();
 			this->dataGridView->DataSource = this->stat->article_moins_vendu();
 			this->dataGridView->DataMember = "Article";
@@ -507,7 +502,6 @@ namespace Projet {
 
 		else if (comboBox_stat->SelectedIndex == 6) // Valeur commerciale du stock
 		{
-			this->stat = gcnew NS_BDDservice::service_Stat();
 			this->dataGridView->Refresh();
 			this->dataGridView->DataSource = this->stat->val_com_stock();
 			this->dataGridView->DataMember = "Article";
@@ -515,7 +509,6 @@ namespace Projet {
 
 		else if (comboBox_stat->SelectedIndex == 7) // Valeur achat du stock
 		{	
-			this->stat = gcnew NS_BDDservice::service_Stat();
 			this->dataGridView->Refresh();
 			this->dataGridView->DataSource = this->stat->val_achat_stock();
 			this->dataGridView->DataMember = "Article";
@@ -547,7 +540,6 @@ namespace Projet {
 			else if (comboBox_demarque->SelectedIndex == 2) { demarque = "0.03"; }
 			else if (comboBox_demarque->SelectedIndex == 3) { demarque = "0.05"; }
 
-			this->stat = gcnew NS_BDDservice::service_Stat();
 			this->dataGridView->Refresh();
 			this->dataGridView->DataSource = this->stat->simulation(TVA, marge, remise, demarque);
 			this->dataGridView->DataMember = "Article";		
